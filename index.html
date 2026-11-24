@@ -223,8 +223,8 @@ input{font:inherit;border:0;outline:0;background:none;color:inherit}
 #stage[data-s=main] #back,#stage[data-s=main] .prog,#stage[data-s=arch] #back,#stage[data-s=arch] .prog,#stage[data-s=adet] #back,#stage[data-s=adet] .prog{display:none}
 #main .vid{position:absolute;left:553px;top:136px;width:804px;height:861px;object-fit:cover;pointer-events:none}
 #main .fade{position:absolute;left:467.93px;top:650.23px;width:984.14px;height:429.77px;background:linear-gradient(to bottom,rgba(247,248,250,0),#f7f8fa 74.481%);pointer-events:none}
-.nav{position:absolute;left:797px;top:53px;width:326px;height:51.538px;background:#fff;border:.646px solid #ececec;border-radius:50px;display:flex;align-items:flex-start;padding-top:3.554px;justify-content:center;gap:6px}
-.nav .pill{position:absolute;top:3.554px;left:0;width:44px;height:41px;border-radius:80px;background:#eff2f4;opacity:0;pointer-events:none}
+.nav{position:absolute;left:797px;top:53px;width:326px;height:51.538px;background:#fff;border:.646px solid #ececec;border-radius:50px;display:flex;align-items:center;justify-content:center;gap:6px}
+.nav .pill{position:absolute;top:calc(50% - 20.5px);left:0;width:44px;height:41px;border-radius:80px;background:#eff2f4;opacity:0;pointer-events:none}
 .nav.has .pill{opacity:1}
 .nav .it{position:relative;z-index:1;flex:none;width:44px;height:41px;border-radius:80px;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:0}
 .nav .ic{display:grid;place-items:center;flex:none}
@@ -257,7 +257,7 @@ input{font:inherit;border:0;outline:0;background:none;color:inherit}
 #ogList{display:flex;flex-direction:column;gap:12px;overflow-y:auto;min-height:0;flex:1;scrollbar-width:thin}
 .cond{background:#f6f8fa;border-radius:12px;padding:18px 20px;display:flex;align-items:center;gap:12px;flex:none}
 .cond .lb{flex:none;height:20px;padding:0 8px;border-radius:3px;background:var(--sky);display:flex;align-items:center;font-family:var(--pp);font-style:italic;font-weight:400;font-size:12px;--ls:-0.03em;letter-spacing:-0.03em;color:#fff;line-height:1}
-.cond p{font-size:14px;font-weight:500;color:var(--ink);white-space:nowrap;min-width:0;flex:1}
+.cond p{font-size:14px;font-weight:500;color:var(--ink);min-width:0;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:5px 0;margin:-5px 0}
 #ipc{left:60px;top:681px;gap:26px}
 .pat{background:#f6f8fa;border-radius:12px;padding:18px 19px;display:flex;gap:12px;align-items:flex-start}
 .pat+.pat{margin-top:10px}
@@ -397,7 +397,7 @@ input{font:inherit;border:0;outline:0;background:none;color:inherit}
 .sc-body{display:flex;flex-direction:column;gap:40px}
 .sc-meta{padding:0 8px;display:flex;flex-direction:column;gap:19px}
 .sc-t{display:flex;align-items:center;gap:11px}
-.chip{height:28px;padding:4px 10px;border-radius:34px;background:rgba(116,206,255,.19);color:var(--sky);font-size:15px;font-weight:500;display:flex;align-items:center;text-transform:capitalize}
+.catchip{height:28px;padding:4px 10px;border-radius:34px;background:rgba(116,206,255,.19);color:var(--sky);font-size:15px;font-weight:500;display:flex;align-items:center;text-transform:capitalize}
 .sc-t b{font-size:22px;font-weight:500;color:var(--ink);text-shadow:6px 6px 20px rgba(0,0,0,.11);white-space:nowrap}
 .sc-m{display:flex;align-items:center;gap:13px;padding:0 4px;font-size:15px;font-weight:500;color:var(--g4);white-space:nowrap}
 .sc-m .dt{display:flex;gap:12px}
@@ -706,7 +706,7 @@ input{font:inherit;border:0;outline:0;background:none;color:inherit}
         <h3>Summary</h3>
         <div class="sc-body">
           <div class="sc-meta">
-            <div class="sc-t"><span class="chip" id="dcat"></span><b class="trim" id="dtitle"></b></div>
+            <div class="sc-t"><span class="catchip" id="dcat"></span><b class="trim" id="dtitle"></b></div>
             <div class="sc-m"><span class="dt"><span class="trim" id="ddate"></span><span class="trim" id="dtime"></span></span><i class="vl"></i><span class="trim" id="dplace"></span><i class="vl"></i><span class="tags" id="dtags"></span></div>
           </div>
           <div class="sc-boxes">
@@ -1121,12 +1121,7 @@ input{font:inherit;border:0;outline:0;background:none;color:inherit}
     $('#calD').innerHTML = Array.from({ length: 42 }, (_, k) => '<i class="' + (blue.has(k) ? 'b' : fade.has(k) ? 'o' : '') + '"></i>').join('');
   })();
   function renderHome(){
-    $('#ogList').innerHTML = [...picked].map(i => '<div class="cond"><span class="lb">IF</span><p class="trim">' + esc(SIT[i].t) + '</p></div>').join('');
-    // keep each IF on one line like the design: shrink the type a little only when it doesn't fit
-    document.querySelectorAll('#ogList .cond p').forEach(el => {
-      let fs = 14;
-      while (el.scrollWidth > el.clientWidth + 0.5 && fs > 12) { fs -= 0.25; el.style.fontSize = fs + 'px'; }
-    });
+    $('#ogList').innerHTML = [...picked].map(i => '<div class="cond" title="' + esc(SIT[i].t) + '"><span class="lb">IF</span><p class="trim">' + esc(SIT[i].t) + '</p></div>').join('');
   }
   $('#fstart').addEventListener('click', () => { go('main'); renderHome(); const v = $('#main .vid'); try { v.currentTime = 0; const p = v.play(); if (p) p.catch(() => {}); } catch (e) {} });
 
