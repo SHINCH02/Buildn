@@ -220,7 +220,7 @@ input{font:inherit;border:0;outline:0;background:none;color:inherit}
 @keyframes shk{20%,60%{transform:translateX(-4px)}40%,80%{transform:translateX(4px)}}
 
 /* main home */
-#stage[data-s=main] #back,#stage[data-s=main] .prog,#stage[data-s=arch] #back,#stage[data-s=arch] .prog,#stage[data-s=adet] #back,#stage[data-s=adet] .prog,#stage[data-s=goal] #back,#stage[data-s=goal] .prog,#stage[data-s=ident] #back,#stage[data-s=ident] .prog,#stage[data-s=create] #back,#stage[data-s=create] .prog{display:none}
+#stage[data-s=main] #back,#stage[data-s=main] .prog,#stage[data-s=arch] #back,#stage[data-s=arch] .prog,#stage[data-s=adet] #back,#stage[data-s=adet] .prog,#stage[data-s=goal] #back,#stage[data-s=goal] .prog,#stage[data-s=ident] #back,#stage[data-s=ident] .prog,#stage[data-s=create] #back,#stage[data-s=create] .prog,#stage[data-s=cchat] #back,#stage[data-s=cchat] .prog{display:none}
 #main .vid{position:absolute;left:553px;top:136px;width:804px;height:861px;object-fit:cover;pointer-events:none}
 #main .fade{position:absolute;left:467.93px;top:650.23px;width:984.14px;height:429.77px;background:linear-gradient(to bottom,rgba(247,248,250,0),#f7f8fa 74.481%);pointer-events:none}
 .nav{position:absolute;left:797px;top:53px;width:326px;height:51.538px;background:#fff;border:.646px solid #ececec;border-radius:50px;display:flex;align-items:center;justify-content:center;gap:6px}
@@ -239,7 +239,7 @@ input{font:inherit;border:0;outline:0;background:none;color:inherit}
 .nav .it:not(.on):hover .g svg{filter:brightness(.85)}
 .nav svg{display:block}
 #top{display:none;position:absolute;inset:0 0 auto 0;height:0;z-index:20}
-#stage[data-s=main] #top,#stage[data-s=arch] #top,#stage[data-s=adet] #top,#stage[data-s=goal] #top,#stage[data-s=ident] #top,#stage[data-s=create] #top{display:block}
+#stage[data-s=main] #top,#stage[data-s=arch] #top,#stage[data-s=adet] #top,#stage[data-s=goal] #top,#stage[data-s=ident] #top,#stage[data-s=create] #top,#stage[data-s=cchat] #top{display:block}
 .bell{position:absolute;left:1735.62px;top:50.37px;width:54.062px;height:54.062px;border-radius:50%;background:#fff;border:1.06px solid #ebebeb;display:flex;align-items:center;justify-content:center}
 .bdot{position:absolute;left:1774.48px;top:50.01px;width:16.613px;height:16.613px;border-radius:50%;background:#ff5959;border:1.06px solid #fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;color:#fff;line-height:1}
 .avatar{position:absolute;left:1805.94px;top:50.18px;width:54.062px;height:54.062px;border-radius:50%;border:1.078px solid #ebebeb;overflow:hidden;background:#fff}
@@ -538,6 +538,47 @@ h3.gh:first-child{text-transform:capitalize}
 .ctab hr{border:0;height:1px;background:#e8e8e8;width:1252px;margin:0}
 .ctab .r.it{cursor:default}
 .cempty{font-size:16px;font-weight:500;color:#a1a1a1;padding:0 0 0 0}
+/* create chat */
+#cchat{background:#f7f8fa}
+.cctop{position:absolute;left:0;top:0;width:1920px;height:253.645px;background:linear-gradient(#fafafa,#f7f8fa)}
+.cchd{position:absolute;left:538px;top:131.94px;display:flex;align-items:center;gap:13px;font-family:var(--pp);font-weight:500;font-size:18px;--ls:-0.04em;letter-spacing:-0.04em;line-height:1.3;color:var(--ink);white-space:nowrap}
+.cchd svg{display:block}
+.ccbtn{position:absolute;top:126.94px;width:36px;height:36px;border-radius:50%;display:block;transition:background .15s}
+.ccbtn svg{display:block}
+.ccbtn.more{left:1302.5px;background:rgba(235,235,235,.45)}.ccbtn.more svg{position:absolute;left:9.03px;top:16.23px}
+.ccbtn.bm{left:1346.5px}
+.ccbtn.bm.on path{fill:#777}
+#ccm{position:absolute;left:537.5px;top:200px;width:845px;height:715px;overflow-y:auto;padding:127.16px 0 30px;scrollbar-width:none;-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 60px);mask-image:linear-gradient(to bottom,transparent 0,#000 60px)}
+#ccm::-webkit-scrollbar{display:none}
+.ccu{margin-left:auto;width:321px;background:#e7f6ff;border-radius:18px;padding:18px 24px 18px 26px;font-size:15px;font-weight:500;color:#19aeff;line-height:1.5;margin-bottom:63px}
+.ccu span{display:block;text-box:trim-both cap alphabetic}
+.ccu.gen{width:168px;padding:18px 24px;text-align:center;margin-bottom:12px;white-space:nowrap}
+.ccicons{display:flex;justify-content:flex-end;gap:6.638px;padding:0 4px;margin-bottom:40px}
+.ccicons>*{width:37.198px;height:37.198px;flex:none;display:block}
+.ccbio{position:relative;border-radius:8px;border:1.338px solid #fff;background:#f3ffc6;overflow:hidden}
+.ccbio i{position:absolute;left:-1.33px;top:-1.33px;width:33.451px;height:33.451px;border-radius:3px;filter:blur(7.194px);background:radial-gradient(26.1px 53.7px at 7.3px 6.9px,#ffaf25 0%,#ffb23f 12.5%,#ffb459 25%,#ffb98c 50%,#ffbfc0 75%,#ffc4f4 100%)}
+.ccbio b{position:absolute;left:9.37px;top:9.37px;width:16.696px;height:16.696px;border-radius:4.072px;background:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:9.669px;color:#ffb030;line-height:1;text-transform:uppercase}
+.ccb{display:flex;gap:18px;align-items:flex-start;margin-bottom:20.75px}
+.ccb .av{width:29px;height:29px;flex:none;display:block}
+.ccb .col{display:flex;flex-direction:column;gap:20px;padding:8px 0;align-items:flex-start}
+.ccb .tx{width:602px;padding:8px 0;font-size:15px;font-weight:500;color:#464646;line-height:1.5}
+.ccb .tx span{display:block;text-box:trim-both cap alphabetic}
+.cccards{display:flex;gap:15px}
+.ccc{position:relative;width:113.086px;height:113.086px;border-radius:16.431px;border:.7px solid #ececec;background:#fff;overflow:hidden;text-align:left;transition:background .2s,border-color .2s,transform .2s}
+.ccc .lb{position:absolute;left:16.8px;top:13.68px;width:69.264px;font-family:var(--pp);font-weight:500;font-size:13.145px;--ls:-0.04em;letter-spacing:-0.04em;line-height:1.2;color:#7a7a7a;text-transform:capitalize;transition:color .2s}
+.ccc img{position:absolute;left:1.5px;top:46.84px;display:block;pointer-events:none}
+.ccc img.on{opacity:0;transition:opacity .2s}
+.ccc .rd{position:absolute;left:81.4px;top:13.15px;width:13.136px;height:13.136px;border-radius:50%;background:#fff;border:3.6px solid #25b2ff;opacity:0;transform:scale(.6);transition:opacity .2s,transform .2s}
+.ccc.sel{background:#eaf7fd;border:1.232px solid #74ceff}
+.ccc.sel .lb{color:#19aeff}.ccc.sel img.on{opacity:1}.ccc.sel .rd{opacity:1;transform:none}
+.ccc.pick:not(.sel):not(:disabled):hover{transform:translateY(-2px);border-color:#cfeeff}
+.ccc:not(.pick){cursor:default}
+.ccgen{width:149px;height:32px;border-radius:8px;background:#e3e3e3;color:#cacaca;font-size:15px;font-weight:500;display:flex;align-items:center;justify-content:center;transition:background .2s,color .2s}
+.ccgen span{display:block;line-height:1.5;text-box:trim-both cap alphabetic}
+.ccgen:not(:disabled){background:var(--sky);color:#fff}
+.ccgen:not(:disabled):hover{filter:brightness(.96)}
+#cchat .tin.cin{position:absolute;left:537px;top:935px;width:845px}#cchat .tf{width:auto;flex:1 0 0}
+.ccload{margin-bottom:40px}
 </style>
 </head>
 <body>
@@ -889,6 +930,20 @@ h3.gh:first-child{text-transform:capitalize}
     </div>
   </section>
 
+  <!-- create chat -->
+  <section class="scr" id="cchat">
+    <div class="cctop" aria-hidden="true"></div>
+    <button class="cchd" id="ccback"><svg width="7" height="13" viewBox="0 0 7 13" fill="none"><path d="M6.01367 0.75L1.01367 6.25L6.01367 11.75" stroke-width="1.5" stroke-linecap="round" stroke="#444444"/></svg><span id="cctitle">LinkedIn Profile</span></button>
+    <button class="ccbtn more" aria-label="More"><svg width="17.36" height="3.545" viewBox="0 0 18 4" fill="none"><circle cx="15.5889" cy="1.77254" r="1.77254" fill="#777777"/><circle cx="8.67879" cy="1.77254" r="1.77254" fill="#777777"/><circle cx="1.77254" cy="1.77254" r="1.77254" fill="#777777"/></svg></button>
+    <button class="ccbtn bm" id="ccbm" aria-label="Bookmark" aria-pressed="false"><svg width="36" height="36" viewBox="0 0 36 36" fill="none"><rect width="36" height="36" rx="18" fill="#EBEBEB" fill-opacity="0.45"/><path d="M22.8242 25.3574L17.998 20.8022L13.1719 25.3574V11.2805C13.1719 11.1108 13.2354 10.948 13.3486 10.828C13.4617 10.708 13.6151 10.6406 13.7751 10.6406H22.2209C22.3809 10.6406 22.5344 10.708 22.6475 10.828C22.7607 10.948 22.8242 11.1108 22.8242 11.2805V25.3574Z" stroke-width="1.3125" stroke-linecap="round" stroke-linejoin="round" stroke="#777777"/></svg></button>
+    <div id="ccm" class="pt"></div>
+    <form class="tin cin" id="ccf" autocomplete="off">
+      <svg class="ic" viewBox="0 0 30 30" fill="none"><path d="M9.71875 15H20.2813" stroke-width="1.27059" stroke-linecap="round" stroke="#A1A1A1"/><path d="M15 9.71875L15 20.2813" stroke-width="1.27059" stroke-linecap="round" stroke="#A1A1A1"/></svg>
+      <div class="tf"><input id="cci" placeholder="Please enter the desired outcome you want to create." aria-label="Message"></div>
+      <button class="send" type="submit" aria-label="Send"><svg width="30" height="30" viewBox="0 0 30 30" fill="none"><rect width="30" height="30" rx="10" transform="matrix(-1 0 0 1 30 0)" fill="#444444"/><path d="M16.3145 10.8711L20.4529 14.9999L16.3145 19.1287" stroke-width="1.4" stroke-linecap="round" stroke="white"/><path d="M19.1875 15.0938H9.54492" stroke-width="1.4" stroke-linecap="round" stroke="white"/></svg></button>
+    </form>
+  </section>
+
   <!-- identity (placeholder) -->
   <section class="scr" id="ident">
     <div class="idbox pt"><h2>Identity</h2><p>This page is coming soon.</p><button id="idBack">Back to goal</button></div>
@@ -1029,8 +1084,8 @@ h3.gh:first-child{text-transform:capitalize}
   let lastScreen = 'main';
   function go(name){
     screen = name; stage.dataset.s = name;
-    setNav(name === 'main' ? 'home' : (name === 'arch' || name === 'adet') ? 'arch' : name === 'goal' ? 'flag' : name === 'create' ? 'pen' : null);
-    if (name !== 'create') lastScreen = name;
+    setNav(name === 'main' ? 'home' : (name === 'arch' || name === 'adet') ? 'arch' : name === 'goal' ? 'flag' : (name === 'create' || name === 'cchat') ? 'pen' : null);
+    if (name !== 'create' && name !== 'cchat') lastScreen = name;
     if (name === 'goal') { if (typeof renderGoal === 'function') renderGoal(); const g = document.getElementById('gsc'); if (g && prevScreen !== 'ident' && prevScreen !== 'goal') g.scrollTop = 0; }
     if (name !== 'adet') { const dv = document.getElementById('dvid'); if (dv) dv.pause(); }
     if (name !== 'main') { const sw = document.getElementById('srec'); if (sw) sw.classList.remove('open'); }
@@ -1056,11 +1111,20 @@ h3.gh:first-child{text-transform:capitalize}
     d.innerHTML = AV + '<div class="col"><p class="q pt trim">' + html + '</p>' + (label ? '<p class="lab sf">' + label + '</p>' : '') + '</div>';
     msgs.appendChild(d); scrollEnd();
   }
+  // loading spinner: 12 spokes with fading opacity so the stepped rotation reads as spinning
+  const SPIN_SVG = (() => {
+    let p = '';
+    for (let i = 0; i < 12; i++) {
+      const k = (12 - i) % 12, op = (1 - k * 0.072).toFixed(3);
+      p += '<path d="M15.2513 2.54297V5.08464" transform="rotate(' + (i * 30) + ' 15.2513 15.2513)" stroke-opacity="' + op + '"/>';
+    }
+    return '<svg viewBox="0 0 31 31" fill="none" aria-hidden="true" stroke="#4DC0FF" stroke-width="2.54167" stroke-linecap="round">' + p + '</svg>';
+  })();
   function typing(then){
     busy = true;
     const d = document.createElement('div');
     d.className = 'load'; d.setAttribute('role', 'status');
-    d.innerHTML = '<svg viewBox="0 0 31 31" fill="none" aria-hidden="true"><path d="M15.2513 2.54297V5.08464M21.6055 4.24589L20.3346 6.44697M26.2567 8.89714L24.0556 10.168M27.9596 15.2513H25.418M26.2567 21.6055L24.0556 20.3346M21.6055 26.2567L20.3346 24.0556M15.2513 27.9596V25.418M8.89714 26.2567L10.168 24.0556M4.24589 21.6055L6.44697 20.3346M2.54297 15.2513H5.08464M4.24589 8.89714L6.44697 10.168M8.89714 4.24589L10.168 6.44697" stroke-width="2.54167" stroke-linecap="round" stroke-linejoin="round" stroke="#4DC0FF"/></svg><span>Thinking...</span>';
+    d.innerHTML = SPIN_SVG + '<span>Thinking...</span>';
     msgs.appendChild(d); scrollEnd();
     later(() => { d.remove(); busy = false; then(); }, TYPE_MS);
   }
@@ -1413,9 +1477,9 @@ h3.gh:first-child{text-transform:capitalize}
   }
   renderHist();
   $('#csearch').addEventListener('input', renderHist);
-  $('#cf').addEventListener('submit', e => { e.preventDefault(); });
+  $('#cf').addEventListener('submit', e => { e.preventDefault(); const v = $('#ci').value.trim(); if (!v) { $('#ci').focus(); typeCreate(); return; } startCreateChat(v); });
   // typewriter: clicking the empty input writes the sample request
-  const CREATE_TEXT = 'I want to create an LinkedIn profile based on my identity.';
+  const CREATE_TEXT = 'I want to create a LinkedIn profile based on my identity.';
   let cTyping = null;
   function stopTyping(){ if (cTyping) { clearTimeout(cTyping); cTyping = null; } }
   function typeCreate(){
@@ -1434,6 +1498,61 @@ h3.gh:first-child{text-transform:capitalize}
   $('#ci').addEventListener('keydown', stopTyping);
   $('#ci').addEventListener('blur', stopTyping);
   $('#cfilt').addEventListener('click', e => { const b = e.target.closest('.fc[data-f]'); if (!b) return; });
+
+  // create chat: request -> thinking -> output roles -> generate selected
+  const BAN_ICON = '<svg viewBox="0 0 38 38" fill="none"><g clip-path="url(#ccbclip)"><rect width="37.1978" height="37.1978" rx="8" fill="#F3FFC6"/><g filter="url(#ccbblur)"><rect x="-1.33984" y="-1.33594" width="33.4513" height="33.4513" rx="3.00784" fill="url(#ccbgrad)"/></g><path d="M21.3888 22.475C21.2466 22.577 21.0834 22.646 20.9112 22.6772C20.739 22.7084 20.562 22.7008 20.3931 22.6552C20.2242 22.6095 20.0675 22.5268 19.9344 22.4131C19.8014 22.2994 19.6953 22.1575 19.6239 21.9978L19.0534 20.3057C18.9147 19.8986 18.6831 19.5294 18.3769 19.2274C18.0707 18.9254 17.6984 18.6989 17.2895 18.5658L15.6634 18.0506C15.4323 17.972 15.2318 17.8226 15.0906 17.6234C14.9816 17.4725 14.91 17.2978 14.8818 17.1137C14.8536 16.9296 14.8696 16.7415 14.9284 16.5648C14.9872 16.3882 15.0872 16.228 15.2202 16.0976C15.3531 15.9672 15.5151 15.8703 15.6929 15.8148L17.2946 15.2813C17.7018 15.1429 18.0712 14.9116 18.3734 14.6057C18.6757 14.2998 18.9026 13.9276 19.036 13.5188L19.5512 11.8935C19.6306 11.6632 19.7796 11.4632 19.9776 11.3214C20.1769 11.1818 20.4138 11.1062 20.6571 11.1044C20.9003 11.1026 21.1383 11.1749 21.3396 11.3115C21.5428 11.453 21.6964 11.6547 21.7787 11.8882L22.3241 13.5261C22.4631 13.9224 22.6904 14.2818 22.9888 14.5773C23.2872 14.8728 23.6489 15.0965 24.0465 15.2315L25.674 15.746C25.9056 15.826 26.1065 15.9762 26.2488 16.1757C26.3911 16.3752 26.4677 16.6141 26.4679 16.8592C26.468 17.1042 26.3918 17.3432 26.2499 17.5429C26.1079 17.7427 25.9072 17.8932 25.6756 17.9735L24.0732 18.5071C23.5537 18.6856 23.0983 19.0131 22.7636 19.4488C22.5726 19.6988 22.4261 19.9789 22.3304 20.2783L21.8145 21.9014C21.735 22.1325 21.5871 22.3329 21.3888 22.475ZM14.3565 26.9333C14.2097 27.0386 14.0338 27.0957 13.8532 27.0965C13.6737 27.0983 13.4981 27.0446 13.3504 26.9428C13.1983 26.8371 13.084 26.6855 13.024 26.5102L12.7483 25.6837C12.6901 25.5121 12.5926 25.3565 12.4637 25.2291C12.3348 25.1017 12.1781 25.006 12.0058 24.9497L11.1586 24.6819C10.9878 24.6226 10.8394 24.5119 10.7339 24.365C10.6283 24.2181 10.5708 24.0421 10.5692 23.8612C10.5678 23.6756 10.6259 23.4945 10.7349 23.3442C10.8438 23.1939 10.998 23.0825 11.1749 23.0261L12.0022 22.7519C12.1738 22.6936 12.3295 22.596 12.457 22.467C12.5844 22.338 12.6799 22.1811 12.7361 22.0087L13.0055 21.1637C13.0636 20.9912 13.1744 20.8413 13.3222 20.7351C13.4701 20.6289 13.6475 20.5718 13.8295 20.5717C14.0115 20.5717 14.189 20.6287 14.3369 20.7349C14.4847 20.841 14.5956 20.9908 14.6538 21.1633L14.931 21.992C14.9877 22.1614 15.0826 22.3154 15.2084 22.4423C15.3341 22.5692 15.4873 22.6656 15.6561 22.7239L16.5032 22.9918C16.6745 23.0509 16.8233 23.1616 16.9291 23.3087C17.0349 23.4557 17.0926 23.632 17.0942 23.8131C17.0953 23.9959 17.0389 24.1743 16.9329 24.3231C16.8269 24.472 16.6767 24.5837 16.5036 24.6423L15.6764 24.918C15.504 24.9762 15.3478 25.0741 15.2203 25.2039C15.0928 25.3336 14.9976 25.4916 14.9424 25.6649L14.6738 26.5099C14.6151 26.6806 14.5033 26.8281 14.3565 26.9333Z" fill="white"/></g><rect x="0.669025" y="0.669025" width="35.8598" height="35.8598" rx="7.33097" stroke="white" stroke-width="1.33805"/><defs><filter id="ccbblur" x="-15.7287" y="-15.7248" width="62.2288" height="62.2288" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feGaussianBlur stdDeviation="7.19441"/></filter><radialGradient id="ccbgrad" cx="0" cy="0" r="1" gradientTransform="matrix(26.1238 0 -0.126278 53.7078 5.98758 5.52906)" gradientUnits="userSpaceOnUse"><stop stop-color="#25B2FF"/><stop offset="1" stop-color="#C4D9FF"/></radialGradient><clipPath id="ccbclip"><rect width="37.1978" height="37.1978" rx="8" fill="white"/></clipPath></defs></svg>';
+  const BIO_ICON = '<span class="ccbio"><i></i><b>t</b></span>';
+  const CC_ROLES = [
+    { k: 'banner', l: 'Profile banner', w: 110, h: 65, lw: 57.021, pick: true },
+    { k: 'bio', l: 'Profile bio', w: 109, h: 65, lw: 57.31, pick: true },
+    { k: 'pinned', l: 'Pinned intro post', w: 109, h: 65 },
+    { k: 'tone', l: 'Tone keywords', w: 109, h: 65 }
+  ];
+  const ccm = $('#ccm');
+  let ccTimers = [];
+  const ccLater = (fn, ms) => ccTimers.push(setTimeout(fn, ms));
+  const ccEnd = () => ccm.scrollTo({ top: ccm.scrollHeight, behavior: 'smooth' });
+  function ccUser(text, cls){
+    const d = document.createElement('div'); d.className = 'ccu mfade' + (cls ? ' ' + cls : '');
+    d.innerHTML = '<span>' + esc(text) + '</span>'; ccm.appendChild(d); return d;
+  }
+  function startCreateChat(text){
+    stopTyping(); ccTimers.forEach(clearTimeout); ccTimers = [];
+    ccm.innerHTML = ''; go('cchat');
+    ccUser(text);
+    ccLater(() => {
+      const ld = document.createElement('div'); ld.className = 'load ccload mfade'; ld.setAttribute('role', 'status');
+      ld.innerHTML = SPIN_SVG + '<span>Thinking...</span>'; ccm.appendChild(ld); ccEnd();
+      ccLater(() => { ld.remove(); ccBot(); }, 2200);
+    }, 450);
+  }
+  function ccBot(){
+    const b = document.createElement('div'); b.className = 'ccb mfade';
+    b.innerHTML = AV.replace('class="av"', 'class="av"') + '<div class="col"><div class="tx"><span>An SNS profile can be made up of several output roles.<br>Choose what you want to create first.</span></div>' +
+      '<div class="cccards">' + CC_ROLES.map(r => '<button class="ccc' + (r.pick ? ' pick' : '') + '" data-k="' + r.k + '"' + (r.pick ? ' aria-pressed="false"' : ' tabindex="-1" aria-disabled="true"') + '><span class="lb"' + (r.lw ? ' style="width:' + r.lw + 'px"' : '') + '>' + r.l + '</span>' + (r.pick ? '<i class="rd"></i>' : '') +
+        '<img src="img/cc-' + r.k + '.png" width="' + r.w + '" height="' + r.h + '" alt="">' + (r.pick ? '<img class="on" src="img/cc-' + r.k + '-on.png" width="' + r.w + '" height="' + r.h + '" alt="">' : '') + '</button>').join('') + '</div>' +
+      '<button class="ccgen" disabled><span>Generate Selected</span></button></div>';
+    ccm.appendChild(b); ccEnd();
+    const gen = b.querySelector('.ccgen');
+    b.querySelectorAll('.ccc.pick').forEach(c => c.addEventListener('click', () => {
+      if (b.classList.contains('done')) return;
+      const on = !c.classList.contains('sel'); c.classList.toggle('sel', on); c.setAttribute('aria-pressed', on);
+      gen.disabled = !b.querySelector('.ccc.sel');
+    }));
+    gen.addEventListener('click', () => {
+      if (b.classList.contains('done')) return;
+      b.classList.add('done'); gen.style.pointerEvents = 'none';
+      b.querySelectorAll('.ccc').forEach(c => { c.style.pointerEvents = 'none'; });
+      const sel = [...b.querySelectorAll('.ccc.sel')].map(c => c.dataset.k);
+      ccUser('Generate Selected', 'gen');
+      const ic = document.createElement('div'); ic.className = 'ccicons mfade';
+      ic.innerHTML = sel.map(k => k === 'banner' ? BAN_ICON : BIO_ICON).join('');
+      ccm.appendChild(ic); ccEnd();
+    });
+  }
+  $('#ccback').addEventListener('click', () => { ccTimers.forEach(clearTimeout); go('create'); });
+  $('#ccbm').addEventListener('click', e => { const b = e.currentTarget, on = !b.classList.contains('on'); b.classList.toggle('on', on); b.setAttribute('aria-pressed', on); });
+  $('#ccf').addEventListener('submit', e => { e.preventDefault(); const v = $('#cci').value.trim(); if (!v) return; $('#cci').value = ''; ccUser(v); ccEnd(); });
 
   // nav + panel
   document.querySelectorAll('.nav .it').forEach(b => b.addEventListener('click', () => {
@@ -1517,6 +1636,7 @@ h3.gh:first-child{text-transform:capitalize}
     else if (h === 'goal') { [8, 0, 3, 7].forEach(i => picked.add(i)); syncSel(); go('goal'); }
     else if (h === 'identity') { go('ident'); }
     else if (h === 'create') { go('create'); }
+    else if (h === 'create-chat') { startCreateChat('I want to create a LinkedIn profile based on my identity.'); }
     else if (h === 'archive-detail') { openRec(0); }
     else if (h === 'buildn-home') { [8, 0, 3, 7].forEach(i => picked.add(i)); syncSel(); go('main'); renderHome(); }
     else if (h === 'final-check') { [8, 0, 3, 7].forEach(i => picked.add(i)); syncSel(); go('fin'); renderFin(); }

@@ -24,6 +24,7 @@
 | `#goal` | Goal |
 | `#identity` | Identity (준비 중) |
 | `#create` | Create |
+| `#create-chat` | Create 채팅 (LinkedIn Profile) |
 
 ## 구성
 
