@@ -23,6 +23,7 @@
 | `#archive-detail` | 아카이브 상세 |
 | `#goal` | Goal |
 | `#identity` | Identity (준비 중) |
+| `#create` | Create |
 
 ## 구성
 
