@@ -6,6 +6,8 @@
 
 목표 입력 → 챗봇 질문(스크립트 고정) → Goal Summary → IF moment 선택(3D 카드, 최소 4개) → Final check → 홈 → Scene Record → Archive → Archive 상세
 
+홈 상단 내비의 깃발 아이콘을 누르면 Goal 페이지로 간다. Goal 페이지의 IF-THEN은 온보딩에서 고른 IF로 채워진다.
+
 ## 바로가기
 
 주소 뒤에 붙이면 해당 화면부터 열린다.
@@ -19,6 +21,8 @@
 | `#buildn-home` | 홈 |
 | `#archive` | 아카이브 |
 | `#archive-detail` | 아카이브 상세 |
+| `#goal` | Goal |
+| `#identity` | Identity (준비 중) |
 
 ## 구성
 
