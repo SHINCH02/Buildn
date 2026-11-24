@@ -531,7 +531,7 @@ h3.gh:first-child{text-transform:capitalize}
 .csearch:focus-within{border-color:var(--sky)}
 .ctab{display:flex;flex-direction:column;gap:29px}
 .ctab .r{display:flex;align-items:flex-start;font-size:18px;font-weight:500;color:#626262;line-height:1.5}
-.ctab .r>*:nth-child(1){width:648px}.ctab .r>*:nth-child(2){width:262px}.ctab .r>*:nth-child(3){width:174px}.ctab .r>*:nth-child(4){white-space:nowrap}
+.ctab .r>*:nth-child(1){width:630px}.ctab .r>*:nth-child(2){width:250px}.ctab .r>*:nth-child(3){width:250px}.ctab .r>*:nth-child(4){white-space:nowrap}
 .ctab .r.h{font-weight:600;color:#2b2b2b}
 .ctab .r .c1{display:flex;flex-direction:column;gap:18px}
 .ctab .r .c1 i{font-style:normal;font-weight:400;color:#767676;opacity:.8;max-width:505px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:5px 0;margin:-5px 0}
@@ -868,7 +868,6 @@ h3.gh:first-child{text-transform:capitalize}
 
   <!-- create page -->
   <section class="scr" id="create">
-    <button class="cback" id="cback" aria-label="Back"><svg width="8" height="14" viewBox="0 0 8 14" fill="none"><path d="M7.06055 0.75L1.06055 6.75L7.06055 12.75" stroke-width="1.5" stroke-linecap="round" stroke="#444444"/></svg></button>
     <div class="cwrap pt">
       <div class="ctop">
         <div class="ctt"><h2 class="trim">What shall we create?</h2><p class="trim">Turn the patterns you’ve discovered into new creations.</p></div>
@@ -1415,7 +1414,25 @@ h3.gh:first-child{text-transform:capitalize}
   renderHist();
   $('#csearch').addEventListener('input', renderHist);
   $('#cf').addEventListener('submit', e => { e.preventDefault(); });
-  $('#cback').addEventListener('click', () => go(lastScreen || 'main'));
+  // typewriter: clicking the empty input writes the sample request
+  const CREATE_TEXT = 'I want to create an LinkedIn profile based on my identity.';
+  let cTyping = null;
+  function stopTyping(){ if (cTyping) { clearTimeout(cTyping); cTyping = null; } }
+  function typeCreate(){
+    const el = $('#ci'); if (el.value || cTyping) return;
+    let i = 0;
+    const step = () => {
+      i++; el.value = CREATE_TEXT.slice(0, i); el.setSelectionRange(i, i); el.scrollLeft = el.scrollWidth;
+      if (i >= CREATE_TEXT.length) { cTyping = null; return; }
+      const ch = CREATE_TEXT[i - 1];
+      cTyping = setTimeout(step, (ch === ' ' ? 55 : 38) + Math.random() * 45 + (ch === ',' || ch === '.' ? 160 : 0));
+    };
+    cTyping = setTimeout(step, 180);
+  }
+  $('#ci').addEventListener('focus', typeCreate);
+  $('#ci').addEventListener('mousedown', () => { if (document.activeElement === $('#ci')) typeCreate(); });
+  $('#ci').addEventListener('keydown', stopTyping);
+  $('#ci').addEventListener('blur', stopTyping);
   $('#cfilt').addEventListener('click', e => { const b = e.target.closest('.fc[data-f]'); if (!b) return; });
 
   // nav + panel
