@@ -29,7 +29,9 @@
 | `#create-chat` | Create 채팅 (LinkedIn Profile) |
 | `#create-result` | Create 결과 상세 |
 | `#mypage` | My page |
-| `#photobooth` | Photo booth (bell) — shutter shows the IF notification |
+| `#photobooth` | Photo booth (bell): 알림 → 3·2·1 → 자동 저장 |
+| `#photobooth-result` | 촬영 결과 + QR (사진 임시 업로드) |
+| `#gallery` | Card List (촬영 사진 갤러리) |
 
 ## 구성
 
