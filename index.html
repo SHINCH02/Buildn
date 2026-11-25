@@ -241,9 +241,10 @@ input{font:inherit;border:0;outline:0;background:none;color:inherit}
 .nav .ic{display:grid;place-items:center;flex:none}
 .nav .ic>span{grid-area:1/1;display:flex;transition:opacity .3s ease}
 .nav .it .d{opacity:0}.nav .it.on .d{opacity:1}.nav .it.on .g{opacity:0}
-.nav .it b{display:block;overflow:hidden;white-space:nowrap;max-width:0;margin-left:0;opacity:0;font-size:17px;font-weight:500;color:var(--ink);--ls:-0.02em;letter-spacing:-0.02em;line-height:1.5}
+.nav .it b{display:block;overflow:hidden;white-space:nowrap;max-width:0;margin-left:0;padding:5px 0;margin-top:-5px;margin-bottom:-5px;opacity:0;font-size:17px;font-weight:500;color:var(--ink);--ls:-0.02em;letter-spacing:-0.02em;line-height:1.5}
 .nav .it.on b{opacity:1;margin-left:9px}
 .nav.anim .it{transition:width .5s cubic-bezier(.22,1,.36,1)}
+.nav.anim{transition:gap .5s cubic-bezier(.22,1,.36,1)}
 .nav.anim .it b{transition:max-width .5s cubic-bezier(.22,1,.36,1),margin-left .5s cubic-bezier(.22,1,.36,1),opacity .3s ease .12s}
 .nav.anim .it:not(.on) b{transition:max-width .5s cubic-bezier(.22,1,.36,1),margin-left .5s cubic-bezier(.22,1,.36,1),opacity .15s ease}
 .nav.anim .pill{transition:left .5s cubic-bezier(.22,1,.36,1),width .5s cubic-bezier(.22,1,.36,1),opacity .25s}
@@ -346,9 +347,9 @@ input{font:inherit;border:0;outline:0;background:none;color:inherit}
 .alab .tt b{font-size:36px;font-weight:500;color:var(--ink);--ls:-0.02em;letter-spacing:-0.02em;text-shadow:6.767px 6.767px 22.556px rgba(0,0,0,.11)}
 .alab .tt i{font-style:normal;font-size:13px;font-weight:500;color:#c7c7c7}
 .prompts{display:flex;gap:16px}
-.pc{width:218px;background:#fff;border:.8px solid #ececec;border-radius:14px;padding:23px;display:flex;flex-direction:column;gap:14px;color:var(--ink)}
+.pc{flex:none;width:230px;background:#fff;border:.8px solid #ececec;border-radius:14px;padding:23px;display:flex;flex-direction:column;justify-content:center;gap:14px;color:var(--ink)}
 .pc h5{font-family:var(--pp);font-weight:500;font-size:16px;--ls:-0.03em;letter-spacing:-0.03em;line-height:28px;text-shadow:6px 6px 20px rgba(0,0,0,.11)}
-.pc p{font-size:12px;font-weight:500;opacity:.5}
+.pc p{font-size:14px;font-weight:500;--ls:-0.03em;letter-spacing:-0.03em;line-height:1.5;opacity:.5}
 .alib{display:flex;flex-direction:column;gap:30px}
 .alib-hd{width:453px;display:flex;flex-direction:column;gap:47px}
 .alib-hd h4{font-size:22px;font-weight:600;color:var(--ink);text-transform:capitalize;text-shadow:6.767px 6.767px 22.556px rgba(0,0,0,.11)}
@@ -1210,7 +1211,7 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
               <div class="mcard mgoal">
                 <div class="mhd"><h3>Ongoing Goals</h3><button class="mgo" type="button" data-mgo="goal" aria-label="Open goals"><svg width="41" height="41" viewBox="0 0 41 41" fill="none"><rect width="41" height="41" rx="20.5" fill="#ECECEC"/><path d="M14.6113 26.3867L26.3716 14.6265" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke="#A8A8A8"/><path d="M26.3745 23.8936L26.3745 14.6234L16.7187 14.6234" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke="#A8A8A8"/></svg></button></div>
                 <div class="mgls">
-                  <button class="mgl" type="button" data-mgo="goal"><h4 class="trim">Speak comfortably around others</h4><div class="mstep"><div class="sq"><i class="f"></i><i></i><i></i><i></i><i></i></div><span class="trim">Step 3</span></div></button>
+                  <button class="mgl" type="button" data-mgo="goal"><h4 class="trim">Speak comfortably around others</h4><div class="mstep"><div class="sq"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></div><span class="trim">Step 3</span></div></button>
                   <div class="mdiv"></div>
                   <div class="mgl"><h4 class="trim">Live a healthier life</h4><div class="mstep"><div class="sq"><i class="f"></i><i></i><i></i><i></i><i></i></div><span class="trim">Step 1</span></div></div>
                 </div>
@@ -1411,13 +1412,16 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
     const idx = items.findIndex(b => b.dataset.k === k);
     NAV.classList.toggle('has', idx >= 0);
     if (idx < 0) return;
-    const total = widths.reduce((a, b) => a + b, 0) + NAV_GAP * (items.length - 1);
-    let x = (NAV_W - total) / 2; for (let i = 0; i < idx; i++) x += widths[i] + NAV_GAP;
+    const sum = widths.reduce((a, b) => a + b, 0);
+    const gap = Math.min(NAV_GAP, (NAV_W - 8 - sum) / (items.length - 1));
+    NAV.style.gap = gap + 'px';
+    const total = sum + gap * (items.length - 1);
+    let x = (NAV_W - total) / 2; for (let i = 0; i < idx; i++) x += widths[i] + gap;
     const pill = NAV.querySelector('.pill'); pill.style.left = x + 'px'; pill.style.width = widths[idx] + 'px';
   }
   requestAnimationFrame(() => requestAnimationFrame(() => NAV.classList.add('anim')));
   let lastScreen = 'main';
-  const OB = ['home', 'chat', 'sum', 'ifs', 'fin']; let obFar = 0;
+  const OB = ['home', 'chat', 'sum', 'ifs', 'fin']; let obFar = 0, ifRet = null;
   function go(name){
     screen = name; stage.dataset.s = name;
     setNav(name === 'main' ? 'home' : (name === 'arch' || name === 'adet') ? 'arch' : name === 'goal' ? 'flag' : (name === 'create' || name === 'cchat') ? 'pen' : name === 'mypage' ? 'prof' : null);
@@ -1523,9 +1527,15 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
   $('#back').addEventListener('click', () => {
     if (screen === 'chat') { clearTimers(); busy = false; closePop(); go('home'); }
     else if (screen === 'sum') { go('chat'); scrollEnd(); }
-    else if (screen === 'ifs') { go('sum'); }
+    else if (screen === 'ifs') { if (ifRet) { const r = ifRet; ifRet = null; go(r); } else go('sum'); }
     else if (screen === 'fin') { go('ifs'); }
   });
+  // goal page: add another goal → onboarding start, add IF → IF picker (returns to goal)
+  $('.gadd').addEventListener('click', () => {
+    clearTimers(); busy = false; closePop(); ifRet = null; obFar = 0;
+    i1.value = ''; go('home'); setTimeout(() => i1.focus(), 50);
+  });
+  $('.gaddif').addEventListener('click', () => { ifRet = 'goal'; go('ifs'); });
   // onboarding: forward (only to a step already reached) + skip straight to the main home
   $('#fwd').addEventListener('click', () => {
     const oi = OB.indexOf(screen); if (oi < 0 || oi >= obFar) return;
@@ -1536,7 +1546,7 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
     else go(nx);
   });
   $('#skip').addEventListener('click', () => {
-    clearTimers(); busy = false; closePop();
+    clearTimers(); busy = false; closePop(); ifRet = null;
     if (!picked.size) { [8, 0, 3, 7].forEach(i => picked.add(i)); syncSel(); }
     go('main'); renderHome();
     const v = $('#main .vid'); try { v.currentTime = 0; const pr = v.play(); if (pr) pr.catch(() => {}); } catch (e) {}
@@ -1738,6 +1748,7 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
   fthumb.addEventListener('pointerup', () => { tdrag = null; });
   $('#ifNext').addEventListener('click', () => {
     if (picked.size < 4) { const r = $('.selrow'); r.classList.remove('warn'); void r.offsetWidth; r.classList.add('warn'); return; }
+    if (ifRet) { const r = ifRet; ifRet = null; go(r); return; }
     go('fin'); renderFin();
   });
 
