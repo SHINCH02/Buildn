@@ -176,7 +176,8 @@ input{font:inherit;border:0;outline:0;background:none;color:inherit}
 .dhd h2{font-size:27px}
 .dhd p{font-size:18px;color:var(--g4)}
 .dimg{position:absolute;left:333px;top:303px;width:877px;height:501px;border-radius:20px;overflow:hidden;background:#e9eef4}
-.dimg img{position:absolute;inset:0;width:100%;height:100%;display:block}
+.dimg img{position:absolute;inset:0;width:100%;height:100%;display:block;transition:opacity .2s ease}
+.dimg img.ld{opacity:0;transition:none}
 .dcard{position:absolute;left:1230px;top:303px;width:389px;height:501px;background:#fff;border-radius:20px;padding:30px 20px;display:flex;flex-direction:column;gap:28px}
 .dif{padding:0 8px;display:flex;flex-direction:column;gap:10px}
 .dlab{display:flex;align-items:center;gap:6px;font-size:15px;font-weight:500;color:var(--g4)}
@@ -1855,6 +1856,10 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
       a: ['Identify the specific issue', 'Describe the difference neutrally', 'Make one clear request', 'Consider the available options'] }
   ];
   SIT.forEach((x, i) => { x.img = 'img/s' + (i + 1) + '.jpg'; x.big = 'img/d' + (i + 1) + '.jpg'; });
+  // preload + decode the large IF photos so the detail popup never shows the previous one
+  const BIG = {};
+  function preloadBig(){ SIT.forEach(x => { if (BIG[x.big]) return; const im = new Image(); im.decoding = 'async'; im.src = x.big; BIG[x.big] = im.decode ? im.decode().catch(() => {}) : Promise.resolve(); }); }
+  setTimeout(() => (window.requestIdleCallback || setTimeout)(preloadBig), 1200);
 
   const SPEED = 0.12, TILT = -0.28, RADIUS = 0.29, STRETCH_X = 1.55, CARD = 0.54, PERSPECTIVE = 1400, RATIO = 16 / 9;
   const reduce = matchMedia('(prefers-reduced-motion: reduce)');
@@ -1927,7 +1932,7 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
     });
     raf = screen === 'ifs' ? requestAnimationFrame(frame) : 0;
   }
-  function startOrbit(){ if (!raf) { last = 0; raf = requestAnimationFrame(frame); } }
+  function startOrbit(){ preloadBig(); if (!raf) { last = 0; raf = requestAnimationFrame(frame); } }
   addEventListener('mousemove', e => {
     if (screen !== 'ifs') return;
     const r = stage.getBoundingClientRect();
@@ -1975,7 +1980,13 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
   }
   function openDet(i){
     cur = i; const x = SIT[i];
-    $('#dI').src = x.big; $('#dT').textContent = x.t; $('#dD').textContent = x.d;
+    const dI = $('#dI'); preloadBig();
+    if (dI.getAttribute('src') !== x.big) {
+      dI.classList.add('ld'); dI.src = x.big;
+      const want = x.big, show = () => { if (dI.getAttribute('src') === want) dI.classList.remove('ld'); };
+      (dI.decode ? dI.decode() : Promise.resolve()).then(show, show);
+    }
+    $('#dT').textContent = x.t; $('#dD').textContent = x.d;
     $('#dL').innerHTML = x.a.map(a => '<li><span class="trim">' + esc(a) + '</span></li>').join('');
     const on = picked.has(i), b = $('#dB');
     b.classList.toggle('rm', on); b.firstChild.textContent = on ? 'Remove from my IF' : 'Choose as my IF';
