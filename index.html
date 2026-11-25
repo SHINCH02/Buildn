@@ -556,6 +556,11 @@ h3.gh:first-child{text-transform:capitalize}
 .ctab .r .c1 i{font-style:normal;font-weight:400;color:#767676;opacity:.8;max-width:505px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:5px 0;margin:-5px 0}
 .ctab hr{border:0;height:1px;background:#e8e8e8;width:1252px;margin:0}
 .ctab .r.it{cursor:default}
+.ctab .r.lnk{cursor:pointer;border-radius:10px;transition:background .2s,box-shadow .2s}
+.ctab .r.lnk:hover{background:#eff2f4;box-shadow:0 0 0 12px #eff2f4}
+.ctab .r.lnk:hover .c1>span{color:#19aeff}
+.hcd.lnk{cursor:pointer}
+#ccm.still *{animation:none!important;transition:none!important}
 .cempty{font-size:16px;font-weight:500;color:#a1a1a1;padding:0 0 0 0}
 .ccb.ccb2 .col{width:642.226px;gap:37px;padding:0}
 .ccb2 .top{display:flex;flex-direction:column;gap:26px}
@@ -2098,7 +2103,7 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
 
   // create page
   const HIST = [
-    { t: 'LinkedIn Summary', d: 'I communicate my perspective clearly while staying attentive to others and adjusting when it helps the conversation.', f: 'Profile Bio', ty: 'Text & Image', c: '2026.09.16' },
+    { t: 'LinkedIn Summary', d: 'I communicate my perspective clearly while staying attentive to others and adjusting when it helps the conversation.', f: 'Profile Bio', ty: 'Text & Image', c: '2026.09.16', chat: true },
     { t: 'Clear Ideas, Thoughtful Context', d: 'A banner that pairs a clear headline with a calm, layered visual of connected ideas.', f: 'LinkedIn Banner', ty: 'Image', c: '2026.09.16' },
     { t: 'Turning feedback into direction', d: 'A thumbnail showing how scattered feedback is sorted into one clear next step.', f: 'Project Thumbnail', ty: 'Image', c: '2026.09.16' },
     { t: 'Portfolio Introduction', d: 'I approach unfamiliar situations by first organizing what matters, then sharing the key point in a few clear words.', f: 'Quote Card', ty: 'Image', c: '2026.09.16' },
@@ -2112,11 +2117,13 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
     const q = ($('#csearch').value || '').trim().toLowerCase();
     const rows = HIST.filter(h => !q || (h.t + ' ' + h.d + ' ' + h.f + ' ' + h.ty).toLowerCase().includes(q));
     $('#ctab').innerHTML = '<div class="r h"><span class="trim">Format</span><span class="trim">Format</span><span class="trim">Type</span><span class="trim">Created</span></div><hr>' +
-      (rows.length ? rows.map(h => '<div class="r it"><div class="c1"><span class="trim">' + esc(h.t) + '</span><i class="trim" title="' + esc(h.d) + '">' + esc(h.d) + '</i></div><span class="trim">' + esc(h.f) + '</span><span class="trim">' + esc(h.ty) + '</span><span class="trim">' + esc(h.c) + '</span></div><hr>').join('')
+      (rows.length ? rows.map(h => '<div class="r it' + (h.chat ? ' lnk' : '') + '"' + (h.chat ? ' role="button" tabindex="0" data-chat="1"' : '') + '><div class="c1"><span class="trim">' + esc(h.t) + '</span><i class="trim" title="' + esc(h.d) + '">' + esc(h.d) + '</i></div><span class="trim">' + esc(h.f) + '</span><span class="trim">' + esc(h.ty) + '</span><span class="trim">' + esc(h.c) + '</span></div><hr>').join('')
         : '<p class="cempty">No results for “' + esc(q) + '”.</p>');
   }
   renderHist();
   $('#csearch').addEventListener('input', renderHist);
+  $('#ctab').addEventListener('click', e => { if (e.target.closest('.r.lnk')) openDoneChat('create'); });
+  $('#ctab').addEventListener('keydown', e => { if ((e.key === 'Enter' || e.key === ' ') && e.target.closest('.r.lnk')) { e.preventDefault(); openDoneChat('create'); } });
   $('#cf').addEventListener('submit', e => { e.preventDefault(); const v = $('#ci').value.trim(); if (!v) { $('#ci').focus(); typeCreate(); return; } startCreateChat(v); });
   // typewriter: clicking the empty input writes the sample request
   const CREATE_TEXT = 'I want to create a LinkedIn profile based on my identity.';
@@ -2150,13 +2157,15 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
   ];
   const ccm = $('#ccm');
   let ccTimers = [];
-  const ccLater = (fn, ms) => ccTimers.push(setTimeout(fn, ms));
-  const ccEnd = () => ccm.scrollTo({ top: ccm.scrollHeight, behavior: 'smooth' });
+  let ccFast = false, ccFrom = 'create';
+  const ccLater = (fn, ms) => ccFast ? fn() : ccTimers.push(setTimeout(fn, ms));
+  const ccEnd = () => ccm.scrollTo({ top: ccm.scrollHeight, behavior: ccFast ? 'auto' : 'smooth' });
   function ccUser(text, cls){
     const d = document.createElement('div'); d.className = 'ccu mfade' + (cls ? ' ' + cls : '');
     d.innerHTML = '<span>' + esc(text) + '</span>'; ccm.appendChild(d); return d;
   }
   function startCreateChat(text){
+    ccFrom = 'create';
     stopTyping(); ccTimers.forEach(clearTimeout); ccTimers = [];
     ccm.innerHTML = ''; go('cchat');
     ccUser(text);
@@ -2224,7 +2233,22 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
       }, 300);
     }, 4600);
   }
-  $('#ccback').addEventListener('click', () => { ccTimers.forEach(clearTimeout); go('create'); });
+  $('#ccback').addEventListener('click', () => { ccTimers.forEach(clearTimeout); go(ccFrom); });
+  // reopen a finished chat (LinkedIn Summary) exactly as it ended
+  function openDoneChat(from){
+    stopTyping(); ccTimers.forEach(clearTimeout); ccTimers = [];
+    ccm.innerHTML = ''; go('cchat'); ccFrom = from || 'create';
+    ccFast = true; ccm.classList.add('still');
+    try {
+      ccUser('I want to create a LinkedIn profile based on my identity.');
+      ccBot();
+      const b = [...ccm.querySelectorAll('.ccb')].pop();
+      b.querySelectorAll('.ccc.pick').forEach(c => c.click());
+      b.querySelector('.ccgen').click();
+      ccm.querySelectorAll('.crc').forEach(c => c.classList.add('in'));
+    } finally { ccFast = false; }
+    requestAnimationFrame(() => { ccm.scrollTop = ccm.scrollHeight; requestAnimationFrame(() => ccm.classList.remove('still')); });
+  }
   $('#ccbm').addEventListener('click', e => { const b = e.currentTarget, on = !b.classList.contains('on'); b.classList.toggle('on', on); b.setAttribute('aria-pressed', on); });
   $('#ccf').addEventListener('submit', e => { e.preventDefault(); const v = $('#cci').value.trim(); if (!v) return; $('#cci').value = ''; ccUser(v); ccEnd(); });
 
@@ -2767,7 +2791,7 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
   const HS_IMG = '<img class="tyic" src="img/ic-image.png" alt="">', HS_TXT = '<img class="tyic" src="img/ic-text.png" alt="">';
   const HS_BM = document.querySelector('#hsFil [data-f=saved] svg').outerHTML;
   const HS = [
-    { f: 'Profile Bio', ty: 'text', t: 'LinkedIn Summary', d: '2026.09.16', sv: true },
+    { f: 'Profile Bio', ty: 'text', t: 'LinkedIn Summary', d: '2026.09.16', sv: true, chat: true },
     { f: 'LinkedIn Banner', ty: 'image', t: 'Clear Ideas, Thoughtful Context', d: '2026.09.16', im: 'img/ra-1.jpg' },
     { f: 'Project Thumbnail', ty: 'image', t: 'Turning feedback into direction', d: '2026.09.16', im: 'img/ra-2.jpg', sv: true },
     { f: 'Quote Card', ty: 'image', t: 'Portfolio Introduction', d: '2026.09.16', im: 'img/ra-3.jpg' },
@@ -2783,7 +2807,7 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
     $('#hsGrid').innerHTML = list.map(([h, i], k) => {
       const tag = '<span class="hctag">' + (h.ty === 'image' ? HS_IMG : HS_TXT) + '<span>' + esc(h.f) + '</span></span>';
       const bm = '<button type="button" class="hcbm' + (h.sv ? ' on' : '') + '" data-i="' + i + '" aria-pressed="' + !!h.sv + '" aria-label="Save">' + HS_BM + '</button>';
-      return '<div class="hcd ' + (h.ty === 'image' ? 'img' : 'txt') + (anim ? ' in' : '') + '" style="animation-delay:' + (k * 0.04) + 's"><div class="hcrow"><div class="hctags">' + tag + bm + '</div>' +
+      return '<div class="hcd ' + (h.ty === 'image' ? 'img' : 'txt') + (h.chat ? ' lnk' : '') + (anim ? ' in' : '') + '" style="animation-delay:' + (k * 0.04) + 's"><div class="hcrow"><div class="hctags">' + tag + bm + '</div>' +
         (h.ty === 'image' ? '<span class="hcth"><img src="' + h.im + '" alt=""></span>' : '') + '</div><div class="hctx"><h4 title="' + esc(h.t) + '">' + esc(h.t) + '</h4><p class="hcdt">' + h.d + '</p></div></div>';
     }).join('');
     $('#hsEmpty').classList.toggle('on', !list.length);
@@ -2791,7 +2815,8 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
   }
   document.querySelectorAll('#hsFil button').forEach(b => b.addEventListener('click', () => { if (hsF === b.dataset.f) return; hsF = b.dataset.f; renderHS(true); }));
   $('#hsGrid').addEventListener('click', e => {
-    const b = e.target.closest('.hcbm'); if (!b) return;
+    const b = e.target.closest('.hcbm');
+    if (!b) { if (e.target.closest('.hcd.lnk')) openDoneChat('hist'); return; }
     const h = HS[+b.dataset.i]; h.sv = !h.sv;
     if (hsF === 'saved' && !h.sv) { renderHS(true); return; }
     b.classList.toggle('on', h.sv); b.setAttribute('aria-pressed', h.sv); b.classList.remove('pop'); void b.offsetWidth; b.classList.add('pop');
