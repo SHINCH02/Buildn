@@ -4,6 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Buildn</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
@@ -40,7 +42,8 @@ input{font:inherit;border:0;outline:0;background:none;color:inherit}
 .scr.on{display:block}
 
 /* header */
-#logo{position:absolute;left:59.8px;top:64.85px;width:126px;height:25px}
+#logo{position:absolute;left:59.8px;top:64.85px;width:126px;height:25px;cursor:pointer;transition:opacity .2s}
+#logo:hover{opacity:.75}
 #logo,#back,#fwd,#skip,.prog{z-index:3}
 #back{position:absolute;left:526px;top:65px;width:28px;height:32px;display:flex;align-items:center;justify-content:center}
 #back svg{position:relative;left:-1.1px;top:0}
@@ -335,9 +338,9 @@ input{font:inherit;border:0;outline:0;background:none;color:inherit}
 .sp-r .n{flex:none;color:var(--g2);text-align:right}
 
 /* archive page */
-#arch{background:#fbfbfb}
+#arch{background:#f7f8fa}
 #asc{position:absolute;left:0;top:0;width:1920px;height:1080px;padding-top:120px;overflow-y:auto;scrollbar-width:none}
-.atop{position:absolute;left:0;top:0;width:1920px;height:129px;pointer-events:none;z-index:2;background:linear-gradient(to bottom,#fbfbfb 0%,#fbfbfb 66%,rgba(251,251,251,.9) 74%,rgba(251,251,251,.62) 83%,rgba(251,251,251,.3) 91%,rgba(251,251,251,.08) 97%,rgba(251,251,251,0) 100%)}
+.atop{position:absolute;left:0;top:0;width:1920px;height:129px;pointer-events:none;z-index:2;background:linear-gradient(to bottom,#f7f8fa 0%,#f7f8fa 66%,rgba(247,248,250,.9) 74%,rgba(247,248,250,.62) 83%,rgba(247,248,250,.3) 91%,rgba(247,248,250,.08) 97%,rgba(247,248,250,0) 100%)}
 #asc::-webkit-scrollbar{display:none}
 .acont{position:relative;height:1243px}
 .ahero{position:absolute;left:959px;top:9px;width:791px;height:500px;display:block;cursor:pointer}
@@ -1821,6 +1824,15 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
     else if (nx === 'fin') { $('#ifNext').click(); }
     else go(nx);
   });
+  // logo → main home (same cleanup as Skip)
+  $('#logo').addEventListener('click', () => {
+    if (screen === 'main') return;
+    clearTimers(); busy = false; closePop(); ifRet = null;
+    if (!picked.size) { [8, 0, 3, 7].forEach(i => picked.add(i)); syncSel(); }
+    go('main');
+  });
+  $('#logo').setAttribute('role', 'link'); $('#logo').setAttribute('tabindex', '0');
+  $('#logo').addEventListener('keydown', e => { if (e.key === 'Enter') $('#logo').click(); });
   $('#skip').addEventListener('click', () => {
     clearTimers(); busy = false; closePop(); ifRet = null;
     if (!picked.size) { [8, 0, 3, 7].forEach(i => picked.add(i)); syncSel(); }
