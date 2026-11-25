@@ -41,11 +41,22 @@ input{font:inherit;border:0;outline:0;background:none;color:inherit}
 
 /* header */
 #logo{position:absolute;left:59.8px;top:64.85px;width:126px;height:25px}
-#logo,#back,.prog{z-index:3}
+#logo,#back,#fwd,#skip,.prog{z-index:3}
 #back{position:absolute;left:526px;top:65px;width:28px;height:32px;display:flex;align-items:center;justify-content:center}
 #back svg{position:relative;left:-1.1px;top:0}
 #back[disabled]{cursor:default}
-#back path{stroke:#C7C7C7}#stage[data-s=sum] #back path,#stage[data-s=ifs] #back path,#stage[data-s=fin] #back path{stroke:#767676}
+#back path,#fwd path{stroke:#646464;transition:stroke .2s}#back[disabled] path,#fwd[disabled] path{stroke:#C7C7C7}
+#fwd{position:absolute;left:559.11px;top:65px;width:28px;height:32px;display:flex;align-items:center;justify-content:center}
+#fwd svg{position:relative;left:.25px;top:0}
+#fwd[disabled]{cursor:default}
+#back:not([disabled]):hover path,#fwd:not([disabled]):hover path{stroke:#444}
+#skip{position:absolute;left:1793px;top:1005px;padding:4px;display:flex;align-items:center;gap:12px;border-radius:8px}
+#skip svg{display:block;flex:none}
+#skip span{display:block;font-size:20px;font-weight:500;color:var(--ink);--ls:-0.03em;letter-spacing:-0.03em;line-height:28px;text-transform:capitalize;text-box:trim-both cap alphabetic}
+#skip:hover span{color:#2a2a2a}
+#skip:hover svg path{fill:#2a2a2a}
+#skip{display:none}
+#stage[data-s=home] #skip,#stage[data-s=chat] #skip,#stage[data-s=sum] #skip,#stage[data-s=ifs] #skip,#stage[data-s=fin] #skip{display:flex}
 .prog{position:absolute;left:1096.13px;top:70px;display:flex;align-items:center;gap:18px}
 .bars{display:flex;gap:4px}.bars i{display:block;width:55px;height:4px;border-radius:10px;background:var(--line)}.bars i.f{background:var(--ink)}
 .pnum{display:flex;gap:4px;font-size:14px;font-weight:500;line-height:1.5;--ls:-0.02em;letter-spacing:-0.02em;white-space:nowrap}
@@ -220,7 +231,7 @@ input{font:inherit;border:0;outline:0;background:none;color:inherit}
 @keyframes shk{20%,60%{transform:translateX(-4px)}40%,80%{transform:translateX(4px)}}
 
 /* main home */
-#stage[data-s=main] #back,#stage[data-s=main] .prog,#stage[data-s=arch] #back,#stage[data-s=arch] .prog,#stage[data-s=adet] #back,#stage[data-s=adet] .prog,#stage[data-s=goal] #back,#stage[data-s=goal] .prog,#stage[data-s=ident] #back,#stage[data-s=ident] .prog,#stage[data-s=create] #back,#stage[data-s=create] .prog,#stage[data-s=cchat] #back,#stage[data-s=cchat] .prog,#stage[data-s=mypage] #back,#stage[data-s=mypage] .prog{display:none}
+#stage[data-s=main] #fwd,#stage[data-s=arch] #fwd,#stage[data-s=adet] #fwd,#stage[data-s=goal] #fwd,#stage[data-s=ident] #fwd,#stage[data-s=create] #fwd,#stage[data-s=cchat] #fwd,#stage[data-s=mypage] #fwd,#stage[data-s=main] #back,#stage[data-s=main] .prog,#stage[data-s=arch] #back,#stage[data-s=arch] .prog,#stage[data-s=adet] #back,#stage[data-s=adet] .prog,#stage[data-s=goal] #back,#stage[data-s=goal] .prog,#stage[data-s=ident] #back,#stage[data-s=ident] .prog,#stage[data-s=create] #back,#stage[data-s=create] .prog,#stage[data-s=cchat] #back,#stage[data-s=cchat] .prog,#stage[data-s=mypage] #back,#stage[data-s=mypage] .prog{display:none}
 #main .vid{position:absolute;left:553px;top:136px;width:804px;height:861px;object-fit:cover;pointer-events:none}
 #main .fade{position:absolute;left:467.93px;top:650.23px;width:984.14px;height:429.77px;background:linear-gradient(to bottom,rgba(247,248,250,0),#f7f8fa 74.481%);pointer-events:none}
 .nav{position:absolute;left:797px;top:53px;width:326px;height:51.538px;background:#fff;border:.646px solid #ececec;border-radius:50px;display:flex;align-items:center;justify-content:center;gap:6px}
@@ -812,6 +823,8 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
 
   <img id="logo" src="logo.svg" alt="buildn">
   <button id="back" aria-label="Back"><svg width="8" height="14" viewBox="0 0 8 14" fill="none"><path d="M7.06055 0.75L1.06055 6.75L7.06055 12.75" stroke-width="1.5" stroke-linecap="round" stroke="#C7C7C7"/></svg></button>
+  <button id="fwd" aria-label="Next" disabled><svg width="8" height="14" viewBox="0 0 8 14" fill="none"><path d="M0.75 12.75L6.75 6.75L0.750001 0.749999" stroke-width="1.5" stroke-linecap="round" stroke="#646464"/></svg></button>
+  <button id="skip" type="button"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M14 7.70703L3.5 13.7692L3.5 1.64485L14 7.70703Z" fill="#444444"/></svg><span>Skip</span></button>
   <div class="prog"><div class="bars"><i></i><i></i><i></i><i></i></div><div class="pnum"><span id="pn">1</span><span>/ </span><span>4</span></div></div>
 
   <div id="top">
@@ -1404,6 +1417,7 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
   }
   requestAnimationFrame(() => requestAnimationFrame(() => NAV.classList.add('anim')));
   let lastScreen = 'main';
+  const OB = ['home', 'chat', 'sum', 'ifs', 'fin']; let obFar = 0;
   function go(name){
     screen = name; stage.dataset.s = name;
     setNav(name === 'main' ? 'home' : (name === 'arch' || name === 'adet') ? 'arch' : name === 'goal' ? 'flag' : (name === 'create' || name === 'cchat') ? 'pen' : name === 'mypage' ? 'prof' : null);
@@ -1417,6 +1431,8 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
     prevScreen = name;
     document.querySelectorAll('.scr').forEach(s => s.classList.toggle('on', s.id === name));
     if (resetMy) { const m = document.getElementById('msc'); if (m) m.scrollTop = 0; }
+    const oi = OB.indexOf(name); if (oi >= 0) obFar = Math.max(obFar, oi);
+    $('#fwd').disabled = !(oi >= 0 && oi < obFar);
     const step = name === 'home' ? 1 : name === 'ifs' ? 3 : name === 'fin' ? 4 : 2;
     $('#pn').textContent = step;
     document.querySelectorAll('.bars i').forEach((b, k) => b.classList.toggle('f', k < step));
@@ -1481,7 +1497,7 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
 
   function start(goal){
     clearTimers(); closePop();
-    msgs.innerHTML = ''; setChips([]); i2.value = '';
+    msgs.innerHTML = ''; setChips([]); i2.value = ''; obFar = 0;
     go('chat'); addUser(goal); ask(0);
   }
 
@@ -1509,6 +1525,21 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
     else if (screen === 'sum') { go('chat'); scrollEnd(); }
     else if (screen === 'ifs') { go('sum'); }
     else if (screen === 'fin') { go('ifs'); }
+  });
+  // onboarding: forward (only to a step already reached) + skip straight to the main home
+  $('#fwd').addEventListener('click', () => {
+    const oi = OB.indexOf(screen); if (oi < 0 || oi >= obFar) return;
+    const nx = OB[oi + 1];
+    if (screen === 'chat') closePop();
+    if (nx === 'chat') { go('chat'); scrollEnd(); }
+    else if (nx === 'fin') { $('#ifNext').click(); }
+    else go(nx);
+  });
+  $('#skip').addEventListener('click', () => {
+    clearTimers(); busy = false; closePop();
+    if (!picked.size) { [8, 0, 3, 7].forEach(i => picked.add(i)); syncSel(); }
+    go('main'); renderHome();
+    const v = $('#main .vid'); try { v.currentTime = 0; const pr = v.play(); if (pr) pr.catch(() => {}); } catch (e) {}
   });
   addEventListener('keydown', e => { if (e.key === 'Escape' && ov.classList.contains('on')) { closePop(); phase = 'extra'; i2.focus(); } });
 
