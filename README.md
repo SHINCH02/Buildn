@@ -22,6 +22,7 @@
 | `#archive` | 아카이브 |
 | `#archive-detail` | 아카이브 상세 |
 | `#goal` | Goal |
+| `#style-explore` | Style explore |
 | `#identity` | Identity (근거 그래프 · History 필터) |
 | `#create` | Create |
 | `#create-chat` | Create 채팅 (LinkedIn Profile) |

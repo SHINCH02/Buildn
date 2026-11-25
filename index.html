@@ -908,6 +908,79 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
 .idbul div{display:flex;align-items:center;gap:13px;font-size:14px;font-weight:500;color:#767676;--ls:-0.03em;letter-spacing:-0.03em;line-height:1.5}
 .idbul div::before{content:'';width:6px;height:6px;border-radius:50%;background:#19aeff;flex:none;margin-left:3px}
 .idbul span{display:block;text-box:trim-both cap alphabetic}
+/* style explore */
+#sexp{background:#f7f8fa}
+.seback{position:absolute;left:175px;top:133.67px;display:flex;align-items:center;gap:17px;padding:0}
+.seback svg{display:block;margin-top:1px}
+.seback span{display:block;font-family:var(--pp);font-weight:500;font-size:20px;--ls:-0.03em;letter-spacing:-0.03em;line-height:1.3;color:var(--ink);text-box:trim-both cap alphabetic}
+.seback:hover span{color:#222}
+.sesty{position:absolute;left:171px;top:179px;width:389px;height:843px;background:#fff;border:1px solid #ececec;border-radius:22px;padding:26px 16px 16px;display:flex;flex-direction:column;justify-content:space-between}
+.sesty>div:first-child{display:flex;flex-direction:column;gap:27px}
+.sesty h3,.seprev h3{padding:0 8px;font-family:var(--pp);font-weight:500;font-size:18px;--ls:-0.04em;letter-spacing:-0.04em;line-height:1.3;color:var(--ink)}
+.seprev h3{padding:0}
+.segrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.setile{height:96px;background:#f6f8fa;border:1.5px solid #f6f8fa;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;transition:background .25s,border-color .25s}
+.setile svg{display:block;width:12px;height:12px}
+.setile svg rect:first-child{fill:transparent}
+.setile svg rect{fill:#a8a8a8;transition:fill .25s}
+.setile span{display:block;font-size:16px;font-weight:500;color:#a8a8a8;--ls:-0.02em;letter-spacing:-0.02em;line-height:1.5;text-box:trim-both cap alphabetic;white-space:nowrap;transition:color .25s}
+.setile:hover:not(.on){background:#eff2f4;border-color:#eff2f4}
+.setile.on{background:#eaf7fd;border-color:#6bc8ff}
+.setile.on svg rect{fill:#19aeff}.setile.on svg rect:first-child{fill:transparent}
+.setile.on span{color:#19aeff;font-weight:600}
+.sewhy{background:#f6f8fa;border-radius:12px;padding:20px 20px 28px;display:flex;flex-direction:column;gap:26px;align-items:flex-start}
+.sewhy p{font-size:16px;font-weight:500;color:var(--ink);--ls:-0.02em;letter-spacing:-0.02em;line-height:1.5;text-box:trim-both cap alphabetic}
+.sewhy p.sw,.seafter.sw .seitem.chg{animation:sesw .45s cubic-bezier(.22,1,.36,1) both}
+@keyframes sesw{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.seprev{position:absolute;left:586px;top:179px;width:1164px;height:843px;background:#fff;border:1px solid #ececec;border-radius:22px;padding:26px 26px 36px;display:flex;flex-direction:column;gap:46px}
+.seif{display:flex;justify-content:space-between;align-items:flex-start;padding:0 8px}
+.seif .l{width:600px;display:flex;flex-direction:column;gap:16px}
+.selab{display:flex;align-items:center;gap:6px;font-size:15px;font-weight:500;color:#a8a8a8;--ls:-0.03em;letter-spacing:-0.03em;line-height:26px}
+.selab svg{display:block;flex:none}
+.seif .tx{display:flex;flex-direction:column;gap:18px}
+.seif .tx b{display:block;font-size:18px;font-weight:500;color:var(--ink);--ls:-0.03em;letter-spacing:-0.03em;line-height:1.5;text-box:trim-both cap alphabetic}
+.seif .tx p{font-size:14px;font-weight:400;color:#a8a8a8;--ls:-0.02em;letter-spacing:-0.02em;line-height:1.5;text-box:trim-both cap alphabetic}
+.sepg{display:flex;align-items:center;gap:.85px}
+.sepg button{display:block;width:15.245px;height:15.245px;padding:0}
+.sepg button svg{display:block}
+.sepg button path{stroke:#444;transition:stroke .2s}
+.sepg button:disabled{cursor:default}.sepg button:disabled path{stroke:#a8a8a8}
+.sepg span{height:24.561px;padding:0 13.551px;border:.847px solid #ececec;border-radius:84.694px;background:#fff;display:flex;align-items:center;font-size:13.551px;font-weight:500;color:#444;--ls:-0.02em;letter-spacing:-0.02em;white-space:pre}
+.sepg span i{font-style:normal;color:#a8a8a8}
+.sethen{display:flex;flex-direction:column;gap:12px}
+.sethen .hd{display:flex;justify-content:space-between;align-items:center}
+.sethen .hd small{font-size:14px;font-weight:400;color:#a8a8a8;--ls:-0.02em;letter-spacing:-0.02em;line-height:1.5}
+.secols{display:flex;align-items:center;gap:33px}
+.secol{width:510px;display:flex;flex-direction:column;gap:17px;flex:none}
+.secol .chipw{padding:0 8px;display:flex}
+.secol .chip2{height:21.815px;padding:0 8.726px;border-radius:3.272px;background:#ececec;display:flex;align-items:center}
+.secol .chip2 span{display:block;font-family:var(--pp);font-style:italic;font-weight:500;font-size:13.089px;--ls:-0.03em;letter-spacing:-0.03em;color:#a8a8a8;line-height:normal;text-box:trim-both cap alphabetic}
+.secol .chip2.on{background:#6bc8ff}.secol .chip2.on span{color:#fff}
+.selist{display:flex;flex-direction:column;gap:16px}
+.sebf{height:57px;background:#fff;border:1px dashed #ececec;border-radius:12px;padding:0 20px;display:flex;align-items:center;gap:12px;text-align:left;transition:background .2s,border-color .2s}
+.sebf .cb{width:16px;height:16px;border-radius:4px;background:#ececec;flex:none;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.sebf .cb svg{display:block;opacity:0;transform:scale(.6);transition:opacity .2s,transform .25s cubic-bezier(.22,1,.36,1)}
+.sebf span{display:block;font-size:15px;font-weight:500;color:#a8a8a8;--ls:-0.02em;letter-spacing:-0.02em;line-height:1.5;text-box:trim-both cap alphabetic;white-space:nowrap}
+.sebf:hover:not(.on){border-color:#d9d9d9}
+.sebf.on{background:#eaf7fd;border:1.5px solid #6bc8ff}
+.sebf.on .cb{background:#6bc8ff}.sebf.on .cb svg{opacity:1;transform:none}
+.secols>svg{display:block;flex:none}
+.seitem{height:57px;background:#f6f8fa;border-radius:12px;padding:0 20px;display:flex;align-items:center;transition:background .3s}
+.seitem span{display:block;font-size:15px;font-weight:500;color:var(--ink);--ls:-0.02em;letter-spacing:-0.02em;line-height:1.5;text-box:trim-both cap alphabetic;white-space:nowrap;transition:color .3s}
+.seitem.chg{background:#6bc8ff}.seitem.chg span{color:#fff}
+.seprev .sewhy{gap:26px;margin-top:-21px}
+.seprev .sewhy p{white-space:pre-line}
+.sefoot{display:flex;justify-content:flex-end;align-items:center;gap:21px;margin-top:auto}
+.sefoot p{font-size:16px;font-weight:500;color:#a8a8a8;--ls:-0.02em;letter-spacing:-0.02em;line-height:1.5;text-box:trim-both cap alphabetic}
+.sefoot p b{font-weight:600;color:var(--ink)}
+.seapply{width:149px;height:32px;border-radius:8px;background:#444;color:#fff;font-size:15px;font-weight:500;--ls:-0.03em;letter-spacing:-0.03em;display:flex;align-items:center;justify-content:center;gap:6px;transition:background .2s,opacity .2s}
+.seapply:hover:not(:disabled){background:#2f2f2f}
+.seapply:disabled{opacity:.35;cursor:default}
+.seapply.done{background:var(--sky);opacity:1}
+.glist>div.chg{animation:gchg 2.6s ease .25s both}
+@keyframes gchg{0%,35%{background:#dff2fd;box-shadow:inset 0 0 0 1.5px #6bc8ff}100%{background:#f6f8fa;box-shadow:inset 0 0 0 1.5px rgba(107,200,255,0)}}
+#stage[data-s=sexp] #top{display:block}
+#stage[data-s=sexp] #back,#stage[data-s=sexp] .prog,#stage[data-s=sexp] #fwd{display:none}
 </style>
 </head>
 <body>
@@ -1360,6 +1433,30 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
     </div>
     <div class="gtop"></div>
   </section>
+  <section class="scr" id="sexp">
+    <button class="seback" type="button" id="seBack"><svg width="8" height="14" viewBox="0 0 8 14" fill="none"><path d="M7.06055 0.75L1.06055 6.75L7.06055 12.75" stroke-width="1.5" stroke-linecap="round" stroke="#444444"/></svg><span>Style explore</span></button>
+    <div class="sesty">
+      <div><h3>Styles</h3><div class="segrid" id="seGrid"><button class="setile on" type="button" data-st="bold"><svg viewBox="0 0 12 12" fill="none"><rect width="12" height="12"/><rect y="10" width="5" height="2"/><rect width="5" height="2"/><rect x="5" y="8" width="4" height="2"/><rect y="5" width="4" height="2"/><rect x="10" y="5" width="2" height="2"/><rect x="5" y="2" width="4" height="2"/><rect x="9" y="10" width="3" height="2"/><rect x="9" width="3" height="2"/></svg><span>More bold</span></button><button class="setile" type="button" data-st="direct"><svg viewBox="0 0 12 12" fill="none"><rect width="12" height="12"/><rect y="5" width="5" height="2"/><rect x="5" y="1" width="2" height="4"/><rect x="1" y="1" width="2" height="2"/><rect x="1" y="9" width="2" height="2"/><rect x="9" y="1" width="2" height="2"/><rect x="9" y="9" width="2" height="2"/><rect x="5" y="7" width="2" height="4"/><rect x="7" y="5" width="5" height="2"/></svg><span>More direct</span></button><button class="setile" type="button" data-st="calm"><svg viewBox="0 0 12 12" fill="none"><rect width="12" height="12"/><rect y="10" width="6" height="2"/><rect y="6" width="6" height="2"/><rect y="2" width="6" height="2"/><rect x="6" y="8" width="6" height="2"/><rect x="6" y="4" width="6" height="2"/><rect x="6" y="0" width="6" height="2"/></svg><span>More calm</span></button><button class="setile" type="button" data-st="gentle"><svg viewBox="0 0 12 12" fill="none"><rect width="12" height="12"/><rect y="10" width="4" height="2"/><rect y="6" width="4" height="2"/><rect y="2" width="4" height="2"/><rect x="4" y="8" width="4" height="2"/><rect x="4" y="4" width="4" height="2"/><rect x="4" y="0" width="4" height="2"/><rect x="8" y="10" width="4" height="2"/><rect x="8" y="6" width="4" height="2"/><rect x="8" y="2" width="4" height="2"/></svg><span>More gentle</span></button><button class="setile" type="button" data-st="expressive"><svg viewBox="0 0 12 12" fill="none"><rect width="12" height="12"/><rect x="2" y="10" width="3" height="2"/><rect x="2" y="0" width="3" height="2"/><rect x="3" y="5" width="6" height="2"/><rect x="7" y="10" width="3" height="2"/><rect x="7" y="0" width="3" height="2"/><rect y="7" width="2" height="3"/><rect y="2" width="2" height="3"/><rect x="10" y="7" width="2" height="3"/><rect x="10" y="2" width="2" height="3"/></svg><span>More expressive</span></button><button class="setile" type="button" data-st="creative"><svg viewBox="0 0 12 12" fill="none"><rect width="12" height="12"/><rect x="2" y="0" width="8" height="2"/><rect x="2" y="7" width="8" height="2"/><rect x="2" y="10" width="8" height="2"/><rect x="4.5" y="3.5" width="3" height="2"/><rect y="2" width="2" height="5"/><rect x="10" y="2" width="2" height="5"/></svg><span>More creative</span></button></div></div>
+      <div class="sewhy"><div class="mchip on"><span class="trim">Why these changes?</span></div><p>Keep your goal and IF situations the same. Choose a style to find THEN actions that differ.</p></div>
+    </div>
+    <div class="seprev">
+      <h3>Preview</h3>
+      <div class="seif">
+        <div class="l"><div class="selab" id="seIfLab"></div><div class="tx"><b id="seT"></b><p id="seD"></p></div></div>
+        <div class="sepg"><button type="button" id="sePrev" aria-label="Previous IF"><svg width="15.245" height="15.245" viewBox="0 0 16 16" fill="none"><path d="M9.52983 2.59145L5.38831 6.73297C4.89921 7.22207 4.89921 8.02243 5.38831 8.51153L9.52983 12.653" stroke-width="1.2704" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg></button><span id="sePg"></span><button type="button" id="seNext" aria-label="Next IF"><svg width="15.245" height="15.245" viewBox="0 0 16 16" fill="none"><path d="M5.71697 2.59145L9.85848 6.73297C10.3476 7.22207 10.3476 8.02243 9.85848 8.51153L5.71697 12.653" stroke-width="1.2704" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      </div>
+      <div class="sethen">
+        <div class="hd"><div class="selab" id="seThLab"></div><small>* Select what you want to update</small></div>
+        <div class="secols">
+          <div class="secol"><div class="chipw"><div class="chip2"><span>Before</span></div></div><div class="selist" id="seBefore"></div></div>
+          <svg width="25.575" height="25.575" viewBox="0 0 26 26" fill="none"><circle cx="12.7873" cy="12.7873" r="12.7873" fill="#ECECEC"/><path d="M7.76758 12.7902H17.7997M13.8981 16.6918L17.7997 12.7902L13.8981 8.88867" stroke-width="0.995434" stroke-linecap="round" stroke-linejoin="round" stroke="#A8A8A8"/></svg>
+          <div class="secol"><div class="chipw"><div class="chip2 on"><span>After</span></div></div><div class="selist seafter" id="seAfter"></div></div>
+        </div>
+      </div>
+      <div class="sewhy"><div class="mchip on"><span class="trim">Why these changes?</span></div><p id="seWhy"></p></div>
+      <div class="sefoot"><p id="seCnt"></p><button class="seapply" type="button" id="seApply">Apply</button></div>
+    </div>
+  </section>
   <section class="scr" id="ident">
     <div class="iddots"></div>
     <div class="idgraph" id="idg"><svg class="ided" id="ided" viewBox="0 0 1920 1080"></svg></div>
@@ -1525,10 +1622,10 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
   const OB = ['home', 'chat', 'sum', 'ifs', 'fin']; let obFar = 0, ifRet = null;
   function go(name){
     screen = name; stage.dataset.s = name;
-    setNav(name === 'main' ? 'home' : (name === 'arch' || name === 'adet') ? 'arch' : name === 'goal' ? 'flag' : (name === 'create' || name === 'cchat') ? 'pen' : (name === 'mypage' || name === 'ident') ? 'prof' : null);
+    setNav(name === 'main' ? 'home' : (name === 'arch' || name === 'adet') ? 'arch' : (name === 'goal' || name === 'sexp') ? 'flag' : (name === 'create' || name === 'cchat') ? 'pen' : (name === 'mypage' || name === 'ident') ? 'prof' : null);
     if (name !== 'create' && name !== 'cchat') lastScreen = name;
     if (name !== 'cchat' && typeof closeResult === 'function') closeResult();
-    if (name === 'goal') { if (typeof renderGoal === 'function') renderGoal(); const g = document.getElementById('gsc'); if (g && prevScreen !== 'ident' && prevScreen !== 'goal') g.scrollTop = 0; }
+    if (name === 'goal') { if (typeof renderGoal === 'function') renderGoal(); const g = document.getElementById('gsc'); if (g && prevScreen !== 'ident' && prevScreen !== 'goal' && prevScreen !== 'sexp') g.scrollTop = 0; }
     if (name !== 'adet') { const dv = document.getElementById('dvid'); if (dv) dv.pause(); }
     if (name !== 'main') { const sw = document.getElementById('srec'); if (sw) sw.classList.remove('open'); }
     if (name === 'arch') { const sc = document.getElementById('asc'); if (sc && prevScreen !== 'adet') sc.scrollTop = 0; }
@@ -1825,7 +1922,7 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
       return '<div class="dd pt" role="button" tabindex="0" aria-expanded="false"><div class="main">' +
         '<div class="row"><div class="if">' + ICO_IF + '<span>If</span></div><div class="tx"><h4 class="trim">' + esc(x.t) + '</h4><p class="trim">' + esc(x.d) + '</p></div></div>' +
         '<div class="then"><div class="dlab">' + ICO_THEN + '<span>Then</span></div><div class="g2">' +
-        x.a.map(a => '<div><span class="trim">' + esc(a) + '</span></div>').join('') + '</div></div>' +
+        acts(i).map(a => '<div><span class="trim">' + esc(a) + '</span></div>').join('') + '</div></div>' +
         '</div>' + CHV + '</div>';
     }).join('');
     fsc.scrollTop = 0; syncBar();
@@ -1916,9 +2013,10 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
   const GOAL_REC = [[1, 'On my own'], [2, 'Familiar team members'], [3, 'Whole team']];
   function renderGoal(){
     const list = picked.size ? [...picked] : [8, 0, 3, 7];
+    setTimeout(() => { Object.keys(CHG).forEach(k => delete CHG[k]); }, 0);
     $('#gifs').innerHTML = list.map(i => { const it = SIT[i];
       return '<div class="ifc"><div class="hd"><div class="hl"><span class="glab">' + ICO_CARDS + 'If</span><div class="tx"><b class="trim">' + esc(it.t) + '</b><p class="trim">' + esc(it.d) + '</p></div></div><button class="gedit" aria-label="Edit">' + PENCIL + '</button></div>' +
-        '<div class="gthen"><span class="glab">' + ICO_TH + 'Then</span><div class="glist">' + it.a.map(x => '<div><span class="trim">' + esc(x) + '</span></div>').join('') + '</div></div>' +
+        '<div class="gthen"><span class="glab">' + ICO_TH + 'Then</span><div class="glist">' + acts(i).map((x, j) => '<div' + (CHG[i] && CHG[i].has(j) ? ' class="chg"' : '') + '><span class="trim">' + esc(x) + '</span></div>').join('') + '</div></div>' +
         '<button class="gconn">View 4 connection records' + CONN + '</button></div>'; }).join('');
     $('#gperf').innerHTML = GOAL_REC.map(([i, who]) => { const r = REC[i];
       return '<button class="gpc" data-rec="' + i + '"><div class="im"><img src="' + r.img + '" alt=""></div><div class="tx"><div class="in"><h6 class="trim">' + esc(r.t) + '</h6><p class="dt trim">' + esc(cardDate(r)) + '</p></div><span class="tg"><span class="trim">' + esc(who) + '</span></span></div></button>'; }).join('');
@@ -2461,6 +2559,128 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
     };
   })();
 
+  // ---------- style explore: try THEN action styles per IF ----------
+  const ST_KEYS = ['bold', 'direct', 'calm', 'gentle', 'expressive', 'creative'];
+  const ST = {
+    bold: { def: [2, 3], why: 'To make your expression feel bolder, the actions now focus on showing your position earlier and more clearly.\nInstead of building up to your opinion, you’ll start by stating what you think and where you stand.' },
+    direct: { def: [0, 2], why: 'To make your expression more direct, the actions now get to the point with fewer steps.\nInstead of hinting at what you need, you’ll say it in plain words.' },
+    calm: { def: [0, 1], why: 'To make your expression feel calmer, the actions now leave room to slow down before you respond.\nInstead of reacting right away, you’ll keep a steady pace.' },
+    gentle: { def: [1, 3], why: 'To make your expression feel gentler, the actions now soften how you open and close a point.\nYou’ll keep your view while making space for the other person.' },
+    expressive: { def: [2, 3], why: 'To make your expression more vivid, the actions now add your feelings and examples.\nInstead of only saying what you think, you’ll show why it matters to you.' },
+    creative: { def: [1, 3], why: 'To make your expression more creative, the actions now look at the same moment from a different angle.\nInstead of repeating the usual response, you’ll open new options.' }
+  };
+  // rewrites per IF (SIT index) → per style (ST_KEYS order) → 4 THEN actions
+  const RW = [
+    [['Pause, then answer without apologizing', 'Ask directly which priority comes first', 'Say clearly what you will and won’t take on', 'Propose your alternative as the plan'],
+     ['Answer within a moment', 'Ask for the exact deadline', 'Say what you can do in one sentence', 'Name one alternative plainly'],
+     ['Take a slow breath before answering', 'Ask about the deadline at an even pace', 'Explain what you can take on, step by step', 'Suggest an alternative without rushing'],
+     ['Thank them, then take a moment', 'Ask kindly what matters most to them', 'Share what you can take on with care', 'Offer an alternative that also helps them'],
+     ['Show that you are thinking it through', 'Say why the timing matters to you', 'Explain how much you can take on and why', 'Describe how your alternative could work'],
+     ['Use the pause to look for other options', 'Ask if the deadline itself can shift', 'Split the request into parts you can take on', 'Suggest a new way to reach the same goal']],
+    [['Open with the topic right away', 'Ask for a minute without hesitating', 'Lead with your key question', 'State back what you understood with confidence'],
+     ['Name the topic in a few words', 'Ask “Is now okay?” plainly', 'Ask the main question first', 'Repeat the answer in one line'],
+     ['Introduce the topic at a relaxed pace', 'Wait for a natural pause to ask', 'Ask your main question slowly', 'Take a moment to confirm what you heard'],
+     ['Mention the topic lightly', 'Ask kindly if they have a moment', 'Ask the key part with a soft opening', 'Thank them and confirm what you understood'],
+     ['Say why the topic matters to you', 'Share that you value their time', 'Ask the key part with some context', 'Reflect what you learned in your own words'],
+     ['Frame the topic as a quick idea', 'Offer a time that works for both', 'Ask your question through an example', 'Turn what you understood into a next step']],
+    [['Hold your explanation until you are ready', 'Say what you heard in your own words', 'Ask clearly for a specific example', 'State which points you will revisit'],
+     ['Don’t explain right away', 'Repeat the main point in one line', 'Ask “Can you give one example?”', 'Name one thing to revisit'],
+     ['Breathe before you respond', 'Summarize slowly and evenly', 'Ask for an example without rushing', 'Set aside time to revisit it later'],
+     ['Thank them before you respond', 'Summarize what you understood with care', 'Ask kindly for an example', 'Let them know you will think it over'],
+     ['Share that the feedback surprised you', 'Say which part stood out to you', 'Ask for an example that helps you see it', 'Explain what you want to revisit and why'],
+     ['Treat the pause as time to reframe', 'Summarize it as a question to explore', 'Ask for an example from a different case', 'Turn one point into a small experiment']],
+    [['Point out the gap right away', 'State your intention clearly', 'Give a concrete example with confidence', 'Ask directly if it is clear now'],
+     ['Name the part that was misread', 'Say what you meant in one line', 'Use one concrete example', 'Ask “Does that match?”'],
+     ['Notice the gap without reacting', 'Explain your intention slowly', 'Rephrase with an example at an even pace', 'Check in again calmly'],
+     ['Acknowledge how it could be read that way', 'Share your intention softly', 'Offer an example that is easy to follow', 'Kindly ask how it sounds now'],
+     ['Say how the misunderstanding feels to you', 'Explain what you hoped to convey', 'Paint a vivid example of what you meant', 'Ask what they picture now'],
+     ['Find where your words took a different path', 'Explain your intention from a new angle', 'Use a comparison instead of an example', 'Ask them to say it back in their words']],
+    [['Catch the topic and get ready to speak', 'Step in at the first opening', 'Build on the last point with your view', 'Share your thought without holding back'],
+     ['Note the topic in a word', 'Join at the next pause', 'Link to the last point in one line', 'Say your thought plainly'],
+     ['Listen for the topic first', 'Wait patiently for a transition', 'Connect to the last point at your pace', 'Add your thought when it fits'],
+     ['Follow the topic with interest', 'Join softly when there is a pause', 'Acknowledge the last point first', 'Offer your thought as a question'],
+     ['Notice what interests you in the topic', 'Join with a short reaction', 'Connect the last point to your experience', 'Share a thought with a quick story'],
+     ['Spot an angle no one has raised', 'Use a small reaction as your entry', 'Link the last point to a new idea', 'Ask a question that opens the topic']],
+    [['Greet them first with a clear hello', 'Mention what you share right away', 'Ask a question you are curious about', 'Keep the conversation going yourself'],
+     ['Say hello by name', 'Name the shared context', 'Ask one simple question', 'Follow their answer'],
+     ['Smile and greet them slowly', 'Bring up something you share, at ease', 'Ask an easy question without rushing', 'Let the talk find its own pace'],
+     ['Greet them warmly', 'Recall a shared moment kindly', 'Ask a light, friendly question', 'Follow their lead with interest'],
+     ['Show you are glad to see them', 'Share a memory you both have', 'Ask about something they care about', 'React openly to what they say'],
+     ['Greet them with a small surprise', 'Connect your shared context to now', 'Ask about something unexpected', 'Suggest meeting again for a reason']],
+    [['Start by naming what brought you both here', 'Introduce yourself with one clear detail', 'Ask an open question with confidence', 'Follow up and add your own view'],
+     ['Name the shared context', 'Say one fact about yourself', 'Ask one open question', 'Ask one follow-up'],
+     ['Start with the setting, at ease', 'Share a detail without rushing', 'Ask an open question slowly', 'Follow up after a short pause'],
+     ['Start with a friendly shared point', 'Share a small, warm detail', 'Ask a question that is easy to answer', 'Follow up with kind interest'],
+     ['Share what you enjoy about the setting', 'Tell a short story about yourself', 'Ask what they enjoy most', 'Respond with your own feelings'],
+     ['Start from a detail you both notice', 'Share a surprising fact about yourself', 'Ask a playful open question', 'Build a follow-up on their answer']],
+    [['Name the exact point you disagree on', 'Acknowledge it, then hold your view', 'Restate your view first, then one reason', 'Ask directly what shapes their view'],
+     ['Say where you differ', 'Say what you understand in one line', 'Give your view and one reason', 'Ask “What makes you see it that way?”'],
+     ['Find the point of difference calmly', 'Acknowledge their view without rushing', 'Restate your view at a steady pace', 'Ask about their view with patience'],
+     ['Gently note where you see it differently', 'Thank them for sharing their view', 'Share your view with a soft reason', 'Kindly ask what shapes their perspective'],
+     ['Say why this point matters to you', 'Show what you appreciate in their view', 'Share your view with a personal example', 'Ask about the experience behind their view'],
+     ['Reframe the disagreement as two options', 'Find what both views have in common', 'Restate your view through a new example', 'Ask what would change their mind']],
+    [['Hold the silence without taking it back', 'Repeat your main point with confidence', 'State one clear reason to support your view', 'Ask directly how others respond to your point'],
+     ['Wait a moment, then continue', 'Say your main point once more', 'Add one reason in a sentence', 'Ask “What do you think?”'],
+     ['Let the pause settle', 'Keep your point without adding more', 'Add a reason slowly if it helps', 'Invite responses at an easy pace'],
+     ['Give others time to think', 'Keep your point with a soft tone', 'Offer a reason without pressure', 'Warmly invite others to share'],
+     ['Show you are open while you wait', 'Say why the point matters to you', 'Add a reason with a quick example', 'Invite others to share how they feel'],
+     ['Use the pause to try a new angle', 'Put your point in a fresh image', 'Add a reason from a different view', 'Invite others to build on your idea']],
+    [['Name the issue right away', 'Describe the gap without softening it', 'Make your request firmly', 'Propose the option you prefer'],
+     ['Point to the exact issue', 'State the difference in one line', 'Ask for one change', 'Name the best option'],
+     ['Look at the issue steadily', 'Describe the difference evenly', 'Make your request without rushing', 'Weigh the options at a calm pace'],
+     ['Bring up the issue kindly', 'Describe the difference with care', 'Ask for the change politely', 'Explore the options together'],
+     ['Explain why the issue matters', 'Show what you expected instead', 'Share how the change would help', 'Talk through the options with examples'],
+     ['Frame the issue as something to improve', 'Compare it with a better version', 'Suggest the change as a small test', 'Look for an option no one has tried']]
+  ];
+  const ACT = {}, CHG = {};   // applied THEN actions per IF, and which slots changed (for the goal highlight)
+  const acts = i => ACT[i] || SIT[i].a;
+  const SE = { list: [], pg: 0, st: {} };   // st[ifIndex] = { s: style, on: Set }
+  const SE_CK = '<svg width="10" height="8" viewBox="3.6 4.9 8.9 6.3" fill="none"><path d="M4.14062 7.81615L6.83594 10.5095L11.8552 5.49023" stroke-width="1.4" stroke-linecap="round" stroke="white"/></svg>';
+  function seState(i){ if (!SE.st[i]) SE.st[i] = { s: 'bold', on: new Set(ST.bold.def) }; return SE.st[i]; }
+  function seRender(anim){
+    const i = SE.list[SE.pg], x = SIT[i], st = seState(i), cur = acts(i), rw = RW[i][ST_KEYS.indexOf(st.s)];
+    $('#seT').textContent = x.t; $('#seD').textContent = x.d;
+    $('#sePg').innerHTML = (SE.pg + 1) + '<i> / ' + SE.list.length + '</i>';
+    $('#sePrev').disabled = SE.pg === 0; $('#seNext').disabled = SE.pg >= SE.list.length - 1;
+    document.querySelectorAll('.setile').forEach(t => t.classList.toggle('on', t.dataset.st === st.s));
+    $('#seBefore').innerHTML = cur.map((a, j) => '<button type="button" class="sebf' + (st.on.has(j) ? ' on' : '') + '" data-j="' + j + '" aria-pressed="' + st.on.has(j) + '"><i class="cb">' + SE_CK + '</i><span>' + esc(a) + '</span></button>').join('');
+    const aft = $('#seAfter');
+    aft.innerHTML = cur.map((a, j) => { const c = st.on.has(j) && rw[j] !== a; return '<div class="seitem' + (c ? ' chg' : '') + '"><span>' + esc(c ? rw[j] : a) + '</span></div>'; }).join('');
+    if (anim) { aft.classList.remove('sw'); void aft.offsetWidth; aft.classList.add('sw'); }
+    const why = $('#seWhy'); if (why.textContent !== ST[st.s].why) { why.textContent = ST[st.s].why; if (anim) { why.classList.remove('sw'); void why.offsetWidth; why.classList.add('sw'); } }
+    const n = aft.querySelectorAll('.chg').length;
+    $('#seCnt').innerHTML = '<b>' + n + ' THEN action' + (n === 1 ? '' : 's') + '</b> will change in this IF only';
+    const ap = $('#seApply'); ap.disabled = n === 0; ap.classList.remove('done'); ap.textContent = 'Apply';
+  }
+  function openStyle(){
+    SE.list = picked.size ? [...picked] : [8, 0, 3, 7]; SE.pg = 0;
+    go('sexp'); seRender(false);
+  }
+  $('#seIfLab').innerHTML = ICO_IF + '<span>If</span>';
+  $('#seThLab').innerHTML = ICO_THEN + '<span>Then</span>';
+  document.querySelectorAll('.setile').forEach(t => t.addEventListener('click', () => {
+    const st = seState(SE.list[SE.pg]); if (st.s === t.dataset.st) return;
+    st.s = t.dataset.st; st.on = new Set(ST[st.s].def); seRender(true);
+  }));
+  $('#seBefore').addEventListener('click', e => {
+    const b = e.target.closest('.sebf'); if (!b) return;
+    const st = seState(SE.list[SE.pg]), j = +b.dataset.j;
+    st.on.has(j) ? st.on.delete(j) : st.on.add(j); seRender(true);
+  });
+  $('#sePrev').addEventListener('click', () => { if (SE.pg > 0) { SE.pg--; seRender(true); } });
+  $('#seNext').addEventListener('click', () => { if (SE.pg < SE.list.length - 1) { SE.pg++; seRender(true); } });
+  $('#seApply').addEventListener('click', () => {
+    const i = SE.list[SE.pg], st = seState(i), cur = acts(i), rw = RW[i][ST_KEYS.indexOf(st.s)];
+    const next = cur.map((a, j) => st.on.has(j) ? rw[j] : a), ch = new Set();
+    next.forEach((a, j) => { if (a !== cur[j]) ch.add(j); });
+    if (!ch.size) return;
+    ACT[i] = next; CHG[i] = ch; st.on = new Set();
+    seRender(false);
+    const ap = $('#seApply'); ap.classList.add('done'); ap.disabled = true; ap.textContent = 'Applied ✓';
+  });
+  $('#seBack').addEventListener('click', () => go('goal'));
+  $('.gse').addEventListener('click', openStyle);
+
   // dev hook: open a screen directly with #chat-demo / #popup-demo / #summary
   function demo(){
     const h = location.hash.slice(1);
@@ -2470,6 +2690,7 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
     else if (h === 'goal') { [8, 0, 3, 7].forEach(i => picked.add(i)); syncSel(); go('goal'); }
     else if (h === 'identity') { go('ident'); }
     else if (h === 'mypage') { go('mypage'); }
+    else if (h === 'style-explore') { [8, 0, 3, 7].forEach(i => picked.add(i)); syncSel(); openStyle(); }
     else if (h === 'create') { go('create'); }
     else if (h === 'create-result') { startCreateChat('I want to create a LinkedIn profile based on my identity.'); setTimeout(() => openResult(0), 50); }
     else if (h === 'create-chat') { startCreateChat('I want to create a LinkedIn profile based on my identity.'); }
