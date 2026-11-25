@@ -1057,7 +1057,7 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
 .btst{position:absolute;left:416px;top:494px;width:280.8px;height:69.5px;border-radius:23.159px;background:rgba(255,255,255,.14);
   box-shadow:0 0 15.402px 8.801px rgba(142,120,120,.11);backdrop-filter:blur(9.422px);-webkit-backdrop-filter:blur(9.422px);
   overflow:hidden;opacity:0;transform:translateY(14px) scale(.96);pointer-events:none;
-  visibility:hidden;transition:opacity .45s cubic-bezier(.22,1,.36,1),transform .55s cubic-bezier(.22,1,.36,1),visibility 0s .55s}
+  visibility:hidden;transition:opacity .25s ease-out,transform .3s cubic-bezier(.22,1,.36,1),visibility 0s .3s}
 .btst.on{opacity:1;transform:none;visibility:visible;transition-delay:0s}
 .btst::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:.711px;
   background:linear-gradient(to bottom,rgba(255,255,255,0),rgba(255,255,255,.45));
@@ -1226,6 +1226,8 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
 #booth .bvg{position:absolute;left:1394px;top:816px;width:122px;height:35px;border-radius:8px;background:var(--ink);display:flex;align-items:center;justify-content:center;gap:5px;
   font-family:var(--pt);font-weight:500;font-size:15px;color:#fff;--ls:-0.03em;letter-spacing:-0.03em;transition:background .15s}
 #booth .bvg:hover{background:#2f2f2f}
+.bvf .bfz{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none}
+.bvf.frz .bfz{display:block}
 </style>
 </head>
 <body>
@@ -1601,6 +1603,7 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
   <section class="scr" id="booth">
     <div class="bvf" id="bvf">
       <video id="bcam" playsinline muted autoplay></video>
+      <img class="bfz" id="bfz" alt="">
       <i class="bfl" id="bfl"></i>
       <div class="bcd bglass" id="bcd"><i class="bgl"></i><i class="bhl"></i></div><b class="bcdn" id="bcdn" aria-live="polite">3</b>
       <div class="bsv" id="bsv" role="status" aria-live="polite">
@@ -2148,6 +2151,7 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
     }
     function resetBooth(){
       clear(); tst.classList.remove('on'); cd.classList.remove('on'); sv.classList.remove('on'); shot.disabled = false;
+      vf.classList.remove('frz'); $('#bfz').removeAttribute('src'); if (cam.srcObject && cam.paused) cam.play().catch(() => {});
     }
     // grab the viewfinder (mirrored like the preview), cropped to the 1113×601 frame
     function capture(){
@@ -2161,26 +2165,27 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
     }
     function save(c){
       const d = new Date();
-      cur = { canvas: c, src: c.toDataURL('image/jpeg', .9), date: d, name: evName(d), up: {}, fresh: true };
+      cur = { canvas: c, src: c.toDataURL('image/jpeg', .9), date: d, name: evName(d), up: {}, fresh: true, pending: true };
       GL.unshift(cur);
       return cur;
     }
     function shootSeq(){
       if (shot.disabled) return;
       shot.disabled = true;
-      tst.classList.remove('on'); void tst.offsetWidth; later(() => tst.classList.add('on'), 120);
-      later(() => tst.classList.remove('on'), 2300);
+      tst.classList.remove('on'); void tst.offsetWidth; tst.classList.add('on');
+      later(() => tst.classList.remove('on'), 1300);
       [3, 2, 1].forEach((n, k) => later(() => {
         cdn.textContent = n; cdn.classList.remove('bcgo'); void cdn.offsetWidth; cdn.classList.add('bcgo'); cd.classList.add('on');
-      }, 2750 + k * 1000));
+      }, 1650 + k * 1000));
       later(() => {
         cd.classList.remove('on');
         fl.classList.remove('go'); void fl.offsetWidth; fl.classList.add('go');
         const it = save(capture());
+        $('#bfz').src = it.src; vf.classList.add('frz'); cam.pause();   // hold the shot on screen
         $('#bsvd').textContent = fDate(it.date); $('#bsvt').textContent = fTime(it.date); $('#bsvn').textContent = it.name;
         later(() => sv.classList.add('on'), 300);
-      }, 5750);
-      later(() => go('bres'), 8700);
+      }, 4650);
+      later(() => go('bres'), 7600);
     }
     shot.addEventListener('click', shootSeq);
 
@@ -2266,7 +2271,10 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
     }
     const toggleFrame = () => { frameOn = !frameOn; fr.classList.toggle('on', frameOn); fr.setAttribute('aria-checked', String(frameOn)); ph.classList.toggle('nof', !frameOn); makeQR(); };
     fr.addEventListener('click', toggleFrame);
-    $('#bret').addEventListener('click', () => go('booth'));
+    $('#bret').addEventListener('click', () => {
+      if (cur && cur.pending) { const k = GL.indexOf(cur); if (k >= 0) GL.splice(k, 1); cur = null; }
+      go('booth');
+    });
     $('#bgal').addEventListener('click', () => { back = 'bres'; go('gal'); });
     $('#bvg').addEventListener('click', () => { back = 'booth'; go('gal'); });
     $('#bbk').addEventListener('click', () => go(api.from || 'main'));
@@ -2337,6 +2345,7 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
       onGo(name){
         if (name === 'booth') { resetBooth(); startCam(); }
         else { resetBooth(); stopCam(); }
+        if (name !== 'bres' && name !== 'booth' && cur) cur.pending = false;
         if (name === 'bres') showRes();
         if (name !== 'gal') { setEdit(false); unlocked = false; closePw(); }
         if (name === 'gal') { setEdit(false); renderGal(); $('#glsc').scrollTop = 0; }
