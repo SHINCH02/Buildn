@@ -29,6 +29,7 @@
 | `#create-chat` | Create 채팅 (LinkedIn Profile) |
 | `#create-result` | Create 결과 상세 |
 | `#mypage` | My page |
+| `#photobooth` | Photo booth (bell) — shutter shows the IF notification |
 
 ## 구성
 
