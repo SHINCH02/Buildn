@@ -2129,7 +2129,7 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
   function renderHist(){
     const q = ($('#csearch').value || '').trim().toLowerCase();
     const rows = HIST.filter(h => !q || (h.t + ' ' + h.d + ' ' + h.f + ' ' + h.ty).toLowerCase().includes(q));
-    $('#ctab').innerHTML = '<div class="r h"><span class="trim">Format</span><span class="trim">Format</span><span class="trim">Type</span><span class="trim">Created</span></div><hr>' +
+    $('#ctab').innerHTML = '<div class="r h"><span class="trim">Title</span><span class="trim">Format</span><span class="trim">Type</span><span class="trim">Created</span></div><hr>' +
       (rows.length ? rows.map(h => '<div class="r it' + (h.chat ? ' lnk' : '') + '"' + (h.chat ? ' role="button" tabindex="0" data-chat="1"' : '') + '><div class="c1"><span class="trim">' + esc(h.t) + '</span><i class="trim" title="' + esc(h.d) + '">' + esc(h.d) + '</i></div><span class="trim">' + esc(h.f) + '</span><span class="trim">' + esc(h.ty) + '</span><span class="trim">' + esc(h.c) + '</span></div><hr>').join('')
         : '<p class="cempty">No results for “' + esc(q) + '”.</p>');
   }
@@ -2427,12 +2427,12 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
   (function(){
     // growth trend: px heights from the Figma chart (1.6px = 1 point, baseline at 0)
     const MT = [
-      { m: 'Apr', x: 58.6, c: 98, w: 79, t: 49, p: 14, u: 0 },
-      { m: 'May', x: 175.5, c: 209.5, w: 80, t: 65, p: 17, u: 26 },
-      { m: 'Jun', x: 293.4, c: 331.5, w: 80, t: 65, p: 17, u: 26 },
-      { m: 'Jul', x: 411.3, c: 448.5, w: 80, t: 65, p: 30, u: 30 },
-      { m: 'Sep', x: 529, c: 567, w: 80, t: 65, p: 30, u: 41 },
-      { m: 'Oct', x: 646, c: 687, w: 80, t: 65, p: 30, u: 41 }
+      { m: 'Jun', x: 58.6, c: 98, w: 79, t: 49, p: 14, u: 0 },
+      { m: 'Jul', x: 175.5, c: 209.5, w: 80, t: 65, p: 17, u: 26 },
+      { m: 'Aug', x: 293.4, c: 331.5, w: 80, t: 65, p: 21, u: 28 },
+      { m: 'Sep', x: 411.3, c: 448.5, w: 80, t: 65, p: 30, u: 30 },
+      { m: 'Oct', x: 529, c: 567, w: 80, t: 65, p: 30, u: 41 },
+      { m: 'Nov', x: 646, c: 687, w: 80, t: 70, p: 33, u: 45 }
     ];
     const NAMES = { t: ['Tried action', '#74ceff'], p: ['Pattern evidence', '#c4d9ff'], u: ['Goal or action update', '#e5f5fc'] };
     const plot = $('#mplot');
@@ -2477,9 +2477,9 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
     }));
 
     // calendar: scene counts per day (month index → {day: scenes})
-    const CAL = { 3: { 22: 2 }, 4: { 7: 1, 20: 2 }, 5: { 11: 2, 25: 1 }, 6: { 3: 2, 16: 3 }, 8: { 9: 2, 18: 3, 26: 2 }, 9: { 7: 3, 15: 2, 23: 4, 29: 2 }, 10: { 10: 2, 14: 5, 19: 3, 21: 4 } };
+    const CAL = { 3: { 22: 2 }, 4: { 7: 1, 20: 2 }, 5: { 11: 2, 25: 1 }, 6: { 3: 2, 16: 3 }, 7: { 7: 1, 20: 2, 27: 1 }, 8: { 9: 2, 15: 3, 26: 2 }, 9: { 2: 1, 7: 3, 13: 2, 24: 3, 31: 2 }, 10: { 3: 3, 12: 2, 14: 2, 17: 3, 19: 2, 21: 2 } };   // 2026; November days match the archive records
     const MON = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-    const MIN_M = 3, MAX_M = 10, Y = 2025;
+    const MIN_M = 3, MAX_M = 10, Y = 2026;
     const PREV_ON = '<svg width="27" height="27" viewBox="0 0 27 27" fill="none"><path d="M13.5 0.5C6.3203 0.5 0.5 6.3203 0.5 13.5C0.5 20.6797 6.3203 26.5 13.5 26.5C20.6797 26.5 26.5 20.6797 26.5 13.5C26.5 6.3203 20.6797 0.5 13.5 0.5Z" fill="white" stroke="#ECECEC"/><path d="M15.0645 9.36719L10.926 13.496L15.0645 17.6248" stroke-width="1.09673" stroke-linecap="round" stroke="#A8A8A8"/></svg>';
     const PREV_OFF = '<svg width="27" height="27" viewBox="0 0 27 27" fill="none"><rect width="27" height="27" rx="13.5" fill="#ECECEC"/><path d="M15.0645 9.36719L10.926 13.496L15.0645 17.6248" stroke-width="1.09673" stroke-linecap="round" stroke="#A8A8A8"/></svg>';
     const NEXT_ON = '<svg width="26" height="27" viewBox="0 0 26 27" fill="none"><path d="M13 0.5C6.09644 0.5 0.5 6.3203 0.5 13.5C0.5 20.6797 6.09644 26.5 13 26.5C19.9036 26.5 25.5 20.6797 25.5 13.5C25.5 6.3203 19.9036 0.5 13 0.5Z" fill="white" stroke="#ECECEC"/><path d="M10.9355 9.36719L15.074 13.496L10.9355 17.6248" stroke-width="1.09673" stroke-linecap="round" stroke="#A8A8A8"/></svg>';
