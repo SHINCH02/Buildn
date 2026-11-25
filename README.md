@@ -197,7 +197,7 @@ Claude MCP × Higgsfield · Claude × Figma MCP
 | | Name | Role |
 | --- | --- | --- |
 | 고명빈 | Go Myeongbin | UX/UI, GUI |
-| 신찬희 | Shin Chanhee | UX/UI, AI visual, Motion, AI web build |
+| 신찬희 | Shin Chanhee | UX/UI, AI visual, AI web build |
 | 한정원 | Han Jeongwon | UX/UI, Branding |
 
 ---
