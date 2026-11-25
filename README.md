@@ -31,6 +31,18 @@ Buildn은 실제 목표 수행 과정에서 반복되는 행동 패턴과 자신
 - 응답자의 **75.6%**가 계획을 세워도 실제 상황에서 그대로 실행하기 어려웠던 적이 있다고 답했습니다.
 - 많은 응답자가 되고 싶은 모습은 있었지만, **목표가 구체적이지 않아** 무엇부터 시작해야 할지 어려워했습니다.
 
+**Q. What is the biggest reason for not achieving your goals?**
+다음 중 목표를 실천하지 못하는 가장 큰 이유는 무엇인가요?
+
+| 이유 | 응답 |
+| --- | --- |
+| 목표가 너무 막연해서 | **25.9%** |
+| 시작이 어려워서 | 21.5% |
+| 시간이 없어서 | 18.5% |
+| 혼자서는 잘 안돼서 | 12.6% |
+| 지속이 안 돼서 | 11.9% |
+| 모르겠어서 | 9.6% |
+
 ### In-depth Interview — Clear vision, daunting execution
 
 | 기간 | 응답 | 대상 |
@@ -170,14 +182,14 @@ Buildn에서 아이덴티티(고유성)란 여러 상황에서 반복적으로 �
 
 ## Generative AI Process
 
-| UX design assistance | Prompt writing | Image generation | Scenario video |
-| --- | --- | --- | --- |
-| ChatGPT | Claude | Higgsfield AI | Higgsfield AI |
-| 목표 설정 · IF–THEN · 아이덴티티 발견을 중심으로 핵심 흐름 구조화 | 조명·구도·메이크업·스타일링을 담은 프롬프트 스킬 제작 | Buildn의 사용 맥락을 보여주는 장면 이미지 생성 | 서비스 흐름을 보여주는 홍보·UX 시뮬레이션 영상 제작 |
+We structured Buildn's flow with ChatGPT, refined prompts with Claude, visualized the experience with Higgsfield AI, and built the web prototype with Claude.
 
-Claude MCP × Higgsfield
+| UX design assistance | Prompt writing | Image generation | Scenario video | Web building |
+| --- | --- | --- | --- | --- |
+| ChatGPT | Claude | Higgsfield AI | Higgsfield AI | Claude |
+| 목표 설정 · IF–THEN · 아이덴티티 발견을 중심으로 핵심 흐름 구조화 | 조명·구도·메이크업·스타일링을 담은 프롬프트 스킬 제작 | Buildn의 사용 맥락을 보여주는 장면 이미지 생성 | 서비스 흐름을 보여주는 홍보·UX 시뮬레이션 영상 제작 | Figma 시안을 Figma MCP로 읽어 실제로 동작하는 웹 프로토타입으로 구현하고 디자인 시스템 페이지로 정리 |
 
-This project was created using ChatGPT-5, Gemini, Vizcom, Midjourney.
+Claude MCP × Higgsfield · Claude × Figma MCP
 
 ## Team
 
