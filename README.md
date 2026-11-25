@@ -25,6 +25,7 @@
 | `#identity` | Identity (준비 중) |
 | `#create` | Create |
 | `#create-chat` | Create 채팅 (LinkedIn Profile) |
+| `#create-result` | Create 결과 상세 |
 
 ## 구성
 
