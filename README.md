@@ -26,6 +26,7 @@
 | `#create` | Create |
 | `#create-chat` | Create 채팅 (LinkedIn Profile) |
 | `#create-result` | Create 결과 상세 |
+| `#mypage` | My page |
 
 ## 구성
 

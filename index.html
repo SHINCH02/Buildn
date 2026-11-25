@@ -220,7 +220,7 @@ input{font:inherit;border:0;outline:0;background:none;color:inherit}
 @keyframes shk{20%,60%{transform:translateX(-4px)}40%,80%{transform:translateX(4px)}}
 
 /* main home */
-#stage[data-s=main] #back,#stage[data-s=main] .prog,#stage[data-s=arch] #back,#stage[data-s=arch] .prog,#stage[data-s=adet] #back,#stage[data-s=adet] .prog,#stage[data-s=goal] #back,#stage[data-s=goal] .prog,#stage[data-s=ident] #back,#stage[data-s=ident] .prog,#stage[data-s=create] #back,#stage[data-s=create] .prog,#stage[data-s=cchat] #back,#stage[data-s=cchat] .prog{display:none}
+#stage[data-s=main] #back,#stage[data-s=main] .prog,#stage[data-s=arch] #back,#stage[data-s=arch] .prog,#stage[data-s=adet] #back,#stage[data-s=adet] .prog,#stage[data-s=goal] #back,#stage[data-s=goal] .prog,#stage[data-s=ident] #back,#stage[data-s=ident] .prog,#stage[data-s=create] #back,#stage[data-s=create] .prog,#stage[data-s=cchat] #back,#stage[data-s=cchat] .prog,#stage[data-s=mypage] #back,#stage[data-s=mypage] .prog{display:none}
 #main .vid{position:absolute;left:553px;top:136px;width:804px;height:861px;object-fit:cover;pointer-events:none}
 #main .fade{position:absolute;left:467.93px;top:650.23px;width:984.14px;height:429.77px;background:linear-gradient(to bottom,rgba(247,248,250,0),#f7f8fa 74.481%);pointer-events:none}
 .nav{position:absolute;left:797px;top:53px;width:326px;height:51.538px;background:#fff;border:.646px solid #ececec;border-radius:50px;display:flex;align-items:center;justify-content:center;gap:6px}
@@ -239,7 +239,7 @@ input{font:inherit;border:0;outline:0;background:none;color:inherit}
 .nav .it:not(.on):hover .g svg{filter:brightness(.85)}
 .nav svg{display:block}
 #top{display:none;position:absolute;inset:0 0 auto 0;height:0;z-index:20}
-#stage[data-s=main] #top,#stage[data-s=arch] #top,#stage[data-s=adet] #top,#stage[data-s=goal] #top,#stage[data-s=ident] #top,#stage[data-s=create] #top,#stage[data-s=cchat] #top{display:block}
+#stage[data-s=main] #top,#stage[data-s=arch] #top,#stage[data-s=adet] #top,#stage[data-s=goal] #top,#stage[data-s=ident] #top,#stage[data-s=create] #top,#stage[data-s=cchat] #top,#stage[data-s=mypage] #top{display:block}
 .bell{position:absolute;left:1735.62px;top:50.37px;width:54.062px;height:54.062px;border-radius:50%;background:#fff;border:1.06px solid #ebebeb;display:flex;align-items:center;justify-content:center}
 .bdot{position:absolute;left:1774.48px;top:50.01px;width:16.613px;height:16.613px;border-radius:50%;background:#ff5959;border:1.06px solid #fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;color:#fff;line-height:1}
 .avatar{position:absolute;left:1805.94px;top:50.18px;width:54.062px;height:54.062px;border-radius:50%;border:1.078px solid #ebebeb;overflow:hidden;background:#fff}
@@ -666,6 +666,132 @@ h3.gh:first-child{text-transform:capitalize}
 .rpn .evd .tg{display:flex;gap:4px}
 .rpn .evd .tg span{padding:4.356px 10.891px;border-radius:7px;border:1px solid #ececec;background:rgba(255,255,255,.19);font-size:13px;font-weight:500;color:#a6a6a6;line-height:normal}
 .crc{cursor:pointer}
+/* my page */
+#mypage{background:#f7f8fa}
+#msc{position:absolute;left:0;top:0;width:1920px;height:1080px;overflow-y:auto;scrollbar-width:none}
+#msc::-webkit-scrollbar{display:none}
+.mcont{position:relative;height:1381px}
+.mmain{position:absolute;left:170px;top:178.64px;width:1166px;display:flex;flex-direction:column;gap:53px}
+.mhead{display:flex;justify-content:space-between;align-items:flex-start}
+.mprof{width:153.709px;display:flex;flex-direction:column;gap:26px}
+.mava{position:relative;width:153.709px;height:152.264px;border-radius:39.177px;overflow:hidden;background:#fff}
+.mava img{position:absolute;left:0;top:0;width:100%;height:100%;object-fit:cover;display:block}
+.mava::after{content:'';position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 .963px #ececec;pointer-events:none}
+.mname{padding:0 8px;font-size:26px;font-weight:500;color:var(--ink);--ls:-0.03em;letter-spacing:-0.03em;line-height:28px;text-shadow:6px 6px 20px rgba(0,0,0,.11);text-transform:capitalize}
+.mbtns{display:flex;gap:6px}
+.mbtn{display:flex;align-items:center;gap:4px;padding:6px 13px;border-radius:52px;background:#fff;border:.8px solid #ececec;font-size:16px;font-weight:500;color:#a1a1a1;--ls:-0.03em;letter-spacing:-0.03em;line-height:1.3;transition:border-color .15s,color .15s}
+.mbtn svg{display:block;flex:none}
+.mbtn:hover{border-color:#d6d6d6;color:#8a8a8a}
+.mbody{display:flex;flex-direction:column;gap:24px}
+.mstats{display:flex;gap:22px}
+.mst{width:275px;background:#fff;border:1px solid #ececec;border-radius:22px;padding:24px;display:flex;flex-direction:column;gap:16px;text-align:left}
+.mst svg{display:block}
+.mst .tx{display:flex;flex-direction:column;gap:12px;color:var(--ink)}
+.mst .lb{font-size:14px;font-weight:500;opacity:.5;--ls:-0.03em;letter-spacing:-0.03em;line-height:1.5}
+.mst .vl{font-family:var(--pp);font-weight:500;font-size:20px;--ls:-0.03em;letter-spacing:-0.03em;line-height:28px;text-shadow:6px 6px 20px rgba(0,0,0,.11)}
+button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
+.mrow{display:flex;gap:22px;align-items:center}
+.mcard{background:#fff;border:1px solid #ececec;border-radius:22px;width:572px}
+.mhd{display:flex;justify-content:space-between;align-items:flex-start}
+.mhd h3{font-family:var(--pp);font-weight:500;font-size:18px;--ls:-0.04em;letter-spacing:-0.04em;line-height:1.3;color:var(--ink);text-transform:capitalize;white-space:nowrap}
+.mgo{width:41px;height:41px;border-radius:50%;flex:none;display:block;transition:filter .15s}
+.mgo svg{display:block}
+.mgo:hover{filter:brightness(.95)}
+.mgoal{padding:26px 26px 36px;display:flex;flex-direction:column;gap:45px}
+.mgls{display:flex;flex-direction:column;gap:34px}
+.mgl{display:flex;flex-direction:column;gap:20px;align-items:flex-start;text-align:left}
+.mgl h4{font-size:20px;font-weight:500;color:var(--ink);--ls:-0.02em;letter-spacing:-0.02em;line-height:1.14;text-shadow:6px 6px 20px rgba(0,0,0,.11)}
+.mgl:hover h4{color:#2c2c2c}
+.mstep{display:flex;align-items:center;gap:11px}
+.mstep .sq{display:flex;gap:4px}.mstep .sq i{display:block;width:16px;height:16px;border-radius:2px;background:#ececec}.mstep .sq i.f{background:var(--sky)}
+.mstep span{font-size:13px;font-weight:500;color:#a8a8a8;--ls:-0.03em;letter-spacing:-0.03em;line-height:1.5}
+.mdiv{height:0;border-top:.5px solid #ececec;width:100%}
+.mreflow{padding:26px;display:flex;flex-direction:column;gap:13px}
+.mreflow .mhd{padding:0 8px}
+.mrf{display:flex;flex-direction:column;gap:14px}
+.mrfr{display:flex;align-items:center;gap:18px}
+.mrfb{flex:none;width:235px;border-radius:12px;padding:16px 20px;display:flex;flex-direction:column;gap:28px;align-items:flex-start}
+.mrfb.bf{border:1px dashed #ececec}
+.mrfb.af{background:#f6f8fa}
+.mrfb p{font-size:16px;font-weight:500;--ls:-0.03em;letter-spacing:-0.03em;line-height:1.4;color:#a1a1a1}
+.mrfb.af p{color:var(--ink)}
+.mchip{height:21.815px;padding:0 8.726px;border-radius:3.272px;background:#eee;display:flex;align-items:center;justify-content:center;flex:none}
+.mchip span{display:block;font-family:var(--pp);font-style:italic;font-weight:500;font-size:13.089px;--ls:-0.03em;letter-spacing:-0.03em;line-height:normal;color:#a1a1a1;white-space:nowrap}
+.mchip.on{background:var(--sky)}.mchip.on span{color:#fff}
+.mrfr>svg{flex:none;display:block}
+.mwhy{background:#f6f8fa;border-radius:12px;padding:16px 24px 20px;display:flex;flex-direction:column;gap:14px}
+.mwhy small{font-size:12px;font-weight:500;color:#a1a1a1;line-height:1.5;--ls:0;letter-spacing:0}
+.mwhy p{font-size:16px;font-weight:500;color:var(--ink);--ls:-0.03em;letter-spacing:-0.03em;line-height:1.5}
+.mtrend{width:100%;border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:12px}
+.mtb{display:flex;flex-direction:column;gap:36px}
+.mtabs{display:flex;gap:11px}
+.mtab{height:29px;border-radius:6px;background:#e8eaec;display:flex;align-items:center;justify-content:center;padding:0 8.726px;transition:background .25s}
+.mtab span{display:block;font-family:var(--pp);font-style:italic;font-weight:500;font-size:14px;--ls:-0.03em;letter-spacing:-0.03em;line-height:normal;color:#a1a1a1;transition:color .25s}
+.mtab:hover:not(.on){background:#e0e3e6}
+.mtab.on{background:#282828}.mtab.on span{color:#fff}
+.mtr{display:flex;gap:30px;align-items:flex-start}
+.mchart{width:748px;display:flex;flex-direction:column;gap:14px;align-items:flex-end}
+.mleg{display:flex;gap:24px}
+.mleg span{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:500;color:#868686;--ls:-0.03em;letter-spacing:-0.03em;line-height:1.5;transition:opacity .3s}
+.mleg span b{display:block;text-box:trim-both cap alphabetic}
+.mleg i{display:block;width:11px;height:11px;border-radius:2px;flex:none}
+.mleg span.off{opacity:.35}
+.mplot{position:relative;width:748px;height:212px}
+.mplot .yl{position:absolute;left:0;width:25px;text-align:right;font-size:15px;font-weight:500;color:#8e8e8e;--ls:-0.02em;letter-spacing:-0.02em;line-height:25.794px}
+.mplot .gl{position:absolute;left:33.4px;height:1px;background:#f4f4f4}
+.mplot .gl.base{background:#e1e1e1}
+.mbar{position:absolute;bottom:40.86px;width:80px;display:flex;flex-direction:column-reverse}
+.mbar i{display:block;width:100%;flex:none;transition:height .5s cubic-bezier(.22,1,.36,1)}
+.mbar .t{background:#74ceff}.mbar .p{background:#c4d9ff}.mbar .u{background:#e5f5fc}
+.mplot .xl{position:absolute;top:186.2px;width:80px;text-align:center;font-family:var(--pp);font-weight:500;font-size:14px;color:#8e8e8e;--ls:-0.02em;letter-spacing:-0.02em;line-height:25.794px}
+.mbar:hover{filter:brightness(.97)}
+.mtip{position:absolute;z-index:3;pointer-events:none;background:#fff;border:1px solid #ececec;border-radius:10px;padding:10px 12px;box-shadow:0 6px 18px rgba(0,0,0,.06);display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:500;color:var(--ink);line-height:1.2;opacity:0;transform:translate(-50%,calc(-100% - 8px));transition:opacity .15s;white-space:nowrap}
+.mtip.on{opacity:1}
+.mtip b{font-family:var(--pp);font-weight:500}
+.mtip div{display:flex;align-items:center;gap:6px;color:#868686}
+.mtip i{display:block;width:8px;height:8px;border-radius:2px}
+.mins{flex:none;width:340px;height:197px;background:#f6f8fa;border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:20px;align-items:flex-start}
+.mins p,.mside .mins p{font-size:16px;font-weight:500;color:var(--ink);--ls:-0.03em;letter-spacing:-0.03em;line-height:1.5}
+.mside{position:absolute;left:1361px;top:179px;width:389px;bottom:31px}
+.mpanel{position:relative;width:389px;background:#fff;border:1px solid #ececec;border-radius:22px;padding:25px 16px 16px;display:flex;flex-direction:column;gap:33px}
+.mpanel h3{padding:0 8px;font-family:var(--pp);font-weight:500;font-size:18px;--ls:-0.04em;letter-spacing:-0.04em;line-height:1.3;color:var(--ink);text-transform:capitalize}
+.mids{display:flex;flex-direction:column;gap:24px}
+.midl{display:flex;flex-direction:column;gap:12px}
+.mpat{width:355px;background:#f6f8fa;border-radius:12px;padding:18px 19px;display:flex;gap:12px;align-items:flex-start;text-align:left;cursor:pointer}
+.mpat .pd{width:298.563px;display:flex;flex-direction:column}
+.mpat .ph{display:flex;align-items:center;gap:10px}
+.mpat .ph img{width:24px;height:24px;display:block;border-radius:5px}
+.mpat .ph span{font-size:16px;font-weight:500;color:var(--ink);--ls:-0.03em;letter-spacing:-0.03em;line-height:1.5;text-box:trim-both cap alphabetic}
+.mpat .ex{display:grid;overflow:hidden;grid-template-rows:0fr;transition:grid-template-rows .35s cubic-bezier(.22,1,.36,1),margin-top .35s cubic-bezier(.22,1,.36,1);margin-top:0}
+.mpat .ex>div{overflow:hidden;min-height:0;display:flex;flex-direction:column;gap:12px}
+.mpat.open .ex{grid-template-rows:1fr;margin-top:27px}
+.mpat .rp{display:flex;align-items:center;gap:4.7px;opacity:.5;padding:0 4px;font-size:13px;font-weight:500;color:var(--ink);line-height:24.451px}
+.mpat .sg{display:flex;gap:6px;flex-wrap:wrap}
+.mpat .sg span{background:rgba(116,206,255,.19);border-radius:37px;padding:4.356px 10.891px;font-size:13px;font-weight:500;color:var(--blue);line-height:normal;white-space:nowrap}
+.mpat .x{flex:none;display:block;transition:transform .35s cubic-bezier(.22,1,.36,1)}
+.mpat.open .x{transform:rotate(180deg)}
+.mcal{display:flex;flex-direction:column;gap:33px}
+.mcalb{display:flex;flex-direction:column;gap:25px;align-items:center}
+.mcctl{display:flex;align-items:center;gap:83px}
+.mcm{display:flex;align-items:center;gap:24px}
+.mcm span{display:flex;justify-content:center;white-space:nowrap;width:91.27px;text-align:center;font-size:20px;font-weight:500;color:var(--ink);--ls:-0.02em;letter-spacing:-0.02em;line-height:1.14;text-shadow:6px 6px 20px rgba(0,0,0,.11);text-box:trim-both cap alphabetic}
+.mcm button{display:block;flex:none;border-radius:50%}
+.mcm button svg{display:block}
+.mcm button:disabled{cursor:default}
+.mcm button:not(:disabled):hover{filter:brightness(.96)}
+.mcv{display:flex;align-items:flex-end;gap:4px}
+.mcv b{font-size:20px;font-weight:500;color:var(--ink);--ls:-0.02em;letter-spacing:-0.02em;line-height:1.5}
+.mcv span{font-size:14px;font-weight:500;color:var(--g3);line-height:1.5;padding:2px 0}
+.mcg{width:100%;background:#f6f8fa;border-radius:12px;padding:11px 30px;display:flex;flex-direction:column;align-items:center;gap:15px}
+.mcwd{display:flex;justify-content:center;gap:35px;height:31px;align-items:center;font-size:12px;font-weight:500;color:var(--g3);width:100%;line-height:22.713px}
+.mcd{display:grid;grid-template-columns:repeat(7,30.607px);grid-auto-rows:31.326px;gap:13px;width:292.25px;height:252.957px;justify-content:space-between}
+.mcd i{display:flex;align-items:center;justify-content:center;border-radius:50%;background:#fff;box-shadow:inset 0 0 0 .927px #ececec;font-style:normal;font-size:12px;font-weight:600;color:#fff;--ls:-0.02em;letter-spacing:-0.02em;line-height:1;transition:background .2s}
+.mcd i.o{opacity:.3}
+.mcd i.b{background:var(--sky);box-shadow:none}
+.mcd i b{display:block;font-weight:600;text-box:trim-both cap alphabetic}
+.mcd.sw{animation:mcsw .35s ease}
+@keyframes mcsw{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+.mside .mins{width:100%;height:auto;padding:20px 20px 24px}
 </style>
 </head>
 <body>
@@ -694,7 +820,7 @@ h3.gh:first-child{text-transform:capitalize}
       <button class="it" data-k="flag" aria-label="Goal"><span class="ic"><span class="d"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4.14551 1.60846V17.7141" stroke-width="1.44951" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" stroke="#3F3F3F"/><path d="M4.14551 3.22217H13.1647C15.339 3.22217 15.8221 4.32747 14.2921 5.72751L13.3257 6.61175C12.6815 7.20124 12.6815 8.15917 13.3257 8.67498L14.2921 9.55922C15.8221 10.9593 15.2584 12.0646 13.1647 12.0646H4.14551" fill="#3F3F3F" stroke-width="1.44951" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" stroke="#3F3F3F"/></svg></span><span class="g"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4.16406 1.86768V18.0728" stroke-width="1.45846" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" stroke="#CECECE"/><path d="M4.16406 3.48755H13.2389C15.4266 3.48755 15.9128 4.59967 14.3733 6.00836L13.401 6.89806C12.7528 7.49119 12.7528 8.45503 13.401 8.97402L14.3733 9.86371C15.9128 11.2724 15.3456 12.3845 13.2389 12.3845H4.16406" fill="#CECECE" stroke-width="1.45846" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" stroke="#CECECE"/></svg></span></span><b class="trim">Goal</b></button>
       <button class="it" data-k="arch" aria-label="Archive"><span class="ic"><span class="d"><svg width="20.627" height="20.627" viewBox="0 0 21 21" fill="none"><path d="M4.10564 4.15862C3.54153 4.72274 3.22461 5.48784 3.22461 6.28563V14.4503C3.22461 15.2481 3.54153 16.0132 4.10564 16.5773C4.66976 17.1414 5.43487 17.4583 6.23265 17.4583H14.3973C15.1951 17.4583 15.9602 17.1414 16.5243 16.5773C17.0884 16.0132 17.4054 15.2481 17.4054 14.4503V6.28563C17.4054 5.48784 17.0884 4.72274 16.5243 4.15862C15.9602 3.59451 15.1951 3.27759 14.3973 3.27759H6.23265C5.43487 3.27759 4.66976 3.59451 4.10564 4.15862Z" fill="#444444" stroke-width="1.28916" stroke-linecap="round" stroke-linejoin="round" stroke="#444444"/><path d="M8.81445 10.7959H11.8225" stroke-width="1.28916" stroke-linecap="round" stroke-linejoin="round" stroke="white"/><path d="M3.22461 7.5769L17.4052 7.5769" stroke-width="1.28916" stroke-linecap="square" stroke-linejoin="round" stroke="#EFF2F4"/></svg></span><span class="g"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M1.52557 1.52557C0.961449 2.08968 0.644531 2.85479 0.644531 3.65257V11.8172C0.644531 12.615 0.961449 13.3801 1.52557 13.9442C2.08968 14.5084 2.85479 14.8253 3.65257 14.8253H11.8172C12.615 14.8253 13.3801 14.5084 13.9442 13.9442C14.5084 13.3801 14.8253 12.615 14.8253 11.8172V3.65257C14.8253 2.85479 14.5084 2.08968 13.9442 1.52557C13.3801 0.961449 12.615 0.644531 11.8172 0.644531H3.65257C2.85479 0.644531 2.08968 0.961449 1.52557 1.52557Z" fill="#CECECE" stroke-width="1.28916" stroke-linecap="round" stroke-linejoin="round" stroke="#CECECE"/><path d="M6.23047 8.16406H9.23851" stroke-width="1.28916" stroke-linecap="round" stroke-linejoin="round" stroke="white"/><path d="M0.644531 4.94531L14.8251 4.94531" stroke-width="1.28916" stroke-linecap="square" stroke-linejoin="round" stroke="white"/></svg></span></span><b class="trim">Archive</b></button>
       <button class="it" data-k="pen" aria-label="Create"><span class="ic"><span class="d"><svg width="19" height="19" viewBox="0 0 19 19" fill="none"><path d="M2.64066 15.4647C3.267 16.0911 4.2782 16.0911 4.90454 15.4647L14.7147 5.65454C15.3411 5.0282 15.3411 4.017 14.7147 3.39066C14.0884 2.76431 13.0772 2.76431 12.4508 3.39066L2.64066 13.2008C2.01431 13.8272 2.01431 14.8384 2.64066 15.4647Z" fill="#3F3F3F" stroke-width="1.35834" stroke-linecap="round" stroke-linejoin="round" stroke="#3F3F3F"/><path d="M13.591 6.77854L11.3271 4.51465" stroke-width="1.35834" stroke-linecap="square" stroke-linejoin="round" stroke="white"/><path d="M6.4171 1.83716L7.54905 1.50513L7.21701 2.63707L7.54905 3.76902L6.4171 3.43698L5.28516 3.76902L5.61719 2.63707L5.28516 1.50513L6.4171 1.83716Z" stroke-width="0.905557" stroke-linecap="round" stroke-linejoin="round" stroke="#3F3F3F"/><path d="M3.39757 6.36329L4.52951 6.03125L4.19748 7.16319L4.52951 8.29514L3.39757 7.9631L2.26562 8.29514L2.59766 7.16319L2.26562 6.03125L3.39757 6.36329Z" stroke-width="0.905557" stroke-linecap="round" stroke-linejoin="round" stroke="#3F3F3F"/><path d="M14.715 10.136L15.8469 9.80396L15.5149 10.9359L15.8469 12.0678L14.715 11.7358L13.583 12.0678L13.915 10.9359L13.583 9.80396L14.715 10.136Z" stroke-width="0.905557" stroke-linecap="round" stroke-linejoin="round" stroke="#3F3F3F"/></svg></span><span class="g"><svg width="19" height="19" viewBox="0 0 19 19" fill="none"><path d="M2.64066 15.4647C3.267 16.0911 4.2782 16.0911 4.90454 15.4647L14.7147 5.65454C15.3411 5.0282 15.3411 4.017 14.7147 3.39066C14.0884 2.76431 13.0772 2.76431 12.4508 3.39066L2.64066 13.2008C2.01431 13.8272 2.01431 14.8384 2.64066 15.4647Z" fill="#CECECE" stroke-width="1.35834" stroke-linecap="round" stroke-linejoin="round" stroke="#CECECE"/><path d="M13.591 6.77854L11.3271 4.51465" stroke-width="1.35834" stroke-linecap="square" stroke-linejoin="round" stroke="white"/><path d="M6.4171 1.83716L7.54905 1.50513L7.21701 2.63707L7.54905 3.76902L6.4171 3.43698L5.28516 3.76902L5.61719 2.63707L5.28516 1.50513L6.4171 1.83716Z" stroke-width="0.905557" stroke-linecap="round" stroke-linejoin="round" stroke="#CECECE"/><path d="M3.39757 6.36329L4.52951 6.03125L4.19748 7.16319L4.52951 8.29514L3.39757 7.9631L2.26562 8.29514L2.59766 7.16319L2.26562 6.03125L3.39757 6.36329Z" stroke-width="0.905557" stroke-linecap="round" stroke-linejoin="round" stroke="#CECECE"/><path d="M14.715 10.136L15.8469 9.80396L15.5149 10.9359L15.8469 12.0678L14.715 11.7358L13.583 12.0678L13.915 10.9359L13.583 9.80396L14.715 10.136Z" stroke-width="0.905557" stroke-linecap="round" stroke-linejoin="round" stroke="#CECECE"/></svg></span></span><b class="trim">Create</b></button>
-      <button class="it" data-k="prof" aria-label="Profile"><span class="ic"><span class="g"><svg width="19" height="19" viewBox="0 0 19 19" fill="none"><path d="M9.09053 16.6686C13.2746 16.6686 16.6664 13.2769 16.6664 9.09298C16.6664 4.90907 13.2746 1.51733 9.09053 1.51733C4.90649 1.51733 1.51465 4.90907 1.51465 9.09298C1.51465 13.2769 4.90649 16.6686 9.09053 16.6686Z" fill="#CECECE" stroke-width="1.23969" stroke-linecap="round" stroke-linejoin="round" stroke="#CECECE"/><path d="M9.18512 10.7001C9.12788 10.6919 9.0543 10.6919 8.98889 10.7001C7.54991 10.651 6.40527 9.47373 6.40527 8.02662C6.40527 6.54681 7.59897 5.34497 9.087 5.34497C10.5669 5.34497 11.7687 6.54681 11.7687 8.02662C11.7606 9.47373 10.6241 10.651 9.18512 10.7001Z" fill="white"/><path d="M14.1957 14.682C12.8472 15.9168 11.0593 16.6668 9.08954 16.6668C7.11981 16.6668 5.3319 15.9168 3.9834 14.682C4.05916 13.9698 4.51371 13.2729 5.32433 12.7274C7.40012 11.3487 10.7941 11.3487 12.8548 12.7274C13.6654 13.2729 14.1199 13.9698 14.1957 14.682Z" fill="white" stroke-width="1.23969" stroke-linecap="round" stroke-linejoin="round" stroke="#CECECE"/></svg></span></span></button>
+      <button class="it" data-k="prof" aria-label="My page"><span class="ic"><span class="d"><svg width="19" height="19" viewBox="0 0 19 19" fill="none"><path d="M9.09053 16.6686C13.2746 16.6686 16.6664 13.2769 16.6664 9.09298C16.6664 4.90907 13.2746 1.51733 9.09053 1.51733C4.90649 1.51733 1.51465 4.90907 1.51465 9.09298C1.51465 13.2769 4.90649 16.6686 9.09053 16.6686Z" fill="#3F3F3F" stroke-width="1.23969" stroke-linecap="round" stroke-linejoin="round" stroke="#3F3F3F"/><path d="M9.18512 10.7001C9.12788 10.6919 9.0543 10.6919 8.98889 10.7001C7.54991 10.651 6.40527 9.47373 6.40527 8.02662C6.40527 6.54681 7.59897 5.34497 9.087 5.34497C10.5669 5.34497 11.7687 6.54681 11.7687 8.02662C11.7606 9.47373 10.6241 10.651 9.18512 10.7001Z" fill="white"/><path d="M14.1957 14.682C12.8472 15.9168 11.0593 16.6668 9.08954 16.6668C7.11981 16.6668 5.3319 15.9168 3.9834 14.682C4.05916 13.9698 4.51371 13.2729 5.32433 12.7274C7.40012 11.3487 10.7941 11.3487 12.8548 12.7274C13.6654 13.2729 14.1199 13.9698 14.1957 14.682Z" fill="white" stroke-width="1.23969" stroke-linecap="round" stroke-linejoin="round" stroke="#3F3F3F"/></svg></span><span class="g"><svg width="19" height="19" viewBox="0 0 19 19" fill="none"><path d="M9.09053 16.6686C13.2746 16.6686 16.6664 13.2769 16.6664 9.09298C16.6664 4.90907 13.2746 1.51733 9.09053 1.51733C4.90649 1.51733 1.51465 4.90907 1.51465 9.09298C1.51465 13.2769 4.90649 16.6686 9.09053 16.6686Z" fill="#CECECE" stroke-width="1.23969" stroke-linecap="round" stroke-linejoin="round" stroke="#CECECE"/><path d="M9.18512 10.7001C9.12788 10.6919 9.0543 10.6919 8.98889 10.7001C7.54991 10.651 6.40527 9.47373 6.40527 8.02662C6.40527 6.54681 7.59897 5.34497 9.087 5.34497C10.5669 5.34497 11.7687 6.54681 11.7687 8.02662C11.7606 9.47373 10.6241 10.651 9.18512 10.7001Z" fill="white"/><path d="M14.1957 14.682C12.8472 15.9168 11.0593 16.6668 9.08954 16.6668C7.11981 16.6668 5.3319 15.9168 3.9834 14.682C4.05916 13.9698 4.51371 13.2729 5.32433 12.7274C7.40012 11.3487 10.7941 11.3487 12.8548 12.7274C13.6654 13.2729 14.1199 13.9698 14.1957 14.682Z" fill="white" stroke-width="1.23969" stroke-linecap="round" stroke-linejoin="round" stroke="#CECECE"/></svg></span></span><b class="trim">My page</b></button>
     </nav>
     <div class="bell"><svg width="23.321" height="23.321" viewBox="0 0 24 24" fill="none"><path d="M9.71303 20.4027H13.5998M17.4866 7.77063C17.4866 6.22437 16.8724 4.74143 15.779 3.64806C14.6856 2.55468 13.2027 1.94043 11.6564 1.94043C10.1102 1.94043 8.62723 2.55468 7.53386 3.64806C6.44048 4.74143 5.82623 6.22437 5.82623 7.77063C5.82623 14.5725 2.91113 14.5725 2.91113 16.5159H20.4017C20.4017 14.5725 17.4866 14.5725 17.4866 7.77063Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="#62676C"/></svg></div>
     <div class="bdot pt">1</div>
@@ -1046,6 +1172,101 @@ h3.gh:first-child{text-transform:capitalize}
   </section>
 
   <!-- identity (placeholder) -->
+  <section class="scr" id="mypage">
+    <div id="msc">
+      <div class="mcont">
+        <div class="mmain">
+          <div class="mhead">
+            <div class="mprof">
+              <div class="mava"><img src="img/mycard.png" alt="Harin Kim"></div>
+              <div class="mname"><span class="trim" style="display:block">Harin Kim</span></div>
+            </div>
+            <div class="mbtns">
+              <button class="mbtn" type="button"><svg width="16.176" height="16.176" viewBox="0 0 17 17" fill="none"><path d="M6.0697 13.6479H3.03674C2.90268 13.6479 2.7741 13.5946 2.67931 13.4999C2.58451 13.4051 2.53125 13.2765 2.53125 13.1424V10.3186C2.53131 10.1847 2.58449 10.0563 2.67911 9.9616L10.4713 2.16942C10.5661 2.0747 10.6946 2.02148 10.8286 2.02148C10.9626 2.02148 11.0911 2.0747 11.1859 2.16942L14.0097 4.99134C14.1045 5.08613 14.1577 5.21465 14.1577 5.34866C14.1577 5.48267 14.1045 5.61119 14.0097 5.70598L6.0697 13.6479Z" stroke-width="1.01099" stroke-linecap="round" stroke-linejoin="round" stroke="#A1A1A1"/><path d="M13.6488 13.6387H6.06641" stroke-width="1.01099" stroke-linecap="round" stroke-linejoin="round" stroke="#A1A1A1"/><path d="M8.59766 4.04395L12.1361 7.5824" stroke-width="1.01099" stroke-linecap="round" stroke-linejoin="round" stroke="#A1A1A1"/></svg><span>Edit</span></button>
+              <button class="mbtn" type="button"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10.4961 8.00195C10.4961 9.38266 9.3768 10.502 7.99609 10.502C6.61538 10.502 5.49609 9.38266 5.49609 8.00195C5.49609 6.62124 6.61538 5.50195 7.99609 5.50195C9.3768 5.50195 10.4961 6.62124 10.4961 8.00195Z" stroke-linecap="round" stroke-linejoin="round" stroke="#A1A1A1"/><path d="M2.59031 11.1296C2.31405 10.6538 2.10239 10.1432 1.96094 9.61148L3.00969 8.29898C2.99781 8.09833 2.99781 7.89714 3.00969 7.69648L1.96156 6.38398C2.10277 5.85216 2.314 5.34144 2.58969 4.86523L4.25906 4.67773C4.39237 4.52754 4.5345 4.38542 4.68469 4.25211L4.87219 2.58336C5.34771 2.30898 5.85759 2.09902 6.38844 1.95898L7.70094 3.00773C7.90159 2.99586 8.10278 2.99586 8.30344 3.00773L9.61594 1.95961C10.1478 2.10082 10.6585 2.31204 11.1347 2.58773L11.3222 4.25711C11.4724 4.39042 11.6145 4.53254 11.7478 4.68273L13.4166 4.87023C13.6928 5.34609 13.9045 5.85662 14.0459 6.38836L12.9972 7.70086C13.0091 7.90152 13.0091 8.1027 12.9972 8.30336L14.0453 9.61586C13.9051 10.1475 13.6949 10.6582 13.4203 11.1346L11.7509 11.3221C11.6176 11.4723 11.4755 11.6144 11.3253 11.7477L11.1378 13.4165C10.662 13.6927 10.1514 13.9044 9.61969 14.0459L8.30719 12.9971C8.10653 13.009 7.90534 13.009 7.70469 12.9971L6.39219 14.0452C5.86052 13.905 5.34981 13.6948 4.87344 13.4202L4.68594 11.7509C4.53575 11.6175 4.39362 11.4754 4.26031 11.3252L2.59031 11.1296Z" stroke-linecap="round" stroke-linejoin="round" stroke="#A1A1A1"/></svg><span>Setting</span></button>
+            </div>
+          </div>
+          <div class="mbody">
+            <div class="mstats">
+              <button class="mst" type="button" id="mToArch"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2.25391 5.06543C2.25391 4.31951 2.55022 3.60414 3.07767 3.07669C3.60511 2.54925 4.32048 2.25293 5.06641 2.25293H12.9414C13.6873 2.25293 14.4027 2.54925 14.9301 3.07669C15.4576 3.60414 15.7539 4.31951 15.7539 5.06543V7.42793C15.3942 7.24419 15.0174 7.09611 14.6289 6.9858V5.06543C14.6289 4.61788 14.4511 4.18865 14.1346 3.87219C13.8182 3.55572 13.389 3.37793 12.9414 3.37793H5.06641C4.61885 3.37793 4.18963 3.55572 3.87316 3.87219C3.5567 4.18865 3.37891 4.61788 3.37891 5.06543V12.9404C3.37891 13.388 3.5567 13.8172 3.87316 14.1337C4.18963 14.4501 4.61885 14.6279 5.06641 14.6279H6.98678C7.09853 15.0209 7.2459 15.3959 7.42891 15.7529H5.06641C4.32048 15.7529 3.60511 15.4566 3.07767 14.9292C2.55022 14.4017 2.25391 13.6863 2.25391 12.9404V5.06543ZM13.5039 5.90918V6.77768C13.1297 6.74413 12.7532 6.74413 12.3789 6.77768V5.90918C12.3789 5.83459 12.3493 5.76305 12.2965 5.7103C12.2438 5.65756 12.1722 5.62793 12.0977 5.62793H10.6914C10.5422 5.62793 10.3991 5.56867 10.2937 5.46318C10.1882 5.35769 10.1289 5.21461 10.1289 5.06543C10.1289 4.91624 10.1882 4.77317 10.2937 4.66768C10.3991 4.56219 10.5422 4.50293 10.6914 4.50293H12.0977C12.8739 4.50293 13.5039 5.13293 13.5039 5.90918ZM5.91016 12.3779H6.77866C6.74511 12.7522 6.74511 13.1287 6.77866 13.5029H5.91016C5.13391 13.5029 4.50391 12.8729 4.50391 12.0967V10.6904C4.50391 10.5412 4.56317 10.3982 4.66866 10.2927C4.77415 10.1872 4.91722 10.1279 5.06641 10.1279C5.21559 10.1279 5.35866 10.1872 5.46415 10.2927C5.56964 10.3982 5.62891 10.5412 5.62891 10.6904V12.0967C5.62891 12.2519 5.75491 12.3779 5.91016 12.3779ZM5.91016 5.62793C5.83556 5.62793 5.76403 5.65756 5.71128 5.7103C5.65854 5.76305 5.62891 5.83459 5.62891 5.90918V7.31543C5.62891 7.46461 5.56964 7.60769 5.46415 7.71318C5.35866 7.81867 5.21559 7.87793 5.06641 7.87793C4.91722 7.87793 4.77415 7.81867 4.66866 7.71318C4.56317 7.60769 4.50391 7.46461 4.50391 7.31543V5.90918C4.50391 5.13293 5.13391 4.50293 5.91016 4.50293H7.31641C7.46559 4.50293 7.60866 4.56219 7.71415 4.66768C7.81964 4.77317 7.87891 4.91624 7.87891 5.06543C7.87891 5.21461 7.81964 5.35769 7.71415 5.46318C7.60866 5.56867 7.46559 5.62793 7.31641 5.62793H5.91016ZM12.9414 9.00293C13.9857 9.00293 14.9872 9.41777 15.7256 10.1562C16.4641 10.8946 16.8789 11.8961 16.8789 12.9404C16.8789 13.9847 16.4641 14.9862 15.7256 15.7247C14.9872 16.4631 13.9857 16.8779 12.9414 16.8779C11.8971 16.8779 10.8956 16.4631 10.1572 15.7247C9.41875 14.9862 9.0039 13.9847 9.0039 12.9404C9.0039 11.8961 9.41875 10.8946 10.1572 10.1562C10.8956 9.41777 11.8971 9.00293 12.9414 9.00293ZM12.9414 18.0029C14.2841 18.0029 15.5717 17.4696 16.5211 16.5202C17.4705 15.5708 18.0039 14.2831 18.0039 12.9404C18.0039 11.5978 17.4705 10.3101 16.5211 9.3607C15.5717 8.4113 14.2841 7.87793 12.9414 7.87793C11.5987 7.87793 10.3111 8.4113 9.36168 9.3607C8.41227 10.3101 7.87891 11.5978 7.87891 12.9404C7.87891 14.2831 8.41227 15.5708 9.36168 16.5202C10.3111 17.4696 11.5987 18.0029 12.9414 18.0029ZM15.7539 12.9404C15.7539 13.6863 15.4576 14.4017 14.9301 14.9292C14.4027 15.4566 13.6873 15.7529 12.9414 15.7529C12.1955 15.7529 11.4801 15.4566 10.9527 14.9292C10.4252 14.4017 10.1289 13.6863 10.1289 12.9404C10.1289 12.1945 10.4252 11.4791 10.9527 10.9517C11.4801 10.4242 12.1955 10.1279 12.9414 10.1279C13.6873 10.1279 14.4027 10.4242 14.9301 10.9517C15.4576 11.4791 15.7539 12.1945 15.7539 12.9404Z" fill="#999999"/></svg><div class="tx"><span class="lb">Scene records</span><span class="vl trim">54 Scene</span></div></button>
+              <div class="mst"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M16.3948 3.21722C16.3948 3.08934 16.344 2.96671 16.2536 2.87629C16.1632 2.78587 16.0405 2.73507 15.9127 2.73507H2.09124C1.96337 2.73507 1.84073 2.78587 1.75031 2.87629C1.65989 2.96671 1.6091 3.08934 1.6091 3.21722V14.7886C1.6091 14.9165 1.65989 15.0391 1.75031 15.1296C1.84073 15.22 1.96337 15.2708 2.09124 15.2708H15.9127C16.0405 15.2708 16.1632 15.22 16.2536 15.1296C16.344 15.0391 16.3948 14.9165 16.3948 14.7886V3.21722ZM17.39 1.73993C17.7821 2.13207 18.002 2.66307 18.002 3.21722V14.7886C18.002 15.063 17.9479 15.3347 17.8429 15.5882C17.7379 15.8417 17.584 16.072 17.39 16.266C17.196 16.46 16.9657 16.6139 16.7122 16.7189C16.4587 16.8239 16.187 16.8779 15.9127 16.8779H2.09124C1.53713 16.8779 1.00571 16.6578 0.613891 16.266C0.222074 15.8742 0.00195313 15.3428 0.00195313 14.7886L0.00195312 3.21722C0.00195313 2.6631 0.222074 2.13168 0.613891 1.73987C1.00571 1.34805 1.53713 1.12793 2.09124 1.12793H15.9127C16.4668 1.12793 16.9978 1.34779 17.39 1.73993ZM9.00195 3.79064C8.64736 3.77959 8.29417 3.83989 7.96333 3.96795C7.63249 4.09602 7.33075 4.28924 7.07602 4.53616C6.82129 4.78307 6.61876 5.07864 6.48045 5.40533C6.34214 5.73202 6.27087 6.08317 6.27087 6.43793C6.27087 6.79269 6.34214 7.14384 6.48045 7.47052C6.61876 7.79721 6.82129 8.09279 7.07602 8.3397C7.33075 8.58662 7.63249 8.77984 7.96333 8.90791C8.29417 9.03597 8.64736 9.09627 9.00195 9.08521C9.68978 9.06377 10.3422 8.77547 10.8212 8.28135C11.3002 7.78722 11.568 7.12609 11.568 6.43793C11.568 5.74977 11.3002 5.08863 10.8212 4.59451C10.3422 4.10039 9.68978 3.81208 9.00195 3.79064ZM9.00195 10.0264C7.91445 10.0264 6.85332 10.3612 5.96268 10.9853C5.07204 11.6093 4.39506 12.4924 4.02367 13.5145C3.98858 13.6116 3.97737 13.7156 3.991 13.8179C4.00462 13.9202 4.04268 14.0178 4.10195 14.1023C4.16122 14.1867 4.23996 14.2557 4.33151 14.3034C4.42307 14.351 4.52475 14.3759 4.62795 14.3759H13.376C13.4792 14.3759 13.5808 14.351 13.6724 14.3034C13.7639 14.2557 13.8427 14.1867 13.902 14.1023C13.9612 14.0178 13.9993 13.9202 14.0129 13.8179C14.0265 13.7156 14.0153 13.6116 13.9802 13.5145C13.6088 12.4924 12.9319 11.6093 12.0412 10.9853C11.1506 10.3612 10.0895 10.0264 9.00195 10.0264Z" fill-rule="evenodd" clip-rule="evenodd" fill="#999999"/></svg><div class="tx"><span class="lb">Active actions</span><span class="vl trim">34 Actions</span></div></div>
+              <div class="mst"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9.00078 3.5998C7.40328 3.5998 5.96609 4.29449 4.97609 5.3998H6.30078C6.79859 5.3998 7.20078 5.80199 7.20078 6.2998C7.20078 6.79762 6.79859 7.1998 6.30078 7.1998H2.70078C2.20297 7.1998 1.80078 6.79762 1.80078 6.2998V2.6998C1.80078 2.20199 2.20297 1.7998 2.70078 1.7998C3.19859 1.7998 3.60078 2.20199 3.60078 2.6998V4.23824C4.91984 2.7448 6.84922 1.7998 9.00078 1.7998C12.9777 1.7998 16.2008 5.02293 16.2008 8.9998C16.2008 12.9767 12.9777 16.1998 9.00078 16.1998C6.55391 16.1998 4.39109 14.9792 3.09172 13.1145C2.80766 12.7067 2.90609 12.147 3.31391 11.8601C3.72172 11.5732 4.28141 11.6745 4.56828 12.0823C5.54703 13.4829 7.16703 14.397 9.00078 14.397C11.982 14.397 14.4008 11.9782 14.4008 8.99699C14.4008 6.01574 11.982 3.5998 9.00078 3.5998Z" fill="#999999"/></svg><div class="tx"><span class="lb">Repeated actions</span><span class="vl trim">12 Actions</span></div></div>
+              <div class="mst"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><mask id="mstk843" fill="white"><path d="M11.3578 7.03285C11.2918 6.85685 11.1529 6.71797 10.9769 6.65197L9.87817 6.23995C9.31518 6.02883 9.31505 5.23252 9.87797 5.02121L10.9771 4.60863C11.153 4.5426 11.2918 4.4038 11.3577 4.2279L11.7698 3.1295C11.981 2.5666 12.7771 2.56647 12.9885 3.12931L13.4011 4.22809C13.4671 4.40388 13.6058 4.54259 13.7816 4.6086L14.8805 5.02124C15.4433 5.23258 15.4432 6.02876 14.8803 6.23992L13.7818 6.652C13.6059 6.71798 13.4671 6.85677 13.401 7.03266L12.9885 8.1317C12.7772 8.69464 11.9809 8.69451 11.7698 8.13151L11.3578 7.03285ZM5.35748 13.0148C5.29132 12.8495 5.16028 12.7184 4.9949 12.6523L3.01462 11.8601C2.46912 11.6419 2.46912 10.8698 3.01463 10.6515L4.9949 9.85943C5.16028 9.79327 5.29132 9.66223 5.35748 9.49685L6.1496 7.51658C6.3678 6.97108 7.13999 6.97108 7.35819 7.51658L8.15031 9.49685C8.21646 9.66223 8.34751 9.79327 8.51288 9.85943L10.4932 10.6515C11.0387 10.8698 11.0387 11.6419 10.4932 11.8601L8.51289 12.6523C8.34751 12.7184 8.21646 12.8495 8.15031 13.0148L7.35819 14.9951C7.13999 15.5406 6.3678 15.5406 6.1496 14.9951L5.35748 13.0148Z"/></mask><path d="M7.35819 14.9951L8.15031 13.0148C8.21646 12.8495 8.3475 12.7184 8.51288 12.6523L10.4932 11.8601C11.0387 11.6419 11.0387 10.8698 10.4932 10.6515L8.51288 9.85943C8.3475 9.79327 8.21646 9.66223 8.15031 9.49685L7.35819 7.51658C7.13999 6.97108 6.3678 6.97108 6.1496 7.51658L5.35748 9.49685C5.29132 9.66223 5.16028 9.79327 4.9949 9.85943L3.01463 10.6515C2.46912 10.8698 2.46912 11.6419 3.01462 11.8601L4.9949 12.6523C5.16028 12.7184 5.29132 12.8495 5.35748 13.0148L6.1496 14.9951C6.3678 15.5406 7.13999 15.5406 7.35819 14.9951ZM12.9885 8.1317L13.401 7.03266C13.4671 6.85677 13.6059 6.71798 13.7818 6.652L14.8803 6.23992C15.4432 6.02876 15.4433 5.23258 14.8805 5.02124L13.7816 4.6086C13.6058 4.54259 13.4671 4.40388 13.4011 4.22809L12.9885 3.12931C12.7771 2.56647 11.981 2.5666 11.7698 3.1295L11.3577 4.2279C11.2918 4.4038 11.153 4.5426 10.9771 4.60863L9.87797 5.02121C9.31505 5.23252 9.31518 6.02883 9.87817 6.23995L10.9769 6.65197C11.1529 6.71797 11.2918 6.85685 11.3578 7.03285L11.7698 8.13151C11.9809 8.69451 12.7772 8.69464 12.9885 8.1317Z" stroke-width="2.60339" stroke="#999999" mask="url(#mstk843)"/></svg><div class="tx"><span class="lb">Goal refinement</span><span class="vl trim">1 Refinement</span></div></div>
+            </div>
+            <div class="mrow">
+              <div class="mcard mgoal">
+                <div class="mhd"><h3>Ongoing Goals</h3><button class="mgo" type="button" data-mgo="goal" aria-label="Open goals"><svg width="41" height="41" viewBox="0 0 41 41" fill="none"><rect width="41" height="41" rx="20.5" fill="#ECECEC"/><path d="M14.6113 26.3867L26.3716 14.6265" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke="#A8A8A8"/><path d="M26.3745 23.8936L26.3745 14.6234L16.7187 14.6234" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke="#A8A8A8"/></svg></button></div>
+                <div class="mgls">
+                  <button class="mgl" type="button" data-mgo="goal"><h4 class="trim">Speak comfortably around others</h4><div class="mstep"><div class="sq"><i class="f"></i><i></i><i></i><i></i><i></i></div><span class="trim">Step 3</span></div></button>
+                  <div class="mdiv"></div>
+                  <div class="mgl"><h4 class="trim">Live a healthier life</h4><div class="mstep"><div class="sq"><i class="f"></i><i></i><i></i><i></i><i></i></div><span class="trim">Step 1</span></div></div>
+                </div>
+              </div>
+              <div class="mcard mreflow">
+                <div class="mhd"><h3>AI Reflow</h3><button class="mgo" type="button" data-mgo="goal" aria-label="Open goal"><svg width="41" height="41" viewBox="0 0 41 41" fill="none"><rect width="41" height="41" rx="20.5" fill="#ECECEC"/><path d="M14.6113 26.3867L26.3716 14.6265" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke="#A8A8A8"/><path d="M26.3745 23.8936L26.3745 14.6234L16.7187 14.6234" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke="#A8A8A8"/></svg></button></div>
+                <div class="mrf">
+                  <div class="mrfr">
+                    <div class="mrfb bf"><div class="mchip"><span class="trim">Before Goal</span></div><p class="trim">Keep my point while speaking calmly</p></div>
+                    <svg width="25.575" height="25.575" viewBox="0 0 26 26" fill="none"><circle cx="12.7873" cy="12.7873" r="12.7873" fill="#ECECEC"/><path d="M7.76758 12.7902H17.7997M13.8981 16.6918L17.7997 12.7902L13.8981 8.88867" stroke-width="0.995434" stroke-linecap="round" stroke-linejoin="round" stroke="#A8A8A8"/></svg>
+                    <div class="mrfb af"><div class="mchip on"><span class="trim">After Goal</span></div><p class="trim">Speak comfortably around others</p></div>
+                  </div>
+                  <div class="mwhy"><small>Why it changed</small><p class="trim">Your repeated action became a message.</p></div>
+                </div>
+              </div>
+            </div>
+            <div class="mcard mtrend">
+              <div class="mhd"><h3>Growth Trend</h3><button class="mgo" type="button" data-mgo="arch" aria-label="Open archive"><svg width="41" height="41" viewBox="0 0 41 41" fill="none"><rect width="41" height="41" rx="20.5" fill="#ECECEC"/><path d="M14.6113 26.3867L26.3716 14.6265" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke="#A8A8A8"/><path d="M26.3745 23.8936L26.3745 14.6234L16.7187 14.6234" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke="#A8A8A8"/></svg></button></div>
+              <div class="mtb">
+                <div class="mtabs" role="tablist">
+                  <button class="mtab on" type="button" data-f="all" style="width:132px"><span class="trim">All</span></button>
+                  <button class="mtab" type="button" data-f="t" style="width:134px"><span class="trim">Tried action</span></button>
+                  <button class="mtab" type="button" data-f="p" style="width:134px"><span class="trim">Pattern evidence</span></button>
+                  <button class="mtab" type="button" data-f="u" style="width:132px"><span class="trim">Update</span></button>
+                </div>
+                <div class="mtr">
+                  <div class="mchart">
+                    <div class="mleg"><span data-c="t"><i style="background:#74ceff"></i><b>Tried action</b></span><span data-c="p"><i style="background:#c4d9ff"></i><b>Pattern evidence</b></span><span data-c="u"><i style="background:#e5f5fc"></i><b>Goal or action update</b></span></div>
+                    <div class="mplot" id="mplot"></div>
+                  </div>
+                  <div class="mins"><div class="mchip on"><span class="trim">Insight</span></div><p class="trim">You are sharing your point earlier and relying less on other’s reactions.</p></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mside">
+          <div class="mpanel">
+            <div class="mids">
+              <h3>Identity</h3>
+              <div class="midl">
+                <button class="mpat" type="button" aria-expanded="false"><div class="pd"><div class="ph"><img src="img/pat2.png" alt=""><span>Clear flow maker</span></div><div class="ex"><div><div class="rp"><svg width="12.821" height="12.821" viewBox="0 0 13 13" fill="none"><path d="M1.61133 3.59903C1.61133 3.06771 1.82239 2.55816 2.19809 2.18246C2.57379 1.80677 3.08334 1.5957 3.61465 1.5957L9.22397 1.5957C9.75528 1.5957 10.2648 1.80677 10.6405 2.18246C11.0162 2.55816 11.2273 3.06771 11.2273 3.59903V5.28182C10.9711 5.15095 10.7027 5.04547 10.426 4.9669V3.59903C10.426 3.28024 10.2993 2.97451 10.0739 2.74909C9.84849 2.52367 9.54276 2.39703 9.22397 2.39703L3.61465 2.39703C3.29587 2.39703 2.99013 2.52367 2.76472 2.74909C2.5393 2.97451 2.41266 3.28024 2.41266 3.59903L2.41266 9.20834C2.41266 9.52713 2.5393 9.83287 2.76472 10.0583C2.99013 10.2837 3.29587 10.4103 3.61465 10.4103H4.98253C5.06212 10.6903 5.1671 10.9574 5.29745 11.2117H3.61465C3.08334 11.2117 2.57379 11.0006 2.19809 10.6249C1.82239 10.2492 1.61133 9.73966 1.61133 9.20834L1.61133 3.59903ZM9.22397 6.40369C9.96781 6.40369 10.6812 6.69918 11.2072 7.22515C11.7331 7.75113 12.0286 8.4645 12.0286 9.20834C12.0286 9.95219 11.7331 10.6656 11.2072 11.1915C10.6812 11.7175 9.96781 12.013 9.22397 12.013C8.48013 12.013 7.76675 11.7175 7.24078 11.1915C6.7148 10.6656 6.41931 9.95219 6.41931 9.20834C6.41931 8.4645 6.7148 7.75113 7.24078 7.22515C7.76675 6.69918 8.48013 6.40369 9.22397 6.40369ZM9.22397 12.8143C10.1803 12.8143 11.0975 12.4344 11.7738 11.7582C12.45 11.0819 12.83 10.1647 12.83 9.20834C12.83 8.25198 12.45 7.33478 11.7738 6.65853C11.0975 5.98227 10.1803 5.60236 9.22397 5.60236C8.2676 5.60236 7.3504 5.98227 6.67415 6.65853C5.9979 7.33478 5.61798 8.25198 5.61798 9.20834C5.61798 10.1647 5.9979 11.0819 6.67415 11.7582C7.3504 12.4344 8.2676 12.8143 9.22397 12.8143ZM11.2273 9.20834C11.2273 9.73966 11.0162 10.2492 10.6405 10.6249C10.2648 11.0006 9.75528 11.2117 9.22397 11.2117C8.69265 11.2117 8.1831 11.0006 7.8074 10.6249C7.43171 10.2492 7.22064 9.73966 7.22064 9.20834C7.22064 8.67703 7.43171 8.16747 7.8074 7.79178C8.1831 7.41608 8.69265 7.20502 9.22397 7.20502C9.75528 7.20502 10.2648 7.41608 10.6405 7.79178C11.0162 8.16747 11.2273 8.67703 11.2273 9.20834Z" fill="#444444"/></svg><span>Repeated pattern</span></div><div class="sg"><span>Start by structuring</span><span>Restate the main idea</span></div></div></div></div><svg class="x" width="7.821" height="23.92" viewBox="0 0 10 24" fill="none"><path d="M0.65332 10L4.56405 13.9199L8.47477 10" stroke-width="1.3069" stroke-linecap="round" stroke="#858585"/></svg></button>
+                <button class="mpat" type="button" aria-expanded="false"><div class="pd"><div class="ph"><img src="img/pat3.png" alt=""><span>Convincing speaker</span></div><div class="ex"><div><div class="rp"><svg width="12.821" height="12.821" viewBox="0 0 13 13" fill="none"><path d="M1.61133 3.59903C1.61133 3.06771 1.82239 2.55816 2.19809 2.18246C2.57379 1.80677 3.08334 1.5957 3.61465 1.5957L9.22397 1.5957C9.75528 1.5957 10.2648 1.80677 10.6405 2.18246C11.0162 2.55816 11.2273 3.06771 11.2273 3.59903V5.28182C10.9711 5.15095 10.7027 5.04547 10.426 4.9669V3.59903C10.426 3.28024 10.2993 2.97451 10.0739 2.74909C9.84849 2.52367 9.54276 2.39703 9.22397 2.39703L3.61465 2.39703C3.29587 2.39703 2.99013 2.52367 2.76472 2.74909C2.5393 2.97451 2.41266 3.28024 2.41266 3.59903L2.41266 9.20834C2.41266 9.52713 2.5393 9.83287 2.76472 10.0583C2.99013 10.2837 3.29587 10.4103 3.61465 10.4103H4.98253C5.06212 10.6903 5.1671 10.9574 5.29745 11.2117H3.61465C3.08334 11.2117 2.57379 11.0006 2.19809 10.6249C1.82239 10.2492 1.61133 9.73966 1.61133 9.20834L1.61133 3.59903ZM9.22397 6.40369C9.96781 6.40369 10.6812 6.69918 11.2072 7.22515C11.7331 7.75113 12.0286 8.4645 12.0286 9.20834C12.0286 9.95219 11.7331 10.6656 11.2072 11.1915C10.6812 11.7175 9.96781 12.013 9.22397 12.013C8.48013 12.013 7.76675 11.7175 7.24078 11.1915C6.7148 10.6656 6.41931 9.95219 6.41931 9.20834C6.41931 8.4645 6.7148 7.75113 7.24078 7.22515C7.76675 6.69918 8.48013 6.40369 9.22397 6.40369ZM9.22397 12.8143C10.1803 12.8143 11.0975 12.4344 11.7738 11.7582C12.45 11.0819 12.83 10.1647 12.83 9.20834C12.83 8.25198 12.45 7.33478 11.7738 6.65853C11.0975 5.98227 10.1803 5.60236 9.22397 5.60236C8.2676 5.60236 7.3504 5.98227 6.67415 6.65853C5.9979 7.33478 5.61798 8.25198 5.61798 9.20834C5.61798 10.1647 5.9979 11.0819 6.67415 11.7582C7.3504 12.4344 8.2676 12.8143 9.22397 12.8143ZM11.2273 9.20834C11.2273 9.73966 11.0162 10.2492 10.6405 10.6249C10.2648 11.0006 9.75528 11.2117 9.22397 11.2117C8.69265 11.2117 8.1831 11.0006 7.8074 10.6249C7.43171 10.2492 7.22064 9.73966 7.22064 9.20834C7.22064 8.67703 7.43171 8.16747 7.8074 7.79178C8.1831 7.41608 8.69265 7.20502 9.22397 7.20502C9.75528 7.20502 10.2648 7.41608 10.6405 7.79178C11.0162 8.16747 11.2273 8.67703 11.2273 9.20834Z" fill="#444444"/></svg><span>Repeated pattern</span></div><div class="sg"><span>Keep the core point</span><span>Check the response</span></div></div></div></div><svg class="x" width="7.821" height="23.92" viewBox="0 0 10 24" fill="none"><path d="M0.65332 10L4.56405 13.9199L8.47477 10" stroke-width="1.3069" stroke-linecap="round" stroke="#858585"/></svg></button>
+              </div>
+            </div>
+            <div class="mcal">
+              <h3>Calendar</h3>
+              <div class="mcalb">
+                <div class="mcctl">
+                  <div class="mcm">
+                    <button type="button" id="mcPrev" aria-label="Previous month"></button>
+                    <span id="mcMon">November</span>
+                    <button type="button" id="mcNext" aria-label="Next month"></button>
+                  </div>
+                  <div class="mcv"><b id="mcCnt">14</b><span>Scene</span></div>
+                </div>
+                <div class="mcg">
+                  <div class="mcwd"><span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span></div>
+                  <div class="mcd" id="mcD"></div>
+                </div>
+              </div>
+            </div>
+            <div class="mins"><div class="mchip on"><span class="trim">Insight</span></div><p class="trim">You are sharing your point earlier and relying less on other’s reactions.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="gtop"></div>
+  </section>
   <section class="scr" id="ident">
     <div class="idbox pt"><h2>Identity</h2><p>This page is coming soon.</p><button id="idBack">Back to goal</button></div>
   </section>
@@ -1185,15 +1406,17 @@ h3.gh:first-child{text-transform:capitalize}
   let lastScreen = 'main';
   function go(name){
     screen = name; stage.dataset.s = name;
-    setNav(name === 'main' ? 'home' : (name === 'arch' || name === 'adet') ? 'arch' : name === 'goal' ? 'flag' : (name === 'create' || name === 'cchat') ? 'pen' : null);
+    setNav(name === 'main' ? 'home' : (name === 'arch' || name === 'adet') ? 'arch' : name === 'goal' ? 'flag' : (name === 'create' || name === 'cchat') ? 'pen' : name === 'mypage' ? 'prof' : null);
     if (name !== 'create' && name !== 'cchat') lastScreen = name;
     if (name !== 'cchat' && typeof closeResult === 'function') closeResult();
     if (name === 'goal') { if (typeof renderGoal === 'function') renderGoal(); const g = document.getElementById('gsc'); if (g && prevScreen !== 'ident' && prevScreen !== 'goal') g.scrollTop = 0; }
     if (name !== 'adet') { const dv = document.getElementById('dvid'); if (dv) dv.pause(); }
     if (name !== 'main') { const sw = document.getElementById('srec'); if (sw) sw.classList.remove('open'); }
     if (name === 'arch') { const sc = document.getElementById('asc'); if (sc && prevScreen !== 'adet') sc.scrollTop = 0; }
+    const resetMy = name === 'mypage' && prevScreen !== 'mypage';
     prevScreen = name;
     document.querySelectorAll('.scr').forEach(s => s.classList.toggle('on', s.id === name));
+    if (resetMy) { const m = document.getElementById('msc'); if (m) m.scrollTop = 0; }
     const step = name === 'home' ? 1 : name === 'ifs' ? 3 : name === 'fin' ? 4 : 2;
     $('#pn').textContent = step;
     document.querySelectorAll('.bars i').forEach((b, k) => b.classList.toggle('f', k < step));
@@ -1769,7 +1992,7 @@ h3.gh:first-child{text-transform:capitalize}
   // nav + panel
   document.querySelectorAll('.nav .it').forEach(b => b.addEventListener('click', () => {
     const k = b.dataset.k;
-    if (k === 'home') go('main'); else if (k === 'arch') go('arch'); else if (k === 'flag') go('goal'); else if (k === 'pen') go('create');
+    if (k === 'home') go('main'); else if (k === 'arch') go('arch'); else if (k === 'flag') go('goal'); else if (k === 'pen') go('create'); else if (k === 'prof') go('mypage');
   }));
   const srec = $('#srec');
   function setPanel(on){ srec.classList.toggle('open', on); $('#srecBtn').setAttribute('aria-expanded', on); }
@@ -1839,6 +2062,92 @@ h3.gh:first-child{text-transform:capitalize}
     setTimeout(() => { b.classList.remove('done'); b.firstChild.textContent = 'Save'; }, 1600);
   });
 
+  // ---------- my page ----------
+  (function(){
+    // growth trend: px heights from the Figma chart (1.6px = 1 point, baseline at 0)
+    const MT = [
+      { m: 'Apr', x: 58.6, c: 98, w: 79, t: 49, p: 14, u: 0 },
+      { m: 'May', x: 175.5, c: 209.5, w: 80, t: 65, p: 17, u: 26 },
+      { m: 'Jun', x: 293.4, c: 331.5, w: 80, t: 65, p: 17, u: 26 },
+      { m: 'Jul', x: 411.3, c: 448.5, w: 80, t: 65, p: 30, u: 30 },
+      { m: 'Sep', x: 529, c: 567, w: 80, t: 65, p: 30, u: 41 },
+      { m: 'Oct', x: 646, c: 687, w: 80, t: 65, p: 30, u: 41 }
+    ];
+    const NAMES = { t: ['Tried action', '#74ceff'], p: ['Pattern evidence', '#c4d9ff'], u: ['Goal or action update', '#e5f5fc'] };
+    const plot = $('#mplot');
+    let h = '';
+    [['100', 11.14], ['50', 91.14], ['0', 171.14]].forEach(([v, y]) => { h += '<span class="yl" style="top:' + (y - 12.9) + 'px">' + v + '</span>'; });
+    h += '<i class="gl" style="top:10.64px;width:597.6px"></i><i class="gl" style="top:90.64px;width:597.6px"></i><i class="gl base" style="top:170.64px;width:713.937px"></i>';
+    MT.forEach((d, k) => {
+      h += '<div class="mbar" data-k="' + k + '" style="left:' + d.x + 'px;width:' + d.w + 'px"><i class="t" style="height:' + d.t + 'px"></i><i class="p" style="height:' + d.p + 'px"></i><i class="u" style="height:' + d.u + 'px"></i></div>';
+      h += '<span class="xl" style="left:' + (d.c - 40) + 'px">' + d.m + '</span>';
+    });
+    h += '<div class="mtip" id="mtip"></div>';
+    plot.innerHTML = h;
+    let filt = 'all';
+    const tip = $('#mtip');
+    function applyFilt(){
+      plot.querySelectorAll('.mbar').forEach(b => {
+        const d = MT[+b.dataset.k];
+        ['t', 'p', 'u'].forEach(c => { b.querySelector('.' + c).style.height = (filt === 'all' || filt === c ? d[c] : 0) + 'px'; });
+      });
+      document.querySelectorAll('.mleg span').forEach(s => s.classList.toggle('off', filt !== 'all' && s.dataset.c !== filt));
+      document.querySelectorAll('.mtab').forEach(t => { t.classList.toggle('on', t.dataset.f === filt); t.setAttribute('aria-selected', t.dataset.f === filt); });
+    }
+    document.querySelectorAll('.mtab').forEach(t => t.addEventListener('click', () => { filt = t.dataset.f; applyFilt(); }));
+    plot.addEventListener('mousemove', e => {
+      const b = e.target.closest('.mbar');
+      if (!b) { tip.classList.remove('on'); return; }
+      const d = MT[+b.dataset.k];
+      const rows = (filt === 'all' ? ['t', 'p', 'u'] : [filt]).filter(c => d[c] > 0);
+      tip.innerHTML = '<b>' + d.m + '</b>' + rows.map(c => '<div><i style="background:' + NAMES[c][1] + '"></i>' + NAMES[c][0] + ' ' + Math.round(d[c] / 1.6) + '</div>').join('');
+      const tot = rows.reduce((a, c) => a + d[c], 0);
+      tip.style.left = (d.x + d.w / 2) + 'px'; tip.style.top = (171.14 - tot) + 'px';
+      tip.classList.add('on');
+    });
+    plot.addEventListener('mouseleave', () => tip.classList.remove('on'));
+
+    // identity pattern cards: fold / unfold
+    document.querySelectorAll('.mpat').forEach(p => p.addEventListener('click', () => {
+      const on = !p.classList.contains('open'); p.classList.toggle('open', on); p.setAttribute('aria-expanded', on);
+    }));
+
+    // calendar: scene counts per day (month index → {day: scenes})
+    const CAL = { 3: { 22: 2 }, 4: { 7: 1, 20: 2 }, 5: { 11: 2, 25: 1 }, 6: { 3: 2, 16: 3 }, 8: { 9: 2, 18: 3, 26: 2 }, 9: { 7: 3, 15: 2, 23: 4, 29: 2 }, 10: { 10: 2, 14: 5, 19: 3, 21: 4 } };
+    const MON = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    const MIN_M = 3, MAX_M = 10, Y = 2025;
+    let cm = MAX_M;
+    const PREV_ON = '<svg width="27" height="27" viewBox="0 0 27 27" fill="none"><path d="M13.5 0.5C6.3203 0.5 0.5 6.3203 0.5 13.5C0.5 20.6797 6.3203 26.5 13.5 26.5C20.6797 26.5 26.5 20.6797 26.5 13.5C26.5 6.3203 20.6797 0.5 13.5 0.5Z" fill="white" stroke="#ECECEC"/><path d="M15.0645 9.36719L10.926 13.496L15.0645 17.6248" stroke-width="1.09673" stroke-linecap="round" stroke="#A8A8A8"/></svg>';
+    const PREV_OFF = '<svg width="27" height="27" viewBox="0 0 27 27" fill="none"><rect width="27" height="27" rx="13.5" fill="#ECECEC"/><path d="M15.0645 9.36719L10.926 13.496L15.0645 17.6248" stroke-width="1.09673" stroke-linecap="round" stroke="#A8A8A8"/></svg>';
+    const NEXT_ON = '<svg width="26" height="27" viewBox="0 0 26 27" fill="none"><path d="M13 0.5C6.09644 0.5 0.5 6.3203 0.5 13.5C0.5 20.6797 6.09644 26.5 13 26.5C19.9036 26.5 25.5 20.6797 25.5 13.5C25.5 6.3203 19.9036 0.5 13 0.5Z" fill="white" stroke="#ECECEC"/><path d="M10.9355 9.36719L15.074 13.496L10.9355 17.6248" stroke-width="1.09673" stroke-linecap="round" stroke="#A8A8A8"/></svg>';
+    const NEXT_OFF = '<svg width="26" height="27" viewBox="0 0 26 27" fill="none"><rect width="26" height="27" rx="13" fill="#ECECEC"/><path d="M10.9355 9.36719L15.074 13.496L10.9355 17.6248" stroke-width="1.09673" stroke-linecap="round" stroke="#A8A8A8"/></svg>';
+    function renderCal(anim){
+      const start = new Date(Y, cm, 1).getDay(), days = new Date(Y, cm + 1, 0).getDate(), data = CAL[cm] || {};
+      let g = '', sum = 0;
+      for (let k = 0; k < 42; k++) {
+        const d = k - start + 1;
+        if (d < 1 || d > days) { g += '<i class="o"></i>'; continue; }
+        const n = data[d];
+        if (n) { sum += n; g += '<i class="b" title="' + MON[cm].slice(0, 3) + ' ' + d + ' · ' + n + ' scenes"><b>' + n + '</b></i>'; }
+        else g += '<i title="' + MON[cm].slice(0, 3) + ' ' + d + '"></i>';
+      }
+      const el = $('#mcD'); el.innerHTML = g;
+      if (anim) { el.classList.remove('sw'); void el.offsetWidth; el.classList.add('sw'); }
+      $('#mcMon').textContent = MON[cm]; $('#mcCnt').textContent = sum;
+      const pv = $('#mcPrev'), nx = $('#mcNext');
+      pv.disabled = cm <= MIN_M; nx.disabled = cm >= MAX_M;
+      pv.innerHTML = pv.disabled ? PREV_OFF : PREV_ON; nx.innerHTML = nx.disabled ? NEXT_OFF : NEXT_ON;
+    }
+    $('#mcPrev').addEventListener('click', () => { if (cm > MIN_M) { cm--; renderCal(true); } });
+    $('#mcNext').addEventListener('click', () => { if (cm < MAX_M) { cm++; renderCal(true); } });
+    renderCal(false);
+
+    // links
+    document.querySelectorAll('[data-mgo]').forEach(b => b.addEventListener('click', () => go(b.dataset.mgo)));
+    $('#mToArch').addEventListener('click', () => go('arch'));
+    const av = document.querySelector('#top .avatar'); if (av) { av.style.cursor = 'pointer'; av.addEventListener('click', () => go('mypage')); }
+  })();
+
   // dev hook: open a screen directly with #chat-demo / #popup-demo / #summary
   function demo(){
     const h = location.hash.slice(1);
@@ -1847,6 +2156,7 @@ h3.gh:first-child{text-transform:capitalize}
     else if (h === 'archive') { go('arch'); }
     else if (h === 'goal') { [8, 0, 3, 7].forEach(i => picked.add(i)); syncSel(); go('goal'); }
     else if (h === 'identity') { go('ident'); }
+    else if (h === 'mypage') { go('mypage'); }
     else if (h === 'create') { go('create'); }
     else if (h === 'create-result') { startCreateChat('I want to create a LinkedIn profile based on my identity.'); setTimeout(() => openResult(0), 50); }
     else if (h === 'create-chat') { startCreateChat('I want to create a LinkedIn profile based on my identity.'); }
