@@ -1701,15 +1701,15 @@ h3.gh:first-child{text-transform:capitalize}
   const RES = [
     { t: 'Calm Communicator', bio: 'I excel at organizing complex information and conveying key points clearly. I help teams align by structuring issues and connecting necessary content ...',
       how: 'This introduction was shaped by your repeated pattern of organizing ideas and making team direction clearer.',
-      ids: [['Calm opinion sharer', '62%', 185], ['Clear flow maker', '24%', 74], ['Convincing speaker', '14%', 45]],
+      ids: [['Calm opinion sharer', 61], ['Clear flow maker', 24], ['Convincing speaker', 15]],
       art: { src: 'img/ra-1.jpg', l: -16, t: -72, w: 528, h: 408 } },
     { t: 'Clear Organizer', bio: 'I organize complex ideas into clear structures, highlight key points, and help others follow the flow without losing the original intent.',
       how: 'You repeatedly structure your thoughts and keep the main point clear before adding details.',
-      ids: [['Clear flow maker', '24%', 194], ['Convincing speaker', '14%', 93], ['Calm opinion sharer', '62%', 68]],
+      ids: [['Clear flow maker', 55], ['Convincing speaker', 26], ['Calm opinion sharer', 19]],
       art: { src: 'img/ra-2.jpg', l: -200, t: -32, w: 905, h: 371 } },
     { t: 'Thoughtful Persuader', bio: 'I communicate my perspective clearly, support it with relevant reasons, and adapt my explanation without losing the main point.',
       how: 'You repeatedly state your position, add supporting context, and adjust your explanation based on others’ responses.',
-      ids: [['Convincing speaker', '14%', 171], ['Calm opinion sharer', '62%', 133], ['Clear flow maker', '24%', 74]],
+      ids: [['Convincing speaker', 45], ['Calm opinion sharer', 35], ['Clear flow maker', 20]],
       art: { src: 'img/ra-3.jpg', l: -8, t: -48, w: 517, h: 399 } }
   ];
   const rov = $('#rov'); let rIdx = 0;
@@ -1728,12 +1728,12 @@ h3.gh:first-child{text-transform:capitalize}
       '<div class="rbc"><img class="art" src="' + r.art.src + '" alt="" style="left:' + r.art.l + 'px;top:' + r.art.t + 'px;width:' + r.art.w + 'px;height:' + r.art.h + 'px"><div class="in">' + BAN_ICON + '<div class="racts"><button data-a="copy-img" aria-label="Copy banner">' + RCOPY + '</button><button data-a="dl-img" aria-label="Download banner">' + RDL + '</button></div></div></div>' +
       '<aside class="rpn"><h3>' + r.t.toLowerCase() + '</h3><div class="grp">' +
         '<div class="how"><p class="rlbl">How it shaped this result</p><div class="bx"><span>' + esc(r.how) + '</span></div></div>' +
-        '<div class="ids"><p class="rlbl">Used Identity</p><div class="idl">' + r.ids.map(([n, pc, w]) => { const c = ID_COL[n];
-          return '<div class="idi"><div class="rw"><span class="nm"><span class="idg" style="--c1:' + c[0] + ';--c2:' + c[1] + '"><i></i>' + ID_GLYPH + '</span><span>' + n + '</span></span><span class="ipc">' + pc + '</span></div><div class="bar"><i data-w="' + w + '"></i></div></div>'; }).join('') + '</div></div>' +
+        '<div class="ids"><p class="rlbl">Used Identity</p><div class="idl">' + r.ids.map(([n, pc]) => { const c = ID_COL[n];
+          return '<div class="idi"><div class="rw"><span class="nm"><span class="idg" style="--c1:' + c[0] + ';--c2:' + c[1] + '"><i></i>' + ID_GLYPH + '</span><span>' + n + '</span></span><span class="ipc">' + pc + '%</span></div><div class="bar"><i data-w="' + pc + '"></i></div></div>'; }).join('') + '</div></div>' +
         '<div class="evd"><p class="rlbl">Evidence used</p><div class="bx"><div class="evth">' + [1, 2, 3, 4].map(k => '<img src="img/ev' + (i + 1) + '-' + k + '.jpg" alt="">').join('') + '</div><div class="tg"><span>4 scene records</span><span>2 repeated actions</span></div></div></div>' +
       '</div></aside>';
     if (dir) { st.style.setProperty('--dx', (dir > 0 ? 14 : -14) + 'px'); st.classList.remove('sw'); void st.offsetWidth; st.classList.add('sw'); }
-    requestAnimationFrame(() => requestAnimationFrame(() => st.querySelectorAll('.bar i').forEach(b => { b.style.width = b.dataset.w + 'px'; })));
+    requestAnimationFrame(() => requestAnimationFrame(() => st.querySelectorAll('.bar i').forEach(b => { b.style.width = b.dataset.w + '%'; })));
     $('#rprev').disabled = i === 0; $('#rnext').disabled = i === RES.length - 1;
     $('#rprev').innerHTML = ARR(-1, i === 0); $('#rnext').innerHTML = ARR(1, i === RES.length - 1);
   }
