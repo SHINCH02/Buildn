@@ -22,7 +22,7 @@
 | `#archive` | 아카이브 |
 | `#archive-detail` | 아카이브 상세 |
 | `#goal` | Goal |
-| `#identity` | Identity (준비 중) |
+| `#identity` | Identity (근거 그래프 · History 필터) |
 | `#create` | Create |
 | `#create-chat` | Create 채팅 (LinkedIn Profile) |
 | `#create-result` | Create 결과 상세 |
