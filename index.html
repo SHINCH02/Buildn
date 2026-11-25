@@ -44,7 +44,7 @@ input{font:inherit;border:0;outline:0;background:none;color:inherit}
 /* header */
 #logo{position:absolute;left:59.8px;top:64.85px;width:126px;height:25px;cursor:pointer;transition:opacity .2s}
 #logo:hover{opacity:.75}
-#logo,#back,#fwd,#skip,.prog{z-index:3}
+#logo,#back,#fwd,.prog{z-index:3}
 #back{position:absolute;left:526px;top:65px;width:28px;height:32px;display:flex;align-items:center;justify-content:center}
 #back svg{position:relative;left:-1.1px;top:0}
 #back[disabled]{cursor:default}
@@ -53,13 +53,6 @@ input{font:inherit;border:0;outline:0;background:none;color:inherit}
 #fwd svg{position:relative;left:.25px;top:0}
 #fwd[disabled]{cursor:default}
 #back:not([disabled]):hover path,#fwd:not([disabled]):hover path{stroke:#444}
-#skip{position:absolute;left:1793px;top:1005px;padding:4px;display:flex;align-items:center;gap:12px;border-radius:8px}
-#skip svg{display:block;flex:none}
-#skip span{display:block;font-size:20px;font-weight:500;color:var(--ink);--ls:-0.03em;letter-spacing:-0.03em;line-height:28px;text-transform:capitalize;text-box:trim-both cap alphabetic}
-#skip:hover span{color:#2a2a2a}
-#skip:hover svg path{fill:#2a2a2a}
-#skip{display:none}
-#stage[data-s=home] #skip,#stage[data-s=chat] #skip,#stage[data-s=sum] #skip,#stage[data-s=ifs] #skip,#stage[data-s=fin] #skip{display:flex}
 .prog{position:absolute;left:1096.13px;top:70px;display:flex;align-items:center;gap:18px}
 .bars{display:flex;gap:4px}.bars i{display:block;width:55px;height:4px;border-radius:10px;background:var(--line)}.bars i.f{background:var(--ink)}
 .pnum{display:flex;gap:4px;font-size:14px;font-weight:500;line-height:1.5;--ls:-0.02em;letter-spacing:-0.02em;white-space:nowrap}
@@ -724,7 +717,9 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
 .mgo{width:41px;height:41px;border-radius:50%;flex:none;display:block;transition:filter .15s}
 .mgo svg{display:block}
 .mgo:hover{filter:brightness(.95)}
-.mgoal{padding:26px 26px 36px;display:flex;flex-direction:column;gap:45px}
+.mgoal{height:318px;padding:26px 16px 36px;display:flex;flex-direction:column;gap:45px}
+.mgoal .mhd{padding:0 8px}
+.mgoal .mgls{padding:0 8px}
 .mgls{display:flex;flex-direction:column;gap:34px}
 .mgl{display:flex;flex-direction:column;gap:20px;align-items:flex-start;text-align:left}
 .mgl h4{font-size:20px;font-weight:500;color:var(--ink);--ls:-0.02em;letter-spacing:-0.02em;line-height:1.14;text-shadow:6px 6px 20px rgba(0,0,0,.11)}
@@ -733,13 +728,13 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
 .mstep .sq{display:flex;gap:4px}.mstep .sq i{display:block;width:16px;height:16px;border-radius:2px;background:#ececec}.mstep .sq i.f{background:var(--sky)}
 .mstep span{font-size:13px;font-weight:500;color:#a8a8a8;--ls:-0.03em;letter-spacing:-0.03em;line-height:1.5}
 .mdiv{height:0;border-top:.5px solid #ececec;width:100%}
-.mreflow{padding:26px;display:flex;flex-direction:column;gap:13px}
+.mreflow{height:318px;padding:26px 16px 16px;display:flex;flex-direction:column;justify-content:space-between;gap:13px}
 .mreflow .mhd{padding:0 8px}
 .mrf{display:flex;flex-direction:column;gap:14px}
 .mrfr{display:flex;align-items:center;gap:18px}
 .mrfb{flex:none;width:235px;border-radius:12px;padding:16px 20px;display:flex;flex-direction:column;gap:28px;align-items:flex-start}
-.mrfb.bf{border:1px dashed #ececec;width:229.21px}
-.mrfb.af{width:227.21px}
+.mrfb.bf{border:1px dashed #ececec;width:239.21px}
+.mrfb.af{width:237.21px}
 .mrfb.af{background:#f6f8fa}
 .mrfb p{font-size:16px;font-weight:500;--ls:-0.03em;letter-spacing:-0.03em;line-height:1.4;color:#a1a1a1}
 .mrfb.af p{color:var(--ink)}
@@ -1068,7 +1063,6 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
   <img id="logo" src="logo.svg" alt="buildn">
   <button id="back" aria-label="Back"><svg width="8" height="14" viewBox="0 0 8 14" fill="none"><path d="M7.06055 0.75L1.06055 6.75L7.06055 12.75" stroke-width="1.5" stroke-linecap="round" stroke="#C7C7C7"/></svg></button>
   <button id="fwd" aria-label="Next" disabled><svg width="8" height="14" viewBox="0 0 8 14" fill="none"><path d="M0.75 12.75L6.75 6.75L0.750001 0.749999" stroke-width="1.5" stroke-linecap="round" stroke="#646464"/></svg></button>
-  <button id="skip" type="button"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M14 7.70703L3.5 13.7692L3.5 1.64485L14 7.70703Z" fill="#444444"/></svg><span>Skip</span></button>
   <div class="prog"><div class="bars"><i></i><i></i><i></i><i></i></div><div class="pnum"><span id="pn">1</span><span>/ </span><span>4</span></div></div>
 
   <div id="top">
@@ -1816,7 +1810,7 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
     i1.value = ''; go('home'); setTimeout(() => i1.focus(), 50);
   });
   $('.gaddif').addEventListener('click', () => { ifRet = 'goal'; go('ifs'); });
-  // onboarding: forward (only to a step already reached) + skip straight to the main home
+  // onboarding: forward (only to a step already reached)
   $('#fwd').addEventListener('click', () => {
     const oi = OB.indexOf(screen); if (oi < 0 || oi >= obFar) return;
     const nx = OB[oi + 1];
@@ -1834,12 +1828,6 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
   });
   $('#logo').setAttribute('role', 'link'); $('#logo').setAttribute('tabindex', '0');
   $('#logo').addEventListener('keydown', e => { if (e.key === 'Enter') $('#logo').click(); });
-  $('#skip').addEventListener('click', () => {
-    clearTimers(); busy = false; closePop(); ifRet = null;
-    if (!picked.size) { [8, 0, 3, 7].forEach(i => picked.add(i)); syncSel(); }
-    go('main'); renderHome();
-    const v = $('#main .vid'); try { v.currentTime = 0; const pr = v.play(); if (pr) pr.catch(() => {}); } catch (e) {}
-  });
   addEventListener('keydown', e => { if (e.key === 'Escape' && ov.classList.contains('on')) { closePop(); phase = 'extra'; i2.focus(); } });
 
 
