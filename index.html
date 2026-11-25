@@ -3326,7 +3326,7 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
   $('#seThLab').innerHTML = ICO_THEN + '<span>Then</span>';
   document.querySelectorAll('.setile').forEach(t => t.addEventListener('click', () => {
     const st = seState(SE.list[SE.pg]); if (st.s === t.dataset.st) return;
-    st.s = t.dataset.st; st.on = new Set(ST[st.s].def); seRender(true);
+    st.s = t.dataset.st; seRender(true);   // keep the user's checked THEN actions across styles
   }));
   $('#seBefore').addEventListener('click', e => {
     const b = e.target.closest('.sebf'); if (!b) return;
