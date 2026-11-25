@@ -25,6 +25,7 @@
 | `#style-explore` | Style explore |
 | `#identity` | Identity (근거 그래프 · History 필터) |
 | `#create` | Create |
+| `#create-history` | Create History |
 | `#create-chat` | Create 채팅 (LinkedIn Profile) |
 | `#create-result` | Create 결과 상세 |
 | `#mypage` | My page |
