@@ -300,7 +300,11 @@ input{font:inherit;border:0;outline:0;background:none;color:inherit}
 .rr-s{padding:0 8px;display:flex;flex-direction:column;gap:21px}
 .rr-s h4{font-size:22px;font-weight:500;color:var(--ink);text-shadow:6px 6px 20px rgba(0,0,0,.11)}
 .rr-s p{font-size:15px;font-weight:500;color:var(--g3)}
-.rr-img{position:absolute;left:1528px;top:813px;width:276px;height:197px}
+.rr-img{position:absolute;left:1528px;top:813px;width:276px;height:197px;pointer-events:none;transition:transform .35s cubic-bezier(.22,1,.36,1)}
+#rrc:hover+.rr-img{transform:translateY(-3px)}
+.hcard.lnk{cursor:pointer;transition:border-color .2s,box-shadow .25s}
+.hcard.lnk:hover{border-color:#dedede;box-shadow:0 8px 24px rgba(0,0,0,.045)}
+.hcard.lnk .mpat,.hcard.lnk .mcm button{cursor:pointer}
 .car{position:absolute;top:532px;width:36px;height:36px;display:block}
 .arch{position:absolute;left:928px;top:984.72px;width:64px;display:flex;flex-direction:column;align-items:center;gap:11px}
 .arch span{font-family:var(--pp);font-weight:500;font-size:18px;--ls:-0.03em;letter-spacing:-0.03em;line-height:1.3;color:var(--ink);text-transform:capitalize}
@@ -1187,7 +1191,7 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
     </div>
 
     <div class="hcard" id="rrc">
-      <h3>Recent record</h3>
+      <h3>Recent creation</h3>
       <div class="rr-s pt"><h4 class="trim">LinkedIn summary</h4><p class="trim">Created with 2 identities</p></div>
     </div>
     <img class="rr-img" src="img/preview.png" alt="">
@@ -1609,12 +1613,12 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
     });
     const idx = items.findIndex(b => b.dataset.k === k);
     NAV.classList.toggle('has', idx >= 0);
-    if (idx < 0) return;
-    const sum = widths.reduce((a, b) => a + b, 0);
-    const gap = Math.min(NAV_GAP, (NAV_W - 8 - sum) / (items.length - 1));
-    NAV.style.gap = gap + 'px';
-    const total = sum + gap * (items.length - 1);
-    let x = (NAV_W - total) / 2; for (let i = 0; i < idx; i++) x += widths[i] + gap;
+    if (idx < 0) { items.forEach(b => { b.style.width = ''; }); NAV.style.gap = ''; NAV.style.justifyContent = ''; return; }
+    // same gap on every side of the pill: padding = (inner height - pill height) / 2, the other icons share what is left
+    const pad = (51.538 - 0.646 * 2 - 41) / 2, slot = (NAV_W - pad * 2 - widths[idx]) / (items.length - 1);
+    NAV.style.gap = '0px'; NAV.style.justifyContent = 'flex-start'; NAV.style.paddingLeft = pad + 'px';
+    let x = pad;
+    items.forEach((b, i) => { const w = i === idx ? widths[idx] : slot; b.style.width = w + 'px'; if (i < idx) x += w; });
     const pill = NAV.querySelector('.pill'); pill.style.left = x + 'px'; pill.style.width = widths[idx] + 'px';
   }
   requestAnimationFrame(() => requestAnimationFrame(() => NAV.classList.add('anim')));
@@ -2681,6 +2685,11 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
   $('#seBack').addEventListener('click', () => go('goal'));
   $('.gse').addEventListener('click', openStyle);
 
+  // home cards open their pages (inner controls keep their own clicks)
+  [['ogc', 'goal'], ['ipc', 'ident'], ['calc', 'mypage'], ['rrc', 'create']].forEach(([id, to]) => {
+    const c = document.getElementById(id); c.classList.add('lnk');
+    c.addEventListener('click', e => { if (e.composedPath().some(n => n.matches && n.matches('.mpat, .mcm button'))) return; go(to); });
+  });
   // dev hook: open a screen directly with #chat-demo / #popup-demo / #summary
   function demo(){
     const h = location.hash.slice(1);
