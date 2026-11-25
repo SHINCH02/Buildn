@@ -31,7 +31,7 @@
 | `#mypage` | My page |
 | `#photobooth` | Photo booth (bell): 알림 → 3·2·1 → 자동 저장 |
 | `#photobooth-result` | 촬영 결과 + QR (사진 임시 업로드) |
-| `#gallery` | Card List (촬영 사진 갤러리) |
+| `#gallery` | Card List (촬영 사진 갤러리, Edit 비밀번호로 이름 수정·삭제) |
 
 ## 구성
 

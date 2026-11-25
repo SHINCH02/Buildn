@@ -249,9 +249,9 @@ input{font:inherit;border:0;outline:0;background:none;color:inherit}
 .nav svg{display:block}
 #top{display:none;position:absolute;inset:0 0 auto 0;height:0;z-index:20}
 #stage[data-s=main] #top,#stage[data-s=arch] #top,#stage[data-s=adet] #top,#stage[data-s=goal] #top,#stage[data-s=ident] #top,#stage[data-s=create] #top,#stage[data-s=cchat] #top,#stage[data-s=mypage] #top{display:block}
-.bell{position:absolute;left:1735.62px;top:50.37px;width:54.062px;height:54.062px;border-radius:50%;background:#fff;border:1.06px solid #ebebeb;display:flex;align-items:center;justify-content:center}
+.bell{position:absolute;left:1744px;top:52.36px;width:48.64px;height:48.64px;border-radius:50%;background:#fff;border:.95px solid #ebebeb;display:flex;align-items:center;justify-content:center}
 .bdot{position:absolute;left:1774.48px;top:50.01px;width:16.613px;height:16.613px;border-radius:50%;background:#ff5959;border:1.06px solid #fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;color:#fff;line-height:1}
-.avatar{position:absolute;left:1805.94px;top:50.18px;width:54.062px;height:54.062px;border-radius:50%;border:1.078px solid #ebebeb;overflow:hidden;background:#fff}
+.avatar{position:absolute;left:1799.36px;top:52.19px;width:48.64px;height:48.64px;border-radius:50%;border:.97px solid #ebebeb;overflow:hidden;background:#fff}
 .avatar img{display:block;width:100%;height:100%;object-fit:cover}
 .hcard{position:absolute;width:389px;background:#fff;border:1px solid #ececec;border-radius:22px;padding:25px 16px 16px;display:flex;flex-direction:column}
 .hcard h3{padding:0 8px;font-family:var(--pp);font-weight:500;font-size:18px;--ls:-0.03em;letter-spacing:-0.03em;line-height:23px;color:var(--ink);text-transform:capitalize}
@@ -1184,6 +1184,48 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
 .glcd .gdt{margin:17px 8px 0;font-family:var(--pt);font-size:14px;line-height:1.3;color:#a9a9a9;--ls:-0.03em;letter-spacing:-0.03em;text-box:trim-both cap alphabetic}
 .glcd.new{animation:glnew .6s cubic-bezier(.22,1,.36,1)}
 @keyframes glnew{0%{opacity:0;transform:translateY(12px)}100%{opacity:1;transform:none}}
+
+/* gallery edit */
+.gled{position:absolute;left:1661px;top:338px;width:88px;height:34px;border-radius:6px;background:#fbfbfb;box-shadow:inset 0 0 0 1px #e1e1e1;display:flex;align-items:center;justify-content:center;gap:6px;
+  font-family:var(--pt);font-weight:500;font-size:15px;color:#7a7a7a;--ls:-0.03em;letter-spacing:-0.03em;transition:background .15s,color .15s}
+.gled:hover{background:#f1f2f4}
+#gal.edit .gled{background:var(--ink);color:#fff;box-shadow:none}
+#gal.edit .gled svg{display:none}
+.glem{position:absolute;left:169px;top:402px;width:1580px;height:204px;border-radius:12.5px;box-shadow:inset 0 0 0 1px #ececec;display:none;align-items:center;justify-content:center;text-align:center;
+  font-family:var(--pt);font-size:16px;line-height:1.6;color:#a8a8a8}
+#gal.empty .glem{display:flex}
+#gal.empty .gled{display:none}
+.glcd .gdel{position:absolute;right:12px;top:12px;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.92);box-shadow:0 2px 8px rgba(0,0,0,.12);display:none;align-items:center;justify-content:center;transition:transform .15s,background .15s}
+.glcd .gdel:hover{background:#fff;transform:scale(1.06)}
+#gal.edit .glcd .gdel{display:flex}
+#gal.edit .glcd{cursor:default!important}
+#gal.edit .glcd .gim{animation:glwig .3s ease}
+@keyframes glwig{0%{transform:scale(.985)}100%{transform:none}}
+#gal.edit .glcd .gti{text-box:none;margin:12px 0 0;padding:4px 8px;line-height:1.3;border-radius:6px;box-shadow:inset 0 0 0 1px #e1e1e1;background:#fff;outline:none;cursor:text}
+#gal.edit .glcd .gti:focus{box-shadow:inset 0 0 0 1.5px #6bc8ff}
+#gal.edit .glcd .gdt{margin-top:12px}
+.glcd.bye{transition:opacity .3s,transform .3s;opacity:0;transform:scale(.96)}
+.glpw{position:absolute;inset:0;z-index:40;background:rgba(40,44,50,.28);display:none;align-items:center;justify-content:center}
+.glpw.on{display:flex;animation:glfade .2s ease}
+@keyframes glfade{from{opacity:0}to{opacity:1}}
+.glpb{width:400px;background:#fff;border-radius:16px;padding:32px 28px 24px;display:flex;flex-direction:column;align-items:center;box-shadow:0 10px 26px rgba(20,40,70,.12);font-family:var(--pt)}
+.glpt{font-weight:600;font-size:20px;color:#444}
+.glps{margin-top:8px;font-size:15px;color:#999;text-align:center}
+.glpb input{margin-top:22px;width:220px;height:52px;border:1px solid #e1e1e1;border-radius:12px;text-align:center;font-family:var(--pp);font-size:22px;letter-spacing:.4em;padding-left:.4em;color:#444;outline:none;transition:border-color .15s}
+.glpb input:focus{border-color:#6bc8ff}
+.glpb.err input{border-color:#ff8a8a;animation:glshake .35s}
+@keyframes glshake{20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
+.glpe{min-height:20px;margin-top:8px;font-size:13px;color:#ff6b6b}
+.glpa{margin-top:10px;display:flex;gap:8px;width:100%}
+.glpa button{flex:1;height:42px;border-radius:8px;font-family:var(--pt);font-weight:500;font-size:15px}
+.glpc{background:#f1f2f4;color:#767676}
+.glpo{background:var(--ink);color:#fff}
+.glpo:hover{background:#2f2f2f}
+
+.bbk{left:62px;top:176px}
+#booth .bvg{position:absolute;left:1394px;top:816px;width:122px;height:35px;border-radius:8px;background:var(--ink);display:flex;align-items:center;justify-content:center;gap:5px;
+  font-family:var(--pt);font-weight:500;font-size:15px;color:#fff;--ls:-0.03em;letter-spacing:-0.03em;transition:background .15s}
+#booth .bvg:hover{background:#2f2f2f}
 </style>
 </head>
 <body>
@@ -1215,8 +1257,7 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
       <button class="it" data-k="pen" aria-label="Create"><span class="ic"><span class="d"><svg width="19" height="19" viewBox="0 0 19 19" fill="none"><path d="M2.64066 15.4647C3.267 16.0911 4.2782 16.0911 4.90454 15.4647L14.7147 5.65454C15.3411 5.0282 15.3411 4.017 14.7147 3.39066C14.0884 2.76431 13.0772 2.76431 12.4508 3.39066L2.64066 13.2008C2.01431 13.8272 2.01431 14.8384 2.64066 15.4647Z" fill="#3F3F3F" stroke-width="1.35834" stroke-linecap="round" stroke-linejoin="round" stroke="#3F3F3F"/><path d="M13.591 6.77854L11.3271 4.51465" stroke-width="1.35834" stroke-linecap="square" stroke-linejoin="round" stroke="white"/><path d="M6.4171 1.83716L7.54905 1.50513L7.21701 2.63707L7.54905 3.76902L6.4171 3.43698L5.28516 3.76902L5.61719 2.63707L5.28516 1.50513L6.4171 1.83716Z" stroke-width="0.905557" stroke-linecap="round" stroke-linejoin="round" stroke="#3F3F3F"/><path d="M3.39757 6.36329L4.52951 6.03125L4.19748 7.16319L4.52951 8.29514L3.39757 7.9631L2.26562 8.29514L2.59766 7.16319L2.26562 6.03125L3.39757 6.36329Z" stroke-width="0.905557" stroke-linecap="round" stroke-linejoin="round" stroke="#3F3F3F"/><path d="M14.715 10.136L15.8469 9.80396L15.5149 10.9359L15.8469 12.0678L14.715 11.7358L13.583 12.0678L13.915 10.9359L13.583 9.80396L14.715 10.136Z" stroke-width="0.905557" stroke-linecap="round" stroke-linejoin="round" stroke="#3F3F3F"/></svg></span><span class="g"><svg width="19" height="19" viewBox="0 0 19 19" fill="none"><path d="M2.64066 15.4647C3.267 16.0911 4.2782 16.0911 4.90454 15.4647L14.7147 5.65454C15.3411 5.0282 15.3411 4.017 14.7147 3.39066C14.0884 2.76431 13.0772 2.76431 12.4508 3.39066L2.64066 13.2008C2.01431 13.8272 2.01431 14.8384 2.64066 15.4647Z" fill="#CECECE" stroke-width="1.35834" stroke-linecap="round" stroke-linejoin="round" stroke="#CECECE"/><path d="M13.591 6.77854L11.3271 4.51465" stroke-width="1.35834" stroke-linecap="square" stroke-linejoin="round" stroke="white"/><path d="M6.4171 1.83716L7.54905 1.50513L7.21701 2.63707L7.54905 3.76902L6.4171 3.43698L5.28516 3.76902L5.61719 2.63707L5.28516 1.50513L6.4171 1.83716Z" stroke-width="0.905557" stroke-linecap="round" stroke-linejoin="round" stroke="#CECECE"/><path d="M3.39757 6.36329L4.52951 6.03125L4.19748 7.16319L4.52951 8.29514L3.39757 7.9631L2.26562 8.29514L2.59766 7.16319L2.26562 6.03125L3.39757 6.36329Z" stroke-width="0.905557" stroke-linecap="round" stroke-linejoin="round" stroke="#CECECE"/><path d="M14.715 10.136L15.8469 9.80396L15.5149 10.9359L15.8469 12.0678L14.715 11.7358L13.583 12.0678L13.915 10.9359L13.583 9.80396L14.715 10.136Z" stroke-width="0.905557" stroke-linecap="round" stroke-linejoin="round" stroke="#CECECE"/></svg></span></span><b class="trim">Create</b></button>
       <button class="it" data-k="prof" aria-label="My page"><span class="ic"><span class="d"><svg width="19" height="19" viewBox="0 0 19 19" fill="none"><path d="M9.09053 16.6686C13.2746 16.6686 16.6664 13.2769 16.6664 9.09298C16.6664 4.90907 13.2746 1.51733 9.09053 1.51733C4.90649 1.51733 1.51465 4.90907 1.51465 9.09298C1.51465 13.2769 4.90649 16.6686 9.09053 16.6686Z" fill="#3F3F3F" stroke-width="1.23969" stroke-linecap="round" stroke-linejoin="round" stroke="#3F3F3F"/><path d="M9.18512 10.7001C9.12788 10.6919 9.0543 10.6919 8.98889 10.7001C7.54991 10.651 6.40527 9.47373 6.40527 8.02662C6.40527 6.54681 7.59897 5.34497 9.087 5.34497C10.5669 5.34497 11.7687 6.54681 11.7687 8.02662C11.7606 9.47373 10.6241 10.651 9.18512 10.7001Z" fill="white"/><path d="M14.1957 14.682C12.8472 15.9168 11.0593 16.6668 9.08954 16.6668C7.11981 16.6668 5.3319 15.9168 3.9834 14.682C4.05916 13.9698 4.51371 13.2729 5.32433 12.7274C7.40012 11.3487 10.7941 11.3487 12.8548 12.7274C13.6654 13.2729 14.1199 13.9698 14.1957 14.682Z" fill="white" stroke-width="1.23969" stroke-linecap="round" stroke-linejoin="round" stroke="#3F3F3F"/></svg></span><span class="g"><svg width="19" height="19" viewBox="0 0 19 19" fill="none"><path d="M9.09053 16.6686C13.2746 16.6686 16.6664 13.2769 16.6664 9.09298C16.6664 4.90907 13.2746 1.51733 9.09053 1.51733C4.90649 1.51733 1.51465 4.90907 1.51465 9.09298C1.51465 13.2769 4.90649 16.6686 9.09053 16.6686Z" fill="#CECECE" stroke-width="1.23969" stroke-linecap="round" stroke-linejoin="round" stroke="#CECECE"/><path d="M9.18512 10.7001C9.12788 10.6919 9.0543 10.6919 8.98889 10.7001C7.54991 10.651 6.40527 9.47373 6.40527 8.02662C6.40527 6.54681 7.59897 5.34497 9.087 5.34497C10.5669 5.34497 11.7687 6.54681 11.7687 8.02662C11.7606 9.47373 10.6241 10.651 9.18512 10.7001Z" fill="white"/><path d="M14.1957 14.682C12.8472 15.9168 11.0593 16.6668 9.08954 16.6668C7.11981 16.6668 5.3319 15.9168 3.9834 14.682C4.05916 13.9698 4.51371 13.2729 5.32433 12.7274C7.40012 11.3487 10.7941 11.3487 12.8548 12.7274C13.6654 13.2729 14.1199 13.9698 14.1957 14.682Z" fill="white" stroke-width="1.23969" stroke-linecap="round" stroke-linejoin="round" stroke="#CECECE"/></svg></span></span><b class="trim">My page</b></button>
     </nav>
-    <div class="bell"><svg width="23.321" height="23.321" viewBox="0 0 24 24" fill="none"><path d="M9.71303 20.4027H13.5998M17.4866 7.77063C17.4866 6.22437 16.8724 4.74143 15.779 3.64806C14.6856 2.55468 13.2027 1.94043 11.6564 1.94043C10.1102 1.94043 8.62723 2.55468 7.53386 3.64806C6.44048 4.74143 5.82623 6.22437 5.82623 7.77063C5.82623 14.5725 2.91113 14.5725 2.91113 16.5159H20.4017C20.4017 14.5725 17.4866 14.5725 17.4866 7.77063Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="#62676C"/></svg></div>
-    <div class="bdot pt">1</div>
+    <div class="bell"><svg width="20.39" height="18.69" viewBox="0 0 21 19" fill="none" aria-hidden="true"><path d="M15.2908 10.1938C15.2908 11.5456 14.7538 12.8421 13.7979 13.7979C12.8421 14.7538 11.5456 15.2908 10.1938 15.2908C8.84206 15.2908 7.54564 14.7538 6.58978 13.7979C5.63392 12.8421 5.09692 11.5456 5.09692 10.1938C5.09692 8.84206 5.63392 7.54564 6.58978 6.58978C7.54564 5.63392 8.84206 5.09692 10.1938 5.09692C11.5456 5.09692 12.8421 5.63392 13.7979 6.58978C14.7538 7.54564 15.2908 8.84206 15.2908 10.1938ZM13.5918 10.1938C13.5918 9.29265 13.2338 8.42837 12.5966 7.79113C11.9593 7.1539 11.095 6.7959 10.1938 6.7959C9.29265 6.7959 8.42837 7.1539 7.79113 7.79113C7.1539 8.42837 6.7959 9.29265 6.7959 10.1938C6.7959 11.095 7.1539 11.9593 7.79113 12.5966C8.42837 13.2338 9.29265 13.5918 10.1938 13.5918C11.095 13.5918 11.9593 13.2338 12.5966 12.5966C13.2338 11.9593 13.5918 11.095 13.5918 10.1938ZM7.84586 0C7.37233 1.59959e-05 6.90817 0.131964 6.50545 0.381043C6.10272 0.630122 5.77735 0.986481 5.56584 1.41015L4.57194 3.39795H3.39795C2.49676 3.39795 1.63248 3.75595 0.995236 4.39319C0.357997 5.03042 0 5.89471 0 6.7959V15.2908C0 16.192 0.357997 17.0562 0.995236 17.6935C1.63248 18.3307 2.49676 18.6887 3.39795 18.6887H16.9897C17.8909 18.6887 18.7552 18.3307 19.3925 17.6935C20.0297 17.0562 20.3877 16.192 20.3877 15.2908V6.7959C20.3877 5.89471 20.0297 5.03042 19.3925 4.39319C18.7552 3.75595 17.8909 3.39795 16.9897 3.39795H15.8158L14.8219 1.41015C14.6103 0.986481 14.285 0.630122 13.8822 0.381043C13.4795 0.131964 13.0154 1.59959e-05 12.5418 0H7.84586ZM7.08642 2.16789C7.15704 2.02697 7.26548 1.90847 7.3996 1.82566C7.53372 1.74284 7.68824 1.69898 7.84586 1.69897H12.5418C12.6995 1.69898 12.854 1.74284 12.9881 1.82566C13.1222 1.90847 13.2307 2.02697 13.3013 2.16789L14.5313 4.62801C14.6019 4.76893 14.7104 4.88743 14.8445 4.97024C14.9786 5.05306 15.1331 5.09692 15.2908 5.09692H16.9897C17.4403 5.09692 17.8725 5.27592 18.1911 5.59454C18.5097 5.91316 18.6887 6.3453 18.6887 6.7959V15.2908C18.6887 15.7414 18.5097 16.1735 18.1911 16.4921C17.8725 16.8107 17.4403 16.9897 16.9897 16.9897H3.39795C2.94735 16.9897 2.51521 16.8107 2.19659 16.4921C1.87797 16.1735 1.69897 15.7414 1.69897 15.2908V6.7959C1.69897 6.3453 1.87797 5.91316 2.19659 5.59454C2.51521 5.27592 2.94735 5.09692 3.39795 5.09692H5.09692C5.25455 5.09692 5.40907 5.05306 5.54319 4.97024C5.67731 4.88743 5.78575 4.76893 5.85637 4.62801L7.08642 2.16789Z" fill="#62676C"/></svg></div>
     <div class="avatar"><img src="img/profile.jpg" alt="Profile"></div>
   </div>
 
@@ -1574,7 +1615,9 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
       <div class="btst" id="btst" role="status" aria-live="polite"><i class="bgl"></i><i class="bhl"></i>
         <p class="bt1">IF Situation Detected</p><p class="bt2">The photoshoot is coming up soon....</p></div>
     </div>
+    <div class="glback bbk" id="bbk" role="link" tabindex="0"><svg width="7" height="13" viewBox="0 0 7 13" fill="none"><path d="M6 .75 1 6.25l5 5.5" stroke="#444" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Back</span></div>
     <button class="bshot" id="bshot" aria-label="Take photo"></button>
+    <button class="bgb bvg" id="bvg">View gallery <svg width="6" height="10" viewBox="0 0 6 10" fill="none"><path d="M1 1l4 4-4 4" stroke="#fff" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
     <footer class="bft">
       <p class="bct">Contact</p>
       <div class="bpp" style="left:73px"><b>Go Myeongbin</b><span>gaudqls0@gmail.com</span></div>
@@ -1626,8 +1669,19 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
         <span class="gch">Pattern<svg width="14" height="18" viewBox="0 0 14 18" fill="none"><path d="M3 7l4 4 4-4" stroke="#7a7a7a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         <span class="gch">Period<svg width="14" height="18" viewBox="0 0 14 18" fill="none"><path d="M3 7l4 4 4-4" stroke="#7a7a7a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       </div>
+      <button class="gled" id="gled"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M9.6 3.2l3.2 3.2M2.8 13.2l.6-3 7.4-7.4a1.6 1.6 0 0 1 2.3 2.3L5.7 12.5l-2.9.7z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg><span>Edit</span></button>
+      <p class="glem" id="glem">아직 저장된 사진이 없어요.<br>포토부스에서 사진을 찍으면 여기에 모여요.</p>
       <div class="glgr" id="glgr"></div>
     </div></div>
+    <div class="glpw" id="glpw" role="dialog" aria-modal="true" aria-label="Edit password" aria-hidden="true">
+      <form class="glpb" id="glpf" autocomplete="off">
+        <p class="glpt">편집 권한 확인</p>
+        <p class="glps">사진을 수정하거나 삭제하려면 비밀번호를 입력하세요.</p>
+        <input id="glpi" type="password" inputmode="numeric" maxlength="6" placeholder="••••••" aria-label="Password">
+        <p class="glpe" id="glpe"></p>
+        <div class="glpa"><button type="button" class="glpc" id="glpc">취소</button><button type="submit" class="glpo">확인</button></div>
+      </form>
+    </div>
   </section>
   <section class="scr" id="mypage">
     <div id="msc">
@@ -1911,7 +1965,7 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
   const OB = ['home', 'chat', 'sum', 'ifs', 'fin']; let obFar = 0, ifRet = null;
   function go(name){
     screen = name; stage.dataset.s = name;
-    setNav(name === 'main' ? 'home' : (name === 'arch' || name === 'adet' || name === 'gal') ? 'arch' : (name === 'goal' || name === 'sexp' || name === 'booth' || name === 'bres') ? 'flag' : (name === 'create' || name === 'cchat' || name === 'hist') ? 'pen' : (name === 'mypage' || name === 'ident') ? 'prof' : null);
+    setNav((name === 'booth' || name === 'bres' || name === 'gal') ? ((window.BO && window.BO.nav) || 'home') : name === 'main' ? 'home' : (name === 'arch' || name === 'adet') ? 'arch' : (name === 'goal' || name === 'sexp') ? 'flag' : (name === 'create' || name === 'cchat' || name === 'hist') ? 'pen' : (name === 'mypage' || name === 'ident') ? 'prof' : null);
     if (name !== 'create' && name !== 'cchat' && name !== 'hist') lastScreen = name;
     if (name !== 'cchat' && typeof closeResult === 'function') closeResult();
     if (name === 'goal') { if (typeof renderGoal === 'function') renderGoal(); const g = document.getElementById('gsc'); if (g && prevScreen !== 'ident' && prevScreen !== 'goal' && prevScreen !== 'sexp') g.scrollTop = 0; }
@@ -2047,8 +2101,13 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
 
   // photo booth: bell opens it, shutter shows the IF notification
   const bellEl = $('.bell');
-  bellEl.setAttribute('role', 'button'); bellEl.setAttribute('tabindex', '0'); bellEl.setAttribute('aria-label', 'Notifications');
-  bellEl.addEventListener('click', () => { if (screen === 'booth') return; clearTimers(); busy = false; closePop(); go('booth'); });
+  bellEl.setAttribute('role', 'button'); bellEl.setAttribute('tabindex', '0'); bellEl.setAttribute('aria-label', 'Photo booth');
+  bellEl.addEventListener('click', () => {
+    if (screen === 'booth') return;
+    const on = document.querySelector('.nav .it.on');
+    if (window.BO && !['booth', 'bres', 'gal'].includes(screen)) { window.BO.nav = on ? on.dataset.k : null; window.BO.from = screen; }
+    clearTimers(); busy = false; closePop(); go('booth');
+  });
   bellEl.addEventListener('keydown', e => { if (e.key === 'Enter') bellEl.click(); });
   // ---------- photo booth flow: toast → 3·2·1 → capture + auto-saved → result (QR) → gallery ----------
   window.BO = (() => {
@@ -2059,8 +2118,6 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
     const W = 1113.3, H = 601, S = 2;
     const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     const MON = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-    const SAMPLE = ['Dynamic Storytelling Workshop', 'Engaging Storytelling Session', 'Interactive Storytelling Workshop', 'Creative Storytelling Workshop',
-      'Inspiring Storytelling Workshop', 'Inspiring Storytelling Workshop', 'Storytelling Skills Workshop', 'Creative Storytelling Workshop'];
     const GL = [];            // saved photos, newest first
     let stream = null, T = [], cur = null, frameOn = true, back = 'booth';
     const pad = n => String(n).padStart(2, '0');
@@ -2211,33 +2268,84 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
     fr.addEventListener('click', toggleFrame);
     $('#bret').addEventListener('click', () => go('booth'));
     $('#bgal').addEventListener('click', () => { back = 'bres'; go('gal'); });
+    $('#bvg').addEventListener('click', () => { back = 'booth'; go('gal'); });
+    $('#bbk').addEventListener('click', () => go(api.from || 'main'));
+    $('#bbk').addEventListener('keydown', e => { if (e.key === 'Enter') $('#bbk').click(); });
     [fr, $('#bret'), $('#glback')].forEach(el => el.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); el.click(); } }));
 
     // ----- gallery (card list) -----
     function renderGal(){
       const esc2 = t => String(t).replace(/[&<>"]/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[ch]));
-      grid.innerHTML = GL.map((it, i) => '<div class="glcd ph' + (it.fresh ? ' new' : '') + '" data-i="' + i + '" role="button" tabindex="0" style="cursor:pointer"><div class="gim"><img src="' + it.src + '" alt=""></div>'
-        + '<p class="gti">' + esc2(it.name) + '</p><p class="gdt">' + fLong(it.date) + '</p></div>').join('')
-        + SAMPLE.map(t => '<div class="glcd"><div class="gim"></div><p class="gti">' + t + '</p><p class="gdt">July 26, 2012, 3:34 PM</p></div>').join('');
+      const ed = gal.classList.contains('edit');
+      grid.innerHTML = GL.map((it, i) => '<div class="glcd ph' + (it.fresh ? ' new' : '') + '" data-i="' + i + '" role="button" tabindex="0" style="cursor:pointer"><div class="gim"><img src="' + it.src + '" alt="">'
+        + '<button class="gdel" aria-label="Delete photo"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 2l8 8M10 2l-8 8" stroke="#444" stroke-width="1.5" stroke-linecap="round"/></svg></button></div>'
+        + '<p class="gti"' + (ed ? ' contenteditable="plaintext-only" spellcheck="false"' : '') + '>' + esc2(it.name) + '</p><p class="gdt">' + fLong(it.date) + '</p></div>').join('');
       GL.forEach(it => { it.fresh = false; });
+      gal.classList.toggle('empty', !GL.length);
+      if (!GL.length) gal.classList.remove('edit');
     }
+    const gal = $('#gal'), pw = $('#glpw'), pf = $('#glpf'), pi = $('#glpi'), pe = $('#glpe');
+    const PASS = '030202';
+    let unlocked = false;
+    function setEdit(on){
+      gal.classList.toggle('edit', on);
+      $('#gled span').textContent = on ? 'Done' : 'Edit';
+      grid.querySelectorAll('.gti').forEach(t => { if (on) { t.setAttribute('contenteditable', 'plaintext-only'); t.spellcheck = false; } else t.removeAttribute('contenteditable'); });
+    }
+    function openPw(){ pi.value = ''; pe.textContent = ''; pf.classList.remove('err'); pw.classList.add('on'); pw.setAttribute('aria-hidden', 'false'); setTimeout(() => pi.focus(), 30); }
+    function closePw(){ pw.classList.remove('on'); pw.setAttribute('aria-hidden', 'true'); }
+    $('#gled').addEventListener('click', () => {
+      if (gal.classList.contains('edit')) { if (document.activeElement) document.activeElement.blur(); setEdit(false); return; }
+      if (unlocked) setEdit(true); else openPw();
+    });
+    pf.addEventListener('submit', e => {
+      e.preventDefault();
+      if (pi.value === PASS) { unlocked = true; closePw(); setEdit(true); }
+      else { pf.classList.remove('err'); void pf.offsetWidth; pf.classList.add('err'); pe.textContent = '비밀번호가 맞지 않아요.'; pi.value = ''; pi.focus(); }
+    });
+    pi.addEventListener('input', () => { pi.value = pi.value.replace(/\D/g, '').slice(0, 6); pe.textContent = ''; pf.classList.remove('err'); if (pi.value.length === 6) pf.requestSubmit(); });
+    $('#glpc').addEventListener('click', closePw);
+    pw.addEventListener('click', e => { if (e.target === pw) closePw(); });
+    addEventListener('keydown', e => { if (e.key === 'Escape' && pw.classList.contains('on')) closePw(); });
+    // rename: edit the title in place
+    grid.addEventListener('focusout', e => {
+      const t = e.target.closest('.gti'); if (!t || !gal.classList.contains('edit')) return;
+      const it = GL[+t.closest('.glcd').dataset.i]; if (!it) return;
+      const v = t.textContent.replace(/\s+/g, ' ').trim();
+      if (v) it.name = v; else t.textContent = it.name;
+    });
+    grid.addEventListener('keydown', e => {
+      if (e.target.classList && e.target.classList.contains('gti') && e.key === 'Enter') { e.preventDefault(); e.target.blur(); }
+    }, true);
     grid.addEventListener('click', e => {
+      const del = e.target.closest('.gdel');
+      if (del) {
+        e.stopPropagation();
+        const c = del.closest('.glcd'), it = GL[+c.dataset.i];
+        c.classList.add('bye');
+        setTimeout(() => { const k = GL.indexOf(it); if (k >= 0) GL.splice(k, 1); if (cur === it) cur = null; renderGal(); }, 280);
+        return;
+      }
+      if (gal.classList.contains('edit')) return;
       const c = e.target.closest('.glcd.ph'); if (!c) return;
       cur = GL[+c.dataset.i]; go('bres');
     });
-    grid.addEventListener('keydown', e => { if (e.key === 'Enter') { const c = e.target.closest('.glcd.ph'); if (c) c.click(); } });
+    grid.addEventListener('keydown', e => { if (e.key === 'Enter' && !gal.classList.contains('edit')) { const c = e.target.closest('.glcd.ph'); if (c) c.click(); } });
     $('#glback').addEventListener('click', () => go(back === 'bres' && cur ? 'bres' : 'booth'));
 
-    return {
+    const api = {
       onGo(name){
         if (name === 'booth') { resetBooth(); startCam(); }
         else { resetBooth(); stopCam(); }
         if (name === 'bres') showRes();
-        if (name === 'gal') { renderGal(); $('#glsc').scrollTop = 0; }
+        if (name !== 'gal') { setEdit(false); unlocked = false; closePw(); }
+        if (name === 'gal') { setEdit(false); renderGal(); $('#glsc').scrollTop = 0; }
       },
+      nav: null, from: null,
       demo(){ save(capture()); go('bres'); },
       get items(){ return GL; }
     };
+    return api;
   })();
   $('#logo').setAttribute('role', 'link'); $('#logo').setAttribute('tabindex', '0');
   $('#logo').addEventListener('keydown', e => { if (e.key === 'Enter') $('#logo').click(); });
