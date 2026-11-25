@@ -1782,7 +1782,7 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
   $('#f1').addEventListener('submit', e => {
     e.preventDefault();
     const v = i1.value.trim();
-    if (!v) { i1.focus(); return; }
+    if (!v) { i1.focus(); typeGoal(); return; }
     start(v);
   });
   $('#f2').addEventListener('submit', e => {
@@ -2128,23 +2128,32 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
   $('#cf').addEventListener('submit', e => { e.preventDefault(); const v = $('#ci').value.trim(); if (!v) { $('#ci').focus(); typeCreate(); return; } startCreateChat(v); });
   // typewriter: clicking the empty input writes the sample request
   const CREATE_TEXT = 'I want to create a LinkedIn profile based on my identity.';
+  // typewriter: clicking an empty input writes a sample sentence (base = ms per character)
   let cTyping = null;
   function stopTyping(){ if (cTyping) { clearTimeout(cTyping); cTyping = null; } }
-  function typeCreate(){
-    const el = $('#ci'); if (el.value || cTyping) return;
+  function typeInto(el, text, base){
+    if (el.value || cTyping) return;
     let i = 0;
     const step = () => {
-      i++; el.value = CREATE_TEXT.slice(0, i); el.setSelectionRange(i, i); el.scrollLeft = el.scrollWidth;
-      if (i >= CREATE_TEXT.length) { cTyping = null; return; }
-      const ch = CREATE_TEXT[i - 1];
-      cTyping = setTimeout(step, (ch === ' ' ? 55 : 38) + Math.random() * 45 + (ch === ',' || ch === '.' ? 160 : 0));
+      if (el.value !== text.slice(0, i)) { cTyping = null; return; }   // the user changed it: stop
+      i++; el.value = text.slice(0, i); el.setSelectionRange(i, i); el.scrollLeft = el.scrollWidth;
+      el.dispatchEvent(new Event('input', { bubbles: true }));
+      if (i >= text.length) { cTyping = null; return; }
+      const ch = text[i - 1];
+      cTyping = setTimeout(step, base + Math.random() * base * 0.8 + (ch === ' ' ? base * 0.4 : 0) + (ch === ',' || ch === '.' ? base * 3 : 0));
     };
-    cTyping = setTimeout(step, 180);
+    cTyping = setTimeout(step, 140);
   }
-  $('#ci').addEventListener('focus', typeCreate);
-  $('#ci').addEventListener('mousedown', () => { if (document.activeElement === $('#ci')) typeCreate(); });
-  $('#ci').addEventListener('keydown', stopTyping);
-  $('#ci').addEventListener('blur', stopTyping);
+  const typeCreate = () => typeInto($('#ci'), CREATE_TEXT, 20);
+  const GOAL_TEXT = 'I want to speak more comfortably and confidently without hesitating in front of others.';
+  const typeGoal = () => typeInto($('#i1'), GOAL_TEXT, 13);
+  [['#ci', typeCreate], ['#i1', typeGoal]].forEach(([sel, fn]) => {
+    const el = $(sel);
+    el.addEventListener('focus', fn);
+    el.addEventListener('mousedown', () => { if (document.activeElement === el) fn(); });
+    el.addEventListener('keydown', stopTyping);
+    el.addEventListener('blur', stopTyping);
+  });
   $('#cfilt').addEventListener('click', e => { const b = e.target.closest('.fc[data-f]'); if (!b) return; });
 
   // create chat: request -> thinking -> output roles -> generate selected
