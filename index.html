@@ -2239,6 +2239,16 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
       if (withFrame) drawOverlay(x);
       return c;
     }
+    // ImgBB (ad-free direct image link). Paste a free key from api.imgbb.com to use it first.
+    const IMGBB_KEY = '';
+    async function upImgbb(blob){
+      if (!IMGBB_KEY) throw new Error('no key');
+      const fd = new FormData(); fd.append('image', blob, 'buildn-photo.jpg');
+      const r = await fetch('https://api.imgbb.com/1/upload?expiration=604800&key=' + IMGBB_KEY, { method: 'POST', body: fd });
+      const j = await r.json(); const u = j && j.data && (j.data.image && j.data.image.url || j.data.url);
+      if (!u) throw new Error('imgbb');
+      return u;
+    }
     async function upTmpfiles(blob){
       const fd = new FormData(); fd.append('file', blob, 'buildn-photo.jpg');
       const r = await fetch('https://tmpfiles.org/api/v1/upload', { method: 'POST', body: fd });
@@ -2266,7 +2276,7 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
       qr.classList.remove('ok', 'err'); qm.textContent = 'QR 코드 만드는 중…';
       if (!it.up[k]) {
         it.up[k] = new Promise(res => compose(k === 'f').toBlob(res, 'image/jpeg', .9))
-          .then(b => upTmpfiles(b).catch(() => upLitterbox(b)));
+          .then(b => upImgbb(b).catch(() => upLitterbox(b)).catch(() => upTmpfiles(b)));
         it.up[k].catch(() => { delete it.up[k]; });
       }
       it.up[k].then(url => {

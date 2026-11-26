@@ -179,7 +179,7 @@ Buildn에서 아이덴티티(고유성)란 여러 상황에서 반복적으로 �
 - `fonts/` — Pretendard Regular·Medium·SemiBold. Poppins는 Google Fonts에서 불러옵니다
 - `img/`, `video/` — 장면 이미지와 영상
 - 빌드 과정 없이 정적 파일 그대로 GitHub Pages에서 동작합니다
-- 포토부스 사진은 QR 저장을 위해 [tmpfiles.org](https://tmpfiles.org)에 임시 업로드되며 일정 시간 후 삭제됩니다
+- 포토부스 사진은 QR 저장을 위해 임시 파일 호스팅(Litterbox, 24시간 보관)에 업로드되며 이후 자동 삭제됩니다
 
 ## Generative AI Process
 
