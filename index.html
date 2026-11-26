@@ -2158,18 +2158,88 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
         t.oncomplete = () => res(q && q.result); t.onerror = () => rej(t.error);
       })).catch(() => null);
       return {
-        put: it => tx('readwrite', st => st.put({ id: it.id, src: it.src, name: it.name, date: +it.date })),
+        put: it => tx('readwrite', st => st.put({ id: it.id, src: it.src, name: it.name, date: +it.date, synced: !!it.synced })),
         del: it => tx('readwrite', st => st.delete(it.id)),
         all: () => tx('readonly', st => st.getAll())
       };
     })();
-    DB.all().then(rows => {
-      if (!rows || !rows.length) return;
-      const have = new Set(GL.map(it => it.id));
-      rows.filter(r => !have.has(r.id)).forEach(r => GL.push({ id: r.id, src: r.src, name: r.name, date: new Date(r.date), up: {} }));
+    // shared gallery on Supabase: every computer sees the same photos
+    const SB_URL = 'https://tvvtrothegmdjzwbhzsj.supabase.co', SB_KEY = 'sb_publishable_w4yQLLIDeLDUxex0gkPQXQ_fc_8AG5M';
+    const SBH = { apikey: SB_KEY, Authorization: 'Bearer ' + SB_KEY };
+    const SB = {
+      pub: path => SB_URL + '/storage/v1/object/public/booth/' + path,
+      async put(path, blob){
+        const r = await fetch(SB_URL + '/storage/v1/object/booth/' + path, { method: 'POST', headers: { ...SBH, 'Content-Type': 'image/jpeg', 'x-upsert': 'false' }, body: blob });
+        if (r.ok) return;
+        const t = await r.text().catch(() => '');
+        if (/already exists|Duplicate/i.test(t)) return;          // never overwrite: keep the stored one
+        throw new Error('storage ' + r.status);
+      },
+      async rest(method, q, body){
+        const r = await fetch(SB_URL + '/rest/v1/booth_photos' + (q || ''), { method, headers: { ...SBH, 'Content-Type': 'application/json', Prefer: 'return=minimal' }, body: body ? JSON.stringify(body) : undefined });
+        if (!r.ok && !(method === 'POST' && r.status === 409)) throw new Error('rest ' + r.status);
+        return method === 'GET' ? r.json() : null;
+      },
+      del(paths){
+        return fetch(SB_URL + '/storage/v1/object/booth', { method: 'DELETE', headers: { ...SBH, 'Content-Type': 'application/json' }, body: JSON.stringify({ prefixes: paths }) }).catch(() => {});
+      }
+    };
+    const blobOf = (c, q) => new Promise((res, rej) => c.toBlob(b => b ? res(b) : rej(new Error('blob')), 'image/jpeg', q));
+    function link(it, path){ it.path = path; it.url = SB.pub(path); it.thumb = SB.pub('thumb/' + path); }
+    function sync(it){
+      if (it.sync) return it.sync;
+      it.sync = (async () => {
+        const path = it.id + '.jpg', base = await baseOf(it);
+        const full = document.createElement('canvas'); full.width = Math.round(W * S); full.height = Math.round(H * S);
+        full.getContext('2d').drawImage(base, 0, 0, full.width, full.height);
+        const th = document.createElement('canvas'); th.width = 760; th.height = Math.round(760 * H / W);
+        th.getContext('2d').drawImage(base, 0, 0, th.width, th.height);
+        await SB.put(path, await blobOf(full, .86));
+        await SB.put('thumb/' + path, await blobOf(th, .8));
+        await SB.rest('POST', '', { id: it.id, path, name: it.name, taken_at: it.date.toISOString() });
+        link(it, path); it.synced = true; it.syncedAt = Date.now(); DB.put(it);
+        return it.url;
+      })();
+      it.sync.catch(() => { it.sync = null; });
+      return it.sync;
+    }
+    function unsync(it){
+      DB.del(it);
+      const path = it.path || it.id + '.jpg';
+      Promise.resolve(it.sync).catch(() => {}).finally(() => {
+        SB.rest('DELETE', '?id=eq.' + encodeURIComponent(it.id)).catch(() => {});
+        SB.del([path, 'thumb/' + path]);
+      });
+    }
+    async function pull(){
+      const t0 = Date.now();
+      const rows = await SB.list().catch(() => null);
+      if (!rows) return;
+      const ids = new Set(rows.map(r => r.id));
+      for (let k = GL.length - 1; k >= 0; k--) {            // removed on another computer
+        const it = GL[k];
+        if (it.synced && !ids.has(it.id) && (it.syncedAt || 0) < t0 && it !== cur) { GL.splice(k, 1); DB.del(it); }
+      }
+      const have = new Map(GL.map(it => [it.id, it]));
+      rows.forEach(r => {
+        const it = have.get(r.id);
+        if (it) { it.name = r.name; it.synced = true; link(it, r.path); }
+        else { const n = { id: r.id, name: r.name, date: new Date(r.taken_at), up: {}, synced: true, remote: true }; link(n, r.path); n.src = n.url; GL.push(n); }
+      });
       GL.sort((a, b) => b.date - a.date);
-      if (screen === 'gal') renderGal();
+      GL.filter(it => !it.synced && !it.remote).forEach(it => sync(it).catch(() => {}));   // retry photos that didn't upload yet
+      if (screen === 'gal' && !gal.classList.contains('edit') && !document.querySelector('#glgr .bye')) renderGal();
+    }
+    SB.list = () => SB.rest('GET', '?select=*&order=taken_at.desc');
+    DB.all().then(rows => {
+      if (rows && rows.length) {
+        const have = new Set(GL.map(it => it.id));
+        rows.filter(r => !have.has(r.id)).forEach(r => { const it = { id: r.id, src: r.src, name: r.name, date: new Date(r.date), up: {}, synced: !!r.synced }; if (it.synced) link(it, it.id + '.jpg'); GL.push(it); });
+        GL.sort((a, b) => b.date - a.date);
+      }
+      pull();
     });
+    setInterval(() => { if (screen === 'gal') pull(); }, 20000);
     let stream = null, T = [], cur = null, frameOn = true, back = 'booth';
     const pad = n => String(n).padStart(2, '0');
     const fDate = d => d.getFullYear() + '.' + pad(d.getMonth() + 1) + '.' + pad(d.getDate()) + ' ' + DAYS[d.getDay()];
@@ -2217,7 +2287,7 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
       const d = new Date();
       cur = { id: d.getTime() + '-' + Math.random().toString(36).slice(2, 7), canvas: c, src: c.toDataURL('image/jpeg', .9), date: d, name: evName(d), up: {}, fresh: true, pending: true };
       GL.unshift(cur);
-      if (keep) DB.put(cur);
+      if (keep) { DB.put(cur); sync(cur).catch(() => {}); }
       return cur;
     }
     function shootSeq(){
@@ -2271,7 +2341,7 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
     }
     function baseOf(it){
       if (it.canvas) return Promise.resolve(it.canvas);
-      return new Promise((res, rej) => { const im = new Image(); im.onload = () => res(im); im.onerror = rej; im.src = it.src; });
+      return new Promise((res, rej) => { const im = new Image(); im.crossOrigin = 'anonymous'; im.onload = () => res(im); im.onerror = rej; im.src = it.src; });
     }
     async function compose(it, withFrame){
       const b = await baseOf(it);
@@ -2315,8 +2385,11 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
       const it = cur, k = frameOn ? 'f' : 'p';
       qr.classList.remove('ok', 'err'); qm.textContent = 'QR 코드 만드는 중…';
       if (!it.up[k]) {
-        it.up[k] = compose(it, k === 'f').then(c => new Promise(res => c.toBlob(res, 'image/jpeg', .9)))
+        const temp = () => compose(it, false).then(c => new Promise(res => c.toBlob(res, 'image/jpeg', .9)))
           .then(b => upImgbb(b).catch(() => upLitterbox(b)).catch(() => upTmpfiles(b)));
+        it.up[k] = (it.synced && it.url ? Promise.resolve(it.url) : sync(it))
+          .then(u => u + '?download=buildn-' + it.id + '.jpg')
+          .catch(temp);
         it.up[k].catch(() => { delete it.up[k]; });
       }
       it.up[k].then(url => {
@@ -2337,7 +2410,7 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
     const toggleFrame = () => { frameOn = !frameOn; fr.classList.toggle('on', frameOn); fr.setAttribute('aria-checked', String(frameOn)); ph.classList.toggle('nof', !frameOn); makeQR(); };
     fr.addEventListener('click', toggleFrame);
     $('#bret').addEventListener('click', () => {
-      if (cur && cur.pending) { const k = GL.indexOf(cur); if (k >= 0) GL.splice(k, 1); DB.del(cur); cur = null; }
+      if (cur && cur.pending) { const k = GL.indexOf(cur); if (k >= 0) GL.splice(k, 1); unsync(cur); cur = null; }
       go('booth');
     });
     $('#bgal').addEventListener('click', () => { back = 'bres'; go('gal'); });
@@ -2350,7 +2423,7 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
     function renderGal(){
       const esc2 = t => String(t).replace(/[&<>"]/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[ch]));
       const ed = gal.classList.contains('edit');
-      grid.innerHTML = GL.map((it, i) => '<div class="glcd ph' + (it.fresh ? ' new' : '') + '" data-i="' + i + '" role="button" tabindex="0" style="cursor:pointer"><div class="gim"><img src="' + it.src + '" alt="">'
+      grid.innerHTML = GL.map((it, i) => '<div class="glcd ph' + (it.fresh ? ' new' : '') + '" data-i="' + i + '" role="button" tabindex="0" style="cursor:pointer"><div class="gim"><img src="' + (it.thumb || it.src) + '" alt="" loading="lazy"' + (it.thumb ? ' data-full="' + it.url + '" onerror="this.onerror=null;this.src=this.dataset.full"' : '') + '>'
         + '<button class="gdel" aria-label="Delete photo"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 2l8 8M10 2l-8 8" stroke="#444" stroke-width="1.5" stroke-linecap="round"/></svg></button></div>'
         + '<p class="gti"' + (ed ? ' contenteditable="plaintext-only" spellcheck="false"' : '') + '>' + esc2(it.name) + '</p><p class="gdt">' + fLong(it.date) + '</p></div>').join('');
       GL.forEach(it => { it.fresh = false; });
@@ -2385,7 +2458,7 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
       const t = e.target.closest('.gti'); if (!t || !gal.classList.contains('edit')) return;
       const it = GL[+t.closest('.glcd').dataset.i]; if (!it) return;
       const v = t.textContent.replace(/\s+/g, ' ').trim();
-      if (v) { if (v !== it.name) { it.name = v; DB.put(it); } } else t.textContent = it.name;
+      if (v) { if (v !== it.name) { it.name = v; DB.put(it); if (it.synced) SB.rest('PATCH', '?id=eq.' + encodeURIComponent(it.id), { name: v }).catch(() => {}); } } else t.textContent = it.name;
     });
     grid.addEventListener('keydown', e => {
       if (e.target.classList && e.target.classList.contains('gti') && e.key === 'Enter') { e.preventDefault(); e.target.blur(); }
@@ -2396,7 +2469,7 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
         e.stopPropagation();
         const c = del.closest('.glcd'), it = GL[+c.dataset.i];
         c.classList.add('bye');
-        setTimeout(() => { const k = GL.indexOf(it); if (k >= 0) GL.splice(k, 1); DB.del(it); if (cur === it) cur = null; renderGal(); }, 280);
+        setTimeout(() => { const k = GL.indexOf(it); if (k >= 0) GL.splice(k, 1); unsync(it); if (cur === it) cur = null; renderGal(); }, 280);
         return;
       }
       if (gal.classList.contains('edit')) return;
@@ -2413,7 +2486,7 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
         if (name !== 'bres' && name !== 'booth' && cur) cur.pending = false;
         if (name === 'bres') showRes();
         if (name !== 'gal') { setEdit(false); unlocked = false; closePw(); }
-        if (name === 'gal') { setEdit(false); renderGal(); $('#glsc').scrollTop = 0; }
+        if (name === 'gal') { setEdit(false); renderGal(); $('#glsc').scrollTop = 0; pull(); }
       },
       nav: null, from: null,
       demo(){ save(capture(), false); go('bres'); },
