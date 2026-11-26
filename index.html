@@ -2137,6 +2137,33 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
     const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     const MON = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     const GL = [];            // saved photos, newest first
+    // keep gallery photos in this browser (IndexedDB) so a refresh or an update doesn't wipe them
+    const DB = (() => {
+      let p = null;
+      const open = () => p || (p = new Promise((res, rej) => {
+        try {
+          const r = indexedDB.open('buildn-booth', 1);
+          r.onupgradeneeded = () => r.result.createObjectStore('photos', { keyPath: 'id' });
+          r.onsuccess = () => res(r.result); r.onerror = () => rej(r.error);
+        } catch (e) { rej(e); }
+      }));
+      const tx = (mode, fn) => open().then(db => new Promise((res, rej) => {
+        const t = db.transaction('photos', mode), st = t.objectStore('photos'), q = fn(st);
+        t.oncomplete = () => res(q && q.result); t.onerror = () => rej(t.error);
+      })).catch(() => null);
+      return {
+        put: it => tx('readwrite', st => st.put({ id: it.id, src: it.src, name: it.name, date: +it.date })),
+        del: it => tx('readwrite', st => st.delete(it.id)),
+        all: () => tx('readonly', st => st.getAll())
+      };
+    })();
+    DB.all().then(rows => {
+      if (!rows || !rows.length) return;
+      const have = new Set(GL.map(it => it.id));
+      rows.filter(r => !have.has(r.id)).forEach(r => GL.push({ id: r.id, src: r.src, name: r.name, date: new Date(r.date), up: {} }));
+      GL.sort((a, b) => b.date - a.date);
+      if (screen === 'gal') renderGal();
+    });
     let stream = null, T = [], cur = null, frameOn = true, back = 'booth';
     const pad = n => String(n).padStart(2, '0');
     const fDate = d => d.getFullYear() + '.' + pad(d.getMonth() + 1) + '.' + pad(d.getDate()) + ' ' + DAYS[d.getDay()];
@@ -2178,10 +2205,11 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
       }
       return c;
     }
-    function save(c){
+    function save(c, keep = true){
       const d = new Date();
-      cur = { canvas: c, src: c.toDataURL('image/jpeg', .9), date: d, name: evName(d), up: {}, fresh: true, pending: true };
+      cur = { id: d.getTime() + '-' + Math.random().toString(36).slice(2, 7), canvas: c, src: c.toDataURL('image/jpeg', .9), date: d, name: evName(d), up: {}, fresh: true, pending: true };
       GL.unshift(cur);
+      if (keep) DB.put(cur);
       return cur;
     }
     function shootSeq(){
@@ -2233,9 +2261,14 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
       });
       x.restore();
     }
-    function compose(withFrame){
-      const c = document.createElement('canvas'); c.width = cur.canvas.width; c.height = cur.canvas.height;
-      const x = c.getContext('2d'); x.drawImage(cur.canvas, 0, 0);
+    function baseOf(it){
+      if (it.canvas) return Promise.resolve(it.canvas);
+      return new Promise((res, rej) => { const im = new Image(); im.onload = () => res(im); im.onerror = rej; im.src = it.src; });
+    }
+    async function compose(it, withFrame){
+      const b = await baseOf(it);
+      const c = document.createElement('canvas'); c.width = Math.round(W * S); c.height = Math.round(H * S);
+      const x = c.getContext('2d'); x.drawImage(b, 0, 0, c.width, c.height);
       if (withFrame) drawOverlay(x);
       return c;
     }
@@ -2275,7 +2308,7 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
       const it = cur, k = frameOn ? 'f' : 'p';
       qr.classList.remove('ok', 'err'); qm.textContent = 'QR 코드 만드는 중…';
       if (!it.up[k]) {
-        it.up[k] = new Promise(res => compose(k === 'f').toBlob(res, 'image/jpeg', .9))
+        it.up[k] = compose(it, k === 'f').then(c => new Promise(res => c.toBlob(res, 'image/jpeg', .9)))
           .then(b => upImgbb(b).catch(() => upLitterbox(b)).catch(() => upTmpfiles(b)));
         it.up[k].catch(() => { delete it.up[k]; });
       }
@@ -2289,7 +2322,7 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
     }
     $('#bqs').addEventListener('click', () => { if (qr.classList.contains('err')) makeQR(); });
     function showRes(){
-      if (!cur) save(capture());
+      if (!cur) save(capture(), false);
       img.src = cur.src;
       fr.classList.toggle('on', frameOn); fr.setAttribute('aria-checked', String(frameOn)); ph.classList.toggle('nof', !frameOn);
       makeQR();
@@ -2297,7 +2330,7 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
     const toggleFrame = () => { frameOn = !frameOn; fr.classList.toggle('on', frameOn); fr.setAttribute('aria-checked', String(frameOn)); ph.classList.toggle('nof', !frameOn); makeQR(); };
     fr.addEventListener('click', toggleFrame);
     $('#bret').addEventListener('click', () => {
-      if (cur && cur.pending) { const k = GL.indexOf(cur); if (k >= 0) GL.splice(k, 1); cur = null; }
+      if (cur && cur.pending) { const k = GL.indexOf(cur); if (k >= 0) GL.splice(k, 1); DB.del(cur); cur = null; }
       go('booth');
     });
     $('#bgal').addEventListener('click', () => { back = 'bres'; go('gal'); });
@@ -2345,7 +2378,7 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
       const t = e.target.closest('.gti'); if (!t || !gal.classList.contains('edit')) return;
       const it = GL[+t.closest('.glcd').dataset.i]; if (!it) return;
       const v = t.textContent.replace(/\s+/g, ' ').trim();
-      if (v) it.name = v; else t.textContent = it.name;
+      if (v) { if (v !== it.name) { it.name = v; DB.put(it); } } else t.textContent = it.name;
     });
     grid.addEventListener('keydown', e => {
       if (e.target.classList && e.target.classList.contains('gti') && e.key === 'Enter') { e.preventDefault(); e.target.blur(); }
@@ -2356,7 +2389,7 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
         e.stopPropagation();
         const c = del.closest('.glcd'), it = GL[+c.dataset.i];
         c.classList.add('bye');
-        setTimeout(() => { const k = GL.indexOf(it); if (k >= 0) GL.splice(k, 1); if (cur === it) cur = null; renderGal(); }, 280);
+        setTimeout(() => { const k = GL.indexOf(it); if (k >= 0) GL.splice(k, 1); DB.del(it); if (cur === it) cur = null; renderGal(); }, 280);
         return;
       }
       if (gal.classList.contains('edit')) return;
@@ -2376,7 +2409,7 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
         if (name === 'gal') { setEdit(false); renderGal(); $('#glsc').scrollTop = 0; }
       },
       nav: null, from: null,
-      demo(){ save(capture()); go('bres'); },
+      demo(){ save(capture(), false); go('bres'); },
       get items(){ return GL; }
     };
     return api;
