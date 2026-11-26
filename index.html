@@ -1137,7 +1137,7 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
 .bshot:disabled{cursor:default;opacity:.55}
 
 /* result */
-#bres .brq{position:absolute;left:258px;top:264.5px;width:248px}
+#bres .brq{position:absolute;left:258px;top:293.5px;width:248px}
 .bqr{position:relative;width:248px;height:240px;background:#fff;display:flex;align-items:center;justify-content:center}
 .bqr canvas{width:200px;height:200px;image-rendering:pixelated;opacity:0;transition:opacity .35s}
 .bqr.ok canvas{opacity:1}
@@ -1149,10 +1149,10 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
 .bqr.err .bqs u{color:var(--blue);text-decoration:none}
 @keyframes bqspin{to{transform:rotate(360deg)}}
 .brq .bqt{position:absolute;left:35.5px;top:271px;width:177px;text-align:center;font-family:var(--pt);font-size:16px;line-height:24px;color:#8b8b8b;--ls:-0.01em;letter-spacing:-0.01em;text-box:trim-both cap alphabetic}
-.brq .bgb{position:absolute;left:69px;top:337px;width:110px;height:35px;border-radius:8px;background:var(--ink);display:flex;align-items:center;justify-content:center;gap:5px;
+.brq .bgb{position:absolute;left:8.5px;top:337px;width:110px;height:35px;border-radius:8px;background:var(--ink);display:flex;align-items:center;justify-content:center;gap:5px;
   font-family:var(--pt);font-weight:500;font-size:15px;color:#fff;--ls:-0.03em;letter-spacing:-0.03em;transition:background .15s}
 .brq .bgb:hover{background:#2f2f2f}
-.brq .brow{position:absolute;left:10px;top:403px;display:flex;align-items:center;gap:31px}
+.brq .brow{position:absolute;left:149.5px;top:342.5px;display:flex;align-items:center;gap:31px}
 .brq .bfr,.brq .brt{display:flex;align-items:center;font-family:var(--pt);font-size:20px;line-height:24px;color:rgba(0,0,0,.4);--ls:-0.04em;letter-spacing:-0.04em;cursor:pointer}
 .brq .bfr{gap:8px}.brq .brt{gap:8px}
 .brq .brt:hover,.brq .bfr:hover{color:rgba(0,0,0,.55)}
@@ -1243,6 +1243,11 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
 #booth .bvg:hover{background:#2f2f2f}
 .bvf .bfz{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none}
 .bvf.frz .bfz{display:block}
+
+/* photo frame: buildn logo, shown live and baked into the photo */
+.bvf .bbrand{position:absolute;left:57px;top:516px;width:221px;height:43.4px;z-index:1;pointer-events:none}
+.bvf.frz .bbrand{display:none}
+.bov,#bfr{display:none}
 </style>
 </head>
 <body>
@@ -1619,6 +1624,7 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
     <div class="bvf" id="bvf">
       <video id="bcam" playsinline muted autoplay></video>
       <img class="bfz" id="bfz" alt="">
+      <img class="bbrand" src="img/brand.png" alt="buildn">
       <i class="bfl" id="bfl"></i>
       <div class="bcd bglass" id="bcd"><i class="bgl"></i><i class="bhl"></i></div><b class="bcdn" id="bcdn" aria-live="polite">3</b>
       <div class="bsv" id="bsv" role="status" aria-live="polite">
@@ -2196,6 +2202,7 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
       vf.classList.remove('frz'); $('#bfz').removeAttribute('src'); if (cam.srcObject && cam.paused) cam.play().catch(() => {});
     }
     // grab the viewfinder (mirrored like the preview), cropped to the 1113×601 frame
+    const BRAND = new Image(); BRAND.src = 'img/brand.png';
     function capture(){
       const c = document.createElement('canvas'); c.width = Math.round(W * S); c.height = Math.round(H * S);
       const x = c.getContext('2d'); x.fillStyle = '#eeeeee'; x.fillRect(0, 0, c.width, c.height);
@@ -2203,6 +2210,7 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
         const vw = cam.videoWidth, vh = cam.videoHeight, r = Math.max(c.width / vw, c.height / vh), dw = vw * r, dh = vh * r;
         x.save(); x.translate(c.width, 0); x.scale(-1, 1); x.drawImage(cam, (c.width - dw) / 2, (c.height - dh) / 2, dw, dh); x.restore();
       }
+      if (BRAND.complete && BRAND.naturalWidth) x.drawImage(BRAND, 57 * S, 516 * S, 221 * S, 43.4 * S);
       return c;
     }
     function save(c, keep = true){
@@ -2269,7 +2277,6 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
       const b = await baseOf(it);
       const c = document.createElement('canvas'); c.width = Math.round(W * S); c.height = Math.round(H * S);
       const x = c.getContext('2d'); x.drawImage(b, 0, 0, c.width, c.height);
-      if (withFrame) drawOverlay(x);
       return c;
     }
     // ImgBB (ad-free direct image link). Paste a free key from api.imgbb.com to use it first.
