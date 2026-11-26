@@ -1248,6 +1248,8 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
 .bvf .bbrand{position:absolute;left:57px;top:516px;width:221px;height:43.4px;z-index:1;pointer-events:none}
 .bvf.frz .bbrand{display:none}
 .bov,#bfr{display:none}
+.glst{position:absolute;left:300px;top:228px;font-family:var(--pt);font-size:14px;color:#e0794f;display:none}
+.glst.on{display:block}
 </style>
 </head>
 <body>
@@ -1684,6 +1686,7 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
     <div id="glsc"><div class="glc">
       <div class="glback" id="glback" role="link" tabindex="0"><svg width="7" height="13" viewBox="0 0 7 13" fill="none"><path d="M6 .75 1 6.25l5 5.5" stroke="#444" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>About</span></div>
       <p class="gltt">Card List</p>
+      <p class="glst" id="glst" role="status"></p>
       <div class="gltb"><span class="on">Library</span><span>Collections</span></div>
       <div class="glfl">
         <span class="gfc"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 9h9M17 9h3M4 15h3M11 15h9" stroke="#7a7a7a" stroke-width="1.5" stroke-linecap="round"/><circle cx="15" cy="9" r="2" stroke="#7a7a7a" stroke-width="1.5"/><circle cx="9" cy="15" r="2" stroke="#7a7a7a" stroke-width="1.5"/></svg>Filters</span>
@@ -2213,8 +2216,10 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
     }
     async function pull(){
       const t0 = Date.now();
-      const rows = await SB.list().catch(() => null);
-      if (!rows) return;
+      const rows = await SB.list().catch(e => { console.warn('gallery sync', e); return null; });
+      const st = document.getElementById('glst');
+      if (!rows) { st.textContent = '온라인 갤러리에 연결하지 못했어요 · 이 컴퓨터에서 찍은 사진만 보여요'; st.classList.add('on'); return; }
+      st.classList.remove('on');
       const ids = new Set(rows.map(r => r.id));
       for (let k = GL.length - 1; k >= 0; k--) {            // removed on another computer
         const it = GL[k];
@@ -2388,7 +2393,7 @@ button.mst{transition:border-color .15s}button.mst:hover{border-color:#dcdcdc}
         const temp = () => compose(it, false).then(c => new Promise(res => c.toBlob(res, 'image/jpeg', .9)))
           .then(b => upImgbb(b).catch(() => upLitterbox(b)).catch(() => upTmpfiles(b)));
         it.up[k] = (it.synced && it.url ? Promise.resolve(it.url) : sync(it))
-          .then(u => u + '?download=buildn-' + it.id + '.jpg')
+          .then(() => 'https://shinch02.github.io/Buildn/p.html?id=' + it.id)   // save page: share sheet → Photos
           .catch(temp);
         it.up[k].catch(() => { delete it.up[k]; });
       }

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Buildn Photo Booth</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<meta name="robots" content="noindex">
+<style>
+  @font-face{font-family:Pretendard;font-weight:400;src:url(fonts/Pretendard-Regular.woff2) format('woff2')}
+  @font-face{font-family:Pretendard;font-weight:500;src:url(fonts/Pretendard-Medium.woff2) format('woff2')}
+  @font-face{font-family:Pretendard;font-weight:600;src:url(fonts/Pretendard-SemiBold.woff2) format('woff2')}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:#f7f8fa;color:#444;font-family:Pretendard,-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo',sans-serif;letter-spacing:-0.02em;-webkit-text-size-adjust:100%}
+  main{max-width:560px;margin:0 auto;padding:28px 20px calc(36px + env(safe-area-inset-bottom));display:flex;flex-direction:column;align-items:center;gap:20px;min-height:100svh}
+  .logo{height:24px;margin:4px 0 6px}
+  .ph{width:100%;aspect-ratio:1113.3/601;border-radius:14px;background:#eee;overflow:hidden;box-shadow:0 10px 26px rgba(20,40,70,.07)}
+  .ph img{width:100%;height:100%;object-fit:cover;display:block;-webkit-touch-callout:default}
+  .ttl{font-weight:600;font-size:18px;text-align:center;line-height:1.4}
+  .sub{margin-top:-14px;font-size:14px;color:#999}
+  button{width:100%;height:52px;border:0;border-radius:12px;background:#444;color:#fff;font:inherit;font-weight:500;font-size:16px;letter-spacing:-0.02em;cursor:pointer}
+  button:active{background:#2f2f2f}
+  button:disabled{opacity:.5}
+  .hint{font-size:14px;line-height:1.6;color:#8b8b8b;text-align:center}
+  .err{font-size:15px;color:#767676;text-align:center;line-height:1.6;padding:40px 0}
+</style>
+</head>
+<body>
+<main>
+  <img class="logo" src="img/brand.png" alt="buildn">
+  <div class="ph"><img id="ph" alt="Buildn photo booth"></div>
+  <p class="ttl" id="ttl">Buildn Photo Booth</p>
+  <p class="sub" id="sub"></p>
+  <button id="sv" disabled>사진 불러오는 중…</button>
+  <p class="hint" id="hint">사진을 길게 눌러서 저장할 수도 있어요.</p>
+</main>
+<script>
+(() => {
+  const SB = 'https://tvvtrothegmdjzwbhzsj.supabase.co';
+  const id = (new URLSearchParams(location.search).get('id') || '').replace(/[^\w-]/g, '');
+  const ph = document.getElementById('ph'), sv = document.getElementById('sv'), hint = document.getElementById('hint');
+  const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  const fail = msg => { document.querySelector('main').innerHTML = '<img class="logo" src="img/brand.png" alt="buildn"><p class="err">' + msg + '</p>'; };
+  if (!id) return fail('사진을 찾을 수 없어요.');
+  const url = SB + '/storage/v1/object/public/booth/' + id + '.jpg';
+  const name = 'buildn-' + id + '.jpg';
+  ph.src = url;
+  ph.onerror = () => fail('사진을 불러오지 못했어요.<br>잠시 후 다시 시도해 주세요.');
+  // title + date from the gallery record
+  fetch(SB + '/rest/v1/booth_photos?select=name,taken_at&id=eq.' + encodeURIComponent(id), { headers: { apikey: 'sb_publishable_w4yQLLIDeLDUxex0gkPQXQ_fc_8AG5M', Authorization: 'Bearer sb_publishable_w4yQLLIDeLDUxex0gkPQXQ_fc_8AG5M' } })
+    .then(r => r.ok ? r.json() : []).then(rows => {
+      const r = rows && rows[0]; if (!r) return;
+      document.getElementById('ttl').textContent = r.name;
+      const d = new Date(r.taken_at);
+      document.getElementById('sub').textContent = d.getFullYear() + '.' + String(d.getMonth() + 1).padStart(2, '0') + '.' + String(d.getDate()).padStart(2, '0');
+    }).catch(() => {});
+  let file = null;
+  fetch(url).then(r => { if (!r.ok) throw 0; return r.blob(); }).then(b => {
+    file = new File([b], name, { type: 'image/jpeg' });
+    sv.disabled = false; sv.textContent = '사진 저장하기';
+    if (isIOS) hint.textContent = '‘이미지 저장’을 누르면 사진 앱에 저장돼요.';
+  }).catch(() => { sv.disabled = false; sv.textContent = '사진 저장하기'; });
+  sv.addEventListener('click', async () => {
+    // iPhone: the share sheet's "Save Image" puts it straight into Photos
+    if (file && navigator.canShare && navigator.canShare({ files: [file] }) && isIOS) {
+      try { await navigator.share({ files: [file] }); } catch (e) {}
+      return;
+    }
+    // Android and others: download the image (it shows up in the gallery app)
+    const a = document.createElement('a');
+    a.href = file ? URL.createObjectURL(file) : url; a.download = name;
+    document.body.appendChild(a); a.click(); a.remove();
+    hint.textContent = '저장한 사진은 갤러리 앱에서 볼 수 있어요.';
+  });
+})();
+</script>
+</body>
+</html>
